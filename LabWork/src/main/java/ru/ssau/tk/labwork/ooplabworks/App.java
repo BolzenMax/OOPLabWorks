@@ -1,7 +1,7 @@
 package ru.ssau.tk.labwork.ooplabworks;
 
 /**
- * Hello world!!!!!!!!!!!!
+ * Hello world!!!!!!!!!!!!!!!
  *
  */
 public class App 
