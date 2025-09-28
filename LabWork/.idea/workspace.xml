@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Removeable. Надеюсь так можно...">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Начал писать LinkedListTabulatedFunction. Предварительная реализация. Пу-пу-пу... Надо допиливать, ну и тесты">
       <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +112,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759046864883</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Начал писать LinkedListTabulatedFunction. Предварительная реализация. Пу-пу-пу... Надо допиливать, ну и тесты">
+      <option name="closed" value="true" />
+      <created>1759053910433</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1759053910433</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -122,6 +129,7 @@
     <MESSAGE value="Реализовал интерфейс TabulatedFunction" />
     <MESSAGE value="Insertable. Надеюсь так можно..." />
     <MESSAGE value="Removeable. Надеюсь так можно..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removeable. Надеюсь так можно..." />
+    <MESSAGE value="Начал писать LinkedListTabulatedFunction. Предварительная реализация. Пу-пу-пу... Надо допиливать, ну и тесты" />
+    <option name="LAST_COMMIT_MESSAGE" value="Начал писать LinkedListTabulatedFunction. Предварительная реализация. Пу-пу-пу... Надо допиливать, ну и тесты" />
   </component>
 </project>

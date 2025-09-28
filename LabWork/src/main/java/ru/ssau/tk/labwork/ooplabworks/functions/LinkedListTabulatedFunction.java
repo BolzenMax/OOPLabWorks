@@ -166,6 +166,18 @@ package ru.ssau.tk.labwork.ooplabworks.functions;
         return getNode(count - 1);
     }
 
+    @Override
+    public double apply(double x) {
+        if (getX(0) > x)
+            return extrapolateLeft(x);
+        else if (getX(count - 1) < x)
+            return extrapolateRight(x);
+        else if (indexOfX(x) != -1)
+            return getY((indexOfX(x)));
+        Node floorNode = floorNodeOfX(x);
+        return interpolate(x, floorNode.x, floorNode.next.x, floorNode.y, floorNode.next.y);
+    }
+
     // Интерполяция, экстраполяция. Хз-хз
     @Override
     protected double interpolate(double x, int floorIndex) {
