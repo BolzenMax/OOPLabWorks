@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Реализовал интерфейс TabulatedFunction">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Insertable. Надеюсь так можно...">
       <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/Insertable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/Removeable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,13 +96,22 @@
       <option name="project" value="LOCAL" />
       <updated>1759045149853</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Insertable. Надеюсь так можно...">
+      <option name="closed" value="true" />
+      <created>1759046612507</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1759046612507</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Начал писать лабу. Реализовал MathFunction и IdentityFunction. Для последнего написан тест. Вроде бы работает..." />
     <MESSAGE value="Реализовал сам класс CompositeFunction. Жду возможности добавить тесты..." />
     <MESSAGE value="Реализовал интерфейс TabulatedFunction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Реализовал интерфейс TabulatedFunction" />
+    <MESSAGE value="Insertable. Надеюсь так можно..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Insertable. Надеюсь так можно..." />
   </component>
 </project>
