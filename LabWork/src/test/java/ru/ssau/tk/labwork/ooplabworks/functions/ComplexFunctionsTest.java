@@ -19,6 +19,7 @@ public class ComplexFunctionsTest {
         assertEquals(1.0, composite.apply(1.0));   // sqr(1.0) = 1.0
         assertEquals(16.0, composite.apply(2.0));  // sqr(4.0) = 16.0
         assertEquals(81.0, composite.apply(3.0));  // sqr(9.0) = 81.0
+        assertEquals(81.0, composite.apply(3.0));  // sqr(9.0) = 81.0
     }
 
     @Test
