@@ -1,6 +1,6 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
-public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Removeable {
+public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable {
 
     private class Node {
         public Node next;
@@ -211,5 +211,60 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
             remEl.prev = null;
         }
         --count;
+    }
+    @Override
+    public void insert(double x, double y) {
+        // Если список пустой, просто добавляем узел
+        if (count == 0) {
+            addNode(x, y);
+            return;
+        }
+
+        // Проверяем, существует ли уже узел с таким x
+        for (int i = 0; i < count; ++i) {
+            Node current = getNode(i);
+            if (current.x == x) {
+                // Если нашли узел с таким x, заменяем y и завершаем
+                current.y = y;
+                return;
+            }
+        }
+
+        // Ищем место для вставки (первый узел, у которого x больше вставляемого)
+        Node current = head;
+        int index = 0;
+        while (current.x < x && index < count) {
+            current = current.next;
+            index++;
+        }
+
+        // Создаем новый узел
+        Node newNode = new Node();
+        newNode.x = x;
+        newNode.y = y;
+
+        if (current.x < x) {
+            // Вставка в конец списка (после последнего элемента)
+            Node last = head.prev;
+            last.next = newNode;
+            newNode.prev = last;
+            newNode.next = head;
+            head.prev = newNode;
+        } else if (current == head) {
+            // Вставка в начало списка
+            newNode.next = head;
+            newNode.prev = head.prev;
+            head.prev.next = newNode;
+            head.prev = newNode;
+            head = newNode; // Обновляем головную ссылку
+        } else {
+            // Вставка в середину списка
+            newNode.next = current;
+            newNode.prev = current.prev;
+            current.prev.next = newNode;
+            current.prev = newNode;
+        }
+
+        count++;
     }
 }
