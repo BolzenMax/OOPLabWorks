@@ -136,10 +136,8 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         if (x < getNode(0).x)
             return 0;
         for (int i = 0; i < count - 1; ++i) {
-            if (getNode(i).x <= x) {
                 if (getNode(i + 1).x > x)
                     return i;
-            }
         }
         return count - 1;
     }
