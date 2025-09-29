@@ -1,86 +1,89 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
+import java.util.Arrays;
 
-public class DeBoorSplineFunction implements MathFunction {
-    private final double[] knots;
-    private final double[] controlPoints;
-    private final int degree;
+public class DeBoorSplineFunction {
 
-    public DeBoorSplineFunction(double[] knots, double[] controlPoints, int degree) {
+    /**
+     * Алгоритм Де Бура для вычисления точки на B-сплайне
+     *
+     * @param degree степень B-сплайна
+     * @param knots вектор узлов
+     * @param controlPoints контрольные точки
+     * @param t параметр для вычисления точки
+     * @return точка на B-сплайне при параметре t
+     */
+    public static double[] deBoor(int degree, double[] knots, double[][] controlPoints, double t) {
+        // Проверка корректности входных данных
+        if (knots == null || controlPoints == null) {
+            throw new IllegalArgumentException("Knots and control points cannot be null");
+        }
+
+        if (degree < 0) {
+            throw new IllegalArgumentException("Degree must be non-negative");
+        }
+
         if (knots.length != controlPoints.length + degree + 1) {
-            throw new IllegalArgumentException("Invalid number of knots. Expected: " + (controlPoints.length + degree + 1) + ", got: " + knots.length);
-        }
-        this.knots = knots.clone();
-        this.controlPoints = controlPoints.clone();
-        this.degree = degree;
-    }
-
-    @Override
-    public double apply(double x) {
-        return deBoorAlgorithm(x);
-    }
-
-    private double deBoorAlgorithm(double x) {
-        // Находим интервал узлов [knots[k], knots[k+1]), содержащий x
-        int k = findKnotInterval(x);
-
-        // Экстраполяция слева
-        if (k < degree) {
-            return controlPoints[0];
+            throw new IllegalArgumentException("Invalid number of knots. Expected: " +
+                    (controlPoints.length + degree + 1) + ", got: " + knots.length);
         }
 
-        // Экстраполяция справа
-        if (k >= knots.length - degree - 1) {
-            return controlPoints[controlPoints.length - 1];
-        }
+        // Находим интервал, в котором находится t
+        int k = findKnotSpan(degree, knots, t);
 
-        // Копируем контрольные точки для алгоритма
-        double[] d = new double[degree + 1];
+        // Инициализируем массив для промежуточных точек
+        double[][] d = new double[degree + 1][];
         for (int i = 0; i <= degree; i++) {
-            d[i] = controlPoints[k - degree + i];
+            d[i] = Arrays.copyOf(controlPoints[k - degree + i], controlPoints[0].length);
         }
 
-        // Алгоритм де Бура
+        // Выполняем алгоритм Де Бура
         for (int r = 1; r <= degree; r++) {
             for (int j = degree; j >= r; j--) {
-                int i = k - degree + j;
-                double alpha = (x - knots[i]) / (knots[i + degree - r + 1] - knots[i]);
-                d[j] = (1 - alpha) * d[j - 1] + alpha * d[j];
+                double alpha = (t - knots[j + k - degree]) /
+                        (knots[j + 1 + k - r] - knots[j + k - degree]);
+
+                // Линейная интерполяция для каждой координаты
+                for (int dim = 0; dim < d[j].length; dim++) {
+                    d[j][dim] = (1 - alpha) * d[j - 1][dim] + alpha * d[j][dim];
+                }
             }
         }
 
         return d[degree];
     }
 
-    private int findKnotInterval(double x) {
-        // Для экстраполяции справа
-        if (x >= knots[knots.length - degree - 1]) {
-            return knots.length - degree - 2;
+    /**
+     * Находит интервал узлового вектора, содержащий параметр t
+     */
+    private static int findKnotSpan(int degree, double[] knots, double t) {
+        int n = knots.length - degree - 2;
+
+        // Особый случай для последнего узла
+        if (t >= knots[n + 1]) {
+            return n;
         }
 
-        // Для экстраполяции слева
-        if (x < knots[degree]) {
-            return degree;
-        }
+        // Бинарный поиск
+        int low = degree;
+        int high = n + 1;
+        int mid = (low + high) / 2;
 
-        // Ищем интервал для интерполяции
-        for (int i = degree; i < knots.length - degree - 1; i++) {
-            if (x >= knots[i] && x < knots[i + 1]) {
-                return i;
+        while (t < knots[mid] || t >= knots[mid + 1]) {
+            if (t < knots[mid]) {
+                high = mid;
+            } else {
+                low = mid;
             }
+            mid = (low + high) / 2;
         }
 
-        return degree; // fallback
+        return mid;
     }
 
-    public double[] getKnots() {
-        return knots.clone();
-    }
-
-    public double[] getControlPoints() {
-        return controlPoints.clone();
-    }
-
-    public int getDegree() {
-        return degree;
+    /**
+     * Упрощенный метод для кубических B-сплайнов (степень 3)
+     */
+    public static double[] deBoorCubic(double[] knots, double[][] controlPoints, double t) {
+        return deBoor(3, knots, controlPoints, t);
     }
 }
