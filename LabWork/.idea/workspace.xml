@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Предварительный тест метода простых итераций SimpleIterationsMethodTest">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Добавил ещё тестов для IdentityFunction">
       <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/functions/CompositeFunctionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/functions/IdentityFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/functions/IdentityFunctionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +54,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.CompositeFunctionTest.executor": "Run",
     "JUnit.ConstantFunctionTest.executor": "Run",
     "JUnit.IdentityFunctionTest.executor": "Run",
     "JUnit.SimpleIterationsMethodTest.executor": "Run",
@@ -156,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759055467928</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Добавил ещё тестов для IdentityFunction">
+      <option name="closed" value="true" />
+      <created>1759128407228</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1759128407228</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -180,6 +189,7 @@
     <MESSAGE value="Начал писать LinkedListTabulatedFunction. Предварительная реализация. Пу-пу-пу... Надо допиливать, ну и тесты..." />
     <MESSAGE value="Предварительная реализация метода простых итераций SimpleIterationsMethod" />
     <MESSAGE value="Предварительный тест метода простых итераций SimpleIterationsMethodTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Предварительный тест метода простых итераций SimpleIterationsMethodTest" />
+    <MESSAGE value="Добавил ещё тестов для IdentityFunction" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил ещё тестов для IdentityFunction" />
   </component>
 </project>
