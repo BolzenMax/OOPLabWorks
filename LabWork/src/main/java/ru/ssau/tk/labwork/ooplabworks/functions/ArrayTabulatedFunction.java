@@ -2,7 +2,7 @@ package ru.ssau.tk.labwork.ooplabworks.functions;
 
 import java.util.Arrays;
 
-public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable {
+public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable {
     private double[] xValues;
     private double[] yValues;
     private int count;
@@ -183,5 +183,19 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         xValues = newXValues; // обновление
         yValues = newYValues;
         count++;
+    }
+    @Override
+    public void remove(int index) {
+        if (index < 0 || index >= count) {
+            throw new IllegalArgumentException("Index out of bounds");
+        }
+
+        // Сдвигаем элементы влево
+        for (int i = index; i < count - 1; i++) {
+            xValues[i] = xValues[i + 1];
+            yValues[i] = yValues[i + 1];
+        }
+
+        count--;
     }
 }
