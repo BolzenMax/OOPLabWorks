@@ -82,6 +82,7 @@ public class ComplexFunctionsTest {
         assertEquals(10.0, composite.apply(1.0));
         assertEquals(20.0, composite.apply(2.0));
         assertEquals(30.0, composite.apply(3.0));
+        assertEquals(30.0, composite.apply(3.0));
     }
 
     @Test
