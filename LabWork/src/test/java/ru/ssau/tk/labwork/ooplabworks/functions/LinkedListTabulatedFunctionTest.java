@@ -299,4 +299,52 @@ class LinkedListTabulatedFunctionTest {
         assertEquals(3.0, function.rightBound());
         assertEquals(15.0, function.getY(0));
     }
+
+    @Test
+    void testInterpolateWithSinglePoint() {
+        double[] xValues = {2.0};
+        double[] yValues = {10.0};
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(xValues, yValues);
+
+        double result = function.interpolate(2.5, 0); // раз одна точка, то interpolate возвращает у
+        assertEquals(10.0, result, 1e-10);
+    }
+
+    @Test
+    void testInterpolateWithInvalidFloorIndex() {
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {10.0, 20.0, 30.0};
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(xValues, yValues);
+
+        double result = function.interpolate(2.5, -1); // floorIndex < 0
+        assertTrue(Double.isNaN(result));
+
+        result = function.interpolate(2.5, 2); // floorIndex >= count - 1. count=3, count-1=2
+        assertTrue(Double.isNaN(result));
+
+        result = function.interpolate(2.5, 3); // за пределами
+        assertTrue(Double.isNaN(result));
+    }
+
+    @Test
+    void testFloorIndexOfXReturnCountMinusOne() {
+        double[] xValues = {1.0, 2.0, 3.0, 4.0};
+        double[] yValues = {10.0, 20.0, 30.0, 40.0};
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(xValues, yValues);
+
+        // x больше последнего элемента должен вернуть count - 1
+        assertEquals(3, function.floorIndexOfX(4.0));  // последний элемент
+        assertEquals(3, function.floorIndexOfX(4.1));  // чуть больше последнего
+    }
+
+    @Test
+    void testRemoveWithEmptyList() {
+        double[] xValues = {1.0}; // ф-я с одним элементом
+        double[] yValues = {10.0};
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(xValues, yValues);
+
+        function.remove(0); // удаляем его
+        assertEquals(0, function.getCount()); // проверка количество
+        function.remove(0); // удаление...
+    }
 }
