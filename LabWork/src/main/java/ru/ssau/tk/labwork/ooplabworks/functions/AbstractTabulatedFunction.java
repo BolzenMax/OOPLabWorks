@@ -1,7 +1,6 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
 public abstract class AbstractTabulatedFunction implements TabulatedFunction {
-
     protected abstract int floorIndexOfX(double x);
 
     protected abstract double extrapolateLeft(double x);
@@ -12,6 +11,13 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
 
     protected double interpolate(double x, double leftX, double rightX, double leftY, double rightY) {
         return leftY + (rightY - leftY) * (x - leftX) / (rightX - leftX);
+    }
+
+    protected int count;
+
+    @Override
+    public int getCount() {
+        return count;
     }
 
     @Override
