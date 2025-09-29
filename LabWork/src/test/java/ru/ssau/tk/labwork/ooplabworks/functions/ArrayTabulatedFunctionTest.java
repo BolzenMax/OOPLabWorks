@@ -11,7 +11,7 @@ public class ArrayTabulatedFunctionTest {
         double[] yValues = {1.0, 4.0, 9.0};
         ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
 
-        assertEquals(3, function.getCount());
+        assertEquals(3, function.getCount());  // Теперь работает через getCount()
         assertEquals(1.0, function.getX(0));
         assertEquals(1.0, function.getY(0));
         assertEquals(3.0, function.getX(2));
@@ -20,10 +20,9 @@ public class ArrayTabulatedFunctionTest {
 
     @Test
     public void testConstructorWithFunction() {
-        MathFunction sqr = new SqrFunction();
-        ArrayTabulatedFunction function = new ArrayTabulatedFunction(sqr, 0.0, 2.0, 3);
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(new SqrFunction(), 0.0, 2.0, 3);
 
-        assertEquals(3, function.getCount());
+        assertEquals(3, function.getCount());  // Используем getCount() вместо прямого доступа
         assertEquals(0.0, function.getX(0));
         assertEquals(1.0, function.getX(1));
         assertEquals(2.0, function.getX(2));
@@ -31,7 +30,6 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(1.0, function.getY(1));
         assertEquals(4.0, function.getY(2));
     }
-
     @Test
     public void testGetSetY() {
         double[] xValues = {1.0, 2.0, 3.0};
