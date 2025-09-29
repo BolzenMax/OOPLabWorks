@@ -3,15 +3,6 @@ import java.util.Arrays;
 
 public class DeBoorSplineFunction {
 
-    /**
-     * Алгоритм Де Бура для вычисления точки на B-сплайне
-     *
-     * @param degree степень B-сплайна
-     * @param knots вектор узлов
-     * @param controlPoints контрольные точки
-     * @param t параметр для вычисления точки
-     * @return точка на B-сплайне при параметре t
-     */
     public static double[] deBoor(int degree, double[] knots, double[][] controlPoints, double t) {
         // Проверка корректности входных данных
         if (knots == null || controlPoints == null) {
