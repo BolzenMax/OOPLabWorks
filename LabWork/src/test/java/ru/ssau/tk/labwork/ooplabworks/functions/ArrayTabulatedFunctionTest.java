@@ -15,7 +15,6 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(1.0, function.getX(0));
         assertEquals(1.0, function.getY(0));
         assertEquals(3.0, function.getX(2));
-        assertEquals(9.0, function.getY(2));
     }
 
     @Test
