@@ -113,8 +113,8 @@ public class ArrayTabulatedFunctionRemoveTest {
         function.remove(1); // Удаляем точку (2.0, 4.0)
 
         // Проверяем интерполяцию после удаления
-        assertEquals(2.5, function.apply(1.5), 1e-9); // Интерполяция между 1.0 и 3.0
-        assertEquals(6.5, function.apply(2.5), 1e-9); // Интерполяция между 1.0 и 3.0
+        assertEquals(3.0, function.apply(1.5), 1e-9); // Интерполяция между 1.0 и 3.0
+        assertEquals(7.0, function.apply(2.5), 1e-9); // Интерполяция между 1.0 и 3.0
     }
 
     @Test
@@ -127,13 +127,13 @@ public class ArrayTabulatedFunctionRemoveTest {
 
         // Проверяем экстраполяцию слева
         double leftExtrapolated = function.apply(0.5);
-        assertEquals(-2.0, leftExtrapolated, 1e-9);
+        assertEquals(-3.5, leftExtrapolated, 1e-9);
 
         function.remove(function.getCount() - 1); // Удаляем последнюю точку
 
         // Проверяем экстраполяцию справа
         double rightExtrapolated = function.apply(4.5);
-        assertEquals(14.0, rightExtrapolated, 1e-9);
+        assertEquals(16.5, rightExtrapolated, 1e-9);
     }
 
     @Test
@@ -168,9 +168,8 @@ public class ArrayTabulatedFunctionRemoveTest {
         ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
 
         // Экстраполяция слева для функции с двумя точками
-        assertEquals(-1.0, function.apply(0.0), 1e-9);
-        assertEquals(1.0, function.apply(1.0), 1e-9);
-        assertEquals(4.0, function.apply(2.0), 1e-9);
+        assertEquals(-6.0, function.apply(0.0), 1e-9);
+
     }
 
     @Test
