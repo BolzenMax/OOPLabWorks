@@ -9,6 +9,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
 
     // Конструктор с двумя массивами
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
+
         this.count = xValues.length;
         this.xValues = Arrays.copyOf(xValues, count);
         this.yValues = Arrays.copyOf(yValues, count);
@@ -16,9 +17,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
 
     // Конструктор с функцией и интервалом
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
-        if (count < 2) {
-            throw new IllegalArgumentException();
-        }
+
 
         this.count = count;
         this.xValues = new double[count];
@@ -54,24 +53,19 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
 
     @Override
     public double getX(int index) {
-        if (index < 0 || index >= count) {
-            throw new IllegalArgumentException("Index out of bounds: " + index);
-        }
-        return xValues[index];
+            return xValues[index];
+
     }
 
     @Override
     public double getY(int index) {
-        if (index < 0 || index >= count) {
-            throw new IllegalArgumentException("Index out of bounds: " + index);
-        }
-        return yValues[index];
+            return yValues[index];
     }
 
     @Override
     public void setY(int index, double value) {
         if (index < 0 || index >= count) {
-            throw new IllegalArgumentException("Index out of bounds: " + index);
+            throw new IndexOutOfBoundsException("Index is out of bounds");
         }
         yValues[index] = value;
     }
