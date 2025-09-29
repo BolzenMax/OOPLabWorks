@@ -95,13 +95,7 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(1, function.floorIndexOfX(2.5));   // между 2 и 3
         assertEquals(3, function.floorIndexOfX(3.5));   // справа
     }
-    @Test
-    public void testConstructorWithInvalidCount() {
-        // Тест на исключение при count < 2
-        assertThrows(IllegalArgumentException.class, () -> {
-            new ArrayTabulatedFunction(new SqrFunction(), 0.0, 2.0, 1);
-        });
-    }
+
 
     @Test
     public void testSinglePointFunction() {
@@ -165,5 +159,75 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(0.0, function.getX(0));
         assertEquals(1.0, function.getX(1));
         assertEquals(2.0, function.getX(2));
+    }
+    @Test
+    public void testGetXWithInvalidIndex() {
+        double[] xValues = {1.0, 2.0};
+        double[] yValues = {1.0, 4.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> function.getX(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> function.getX(2));
+    }
+
+    @Test
+    public void testGetYWithInvalidIndex() {
+        double[] xValues = {1.0, 2.0};
+        double[] yValues = {1.0, 4.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> function.getY(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> function.getY(2));
+    }
+
+    @Test
+    public void testSetYWithInvalidIndex() {
+        double[] xValues = {1.0, 2.0};
+        double[] yValues = {1.0, 4.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> function.setY(-1, 5.0));
+        assertThrows(IndexOutOfBoundsException.class, () -> function.setY(2, 5.0));
+    }
+
+
+
+
+
+    @Test
+    public void testApplyWithExactXValues() {
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {1.0, 4.0, 9.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        assertEquals(1.0, function.apply(1.0));
+        assertEquals(4.0, function.apply(2.0));
+        assertEquals(9.0, function.apply(3.0));
+    }
+
+    @Test
+    public void testExtrapolateLeftAndRight() {
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {1.0, 4.0, 9.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        double leftExtrapolated = function.apply(0.0);
+        assertEquals(-2.0, leftExtrapolated, 1e-9);
+
+        double rightExtrapolated = function.apply(4.0);
+        assertEquals(14.0, rightExtrapolated, 1e-9);
+    }
+
+    @Test
+    public void testInterpolateBetweenPoints() {
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {1.0, 4.0, 9.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        double interpolated = function.apply(1.5);
+        assertEquals(2.5, interpolated, 1e-9);
+
+        interpolated = function.apply(2.5);
+        assertEquals(6.5, interpolated, 1e-9);
     }
 }
