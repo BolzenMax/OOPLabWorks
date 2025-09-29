@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Добавил в ArrayTabulatedFunction метод insert, при этом сделав xValues, yValues, count не final для работоспособности, но надо ещё тестами новый метод покрыть...">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Доработал в ArrayTabulatedFunction метод insert, сделал тесты для insert в методе ArrayTabulatedFunctionTest">
       <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/ArrayTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/ArrayTabulatedFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/functions/ArrayTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/functions/ArrayTabulatedFunctionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +58,7 @@
     "JUnit.ConstantFunctionTest.executor": "Coverage",
     "JUnit.IdentityFunctionTest.executor": "Run",
     "JUnit.SimpleIterationsMethodTest.executor": "Coverage",
-    "JUnit.ru.ssau.tk.labwork.ooplabworks.functions in LabWork.executor": "Run",
+    "JUnit.ru.ssau.tk.labwork.ooplabworks.functions in LabWork.executor": "Coverage",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -292,7 +291,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759159907864</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Доработал в ArrayTabulatedFunction метод insert, сделал тесты для insert в методе ArrayTabulatedFunctionTest">
+      <option name="closed" value="true" />
+      <created>1759161166428</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1759161166428</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -324,7 +331,8 @@
     <MESSAGE value="УРАААААА, ТЕСТЫ ЭТИ ЗАРАБОТАЛИ, но надо добить ещё несколько моментов..." />
     <MESSAGE value="Тесты вроде на текущую версию LinkedListTabulatedFunction заработали, но надо добить ещё несколько моментов..." />
     <MESSAGE value="Добавил в ArrayTabulatedFunction метод insert, при этом сделав xValues, yValues, count не final для работоспособности, но надо ещё тестами новый метод покрыть..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил в ArrayTabulatedFunction метод insert, при этом сделав xValues, yValues, count не final для работоспособности, но надо ещё тестами новый метод покрыть..." />
+    <MESSAGE value="Доработал в ArrayTabulatedFunction метод insert, сделал тесты для insert в методе ArrayTabulatedFunctionTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Доработал в ArrayTabulatedFunction метод insert, сделал тесты для insert в методе ArrayTabulatedFunctionTest" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabWork$SimpleIterationsMethodTest.ic" NAME="SimpleIterationsMethodTest Coverage Results" MODIFIED="1759135470984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
@@ -336,7 +344,7 @@
     <SUITE FILE_PATH="coverage/LabWork$CompositeFunctionTest.ic" NAME="CompositeFunctionTest Coverage Results" MODIFIED="1759139027276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_functions_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.functions in LabWork Coverage Results" MODIFIED="1759160777442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_functions_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.functions in LabWork Coverage Results" MODIFIED="1759161103209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
   </component>
