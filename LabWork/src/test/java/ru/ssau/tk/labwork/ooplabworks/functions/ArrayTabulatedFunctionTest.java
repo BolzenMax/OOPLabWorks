@@ -293,4 +293,139 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(6.5, function.apply(2.5), 1e-9);   // интерполяция
     }
 
+    @Test
+    public void testInsert() { // вставка в начало
+        double[] xValues = {2.0, 3.0, 4.0};
+        double[] yValues = {4.0, 9.0, 16.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        function.insert(1.0, 1.0);
+
+        assertEquals(4, function.getCount());
+        assertEquals(1.0, function.getX(0));
+        assertEquals(1.0, function.getY(0));
+        assertEquals(2.0, function.getX(1));
+        assertEquals(4.0, function.getY(1));
+    }
+
+    @Test
+    public void testInsertInMiddle() { // вставка в середину
+        double[] xValues = {1.0, 3.0, 4.0};
+        double[] yValues = {1.0, 9.0, 16.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        function.insert(2.0, 4.0);
+
+        assertEquals(4, function.getCount());
+        assertEquals(1.0, function.getX(0));
+        assertEquals(2.0, function.getX(1));
+        assertEquals(4.0, function.getY(1));
+        assertEquals(3.0, function.getX(2));
+    }
+
+    @Test
+    public void testInsertAtEnd() { // вставка в конец
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {1.0, 4.0, 9.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        function.insert(4.0, 16.0);
+
+        assertEquals(4, function.getCount());
+        assertEquals(3.0, function.getX(2));
+        assertEquals(4.0, function.getX(3));
+        assertEquals(16.0, function.getY(3));
+    }
+
+    @Test
+    public void testInsertDuplicateX() { // вставка дубликата х
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {1.0, 4.0, 9.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        function.insert(2.0, 5.0);
+
+        assertEquals(3, function.getCount()); // Количество не должно измениться
+        assertEquals(2.0, function.getX(1));
+        assertEquals(5.0, function.getY(1)); // Y должно обновиться
+    }
+
+    @Test
+    public void testInsertIntoEmptyFunction() { // вставка в ф-ю из одной точки
+        double[] xValues = {2.0};
+        double[] yValues = {4.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        function.insert(1.0, 1.0);
+
+        assertEquals(2, function.getCount());
+        assertEquals(1.0, function.getX(0));
+        assertEquals(1.0, function.getY(0));
+        assertEquals(2.0, function.getX(1));
+        assertEquals(4.0, function.getY(1));
+    }
+
+    @Test
+    public void testInsertMultiplePoints() { // несколько вставок
+        double[] xValues = {1.0, 4.0};
+        double[] yValues = {1.0, 16.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        function.insert(2.0, 4.0);
+        function.insert(3.0, 9.0);
+
+        assertEquals(4, function.getCount());
+        assertEquals(1.0, function.getX(0));
+        assertEquals(2.0, function.getX(1));
+        assertEquals(3.0, function.getX(2));
+        assertEquals(4.0, function.getX(3));
+
+        assertEquals(1.0, function.getY(0));
+        assertEquals(4.0, function.getY(1));
+        assertEquals(9.0, function.getY(2));
+        assertEquals(16.0, function.getY(3));
+    }
+
+    @Test
+    public void testInsertAtVeryBeginning() { // х меньше имеющихся
+        double[] xValues = {10.0, 20.0, 30.0};
+        double[] yValues = {100.0, 400.0, 900.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        function.insert(5.0, 25.0);
+
+        assertEquals(4, function.getCount());
+        assertEquals(5.0, function.getX(0));
+        assertEquals(25.0, function.getY(0));
+        assertEquals(10.0, function.getX(1));
+    }
+
+    @Test
+    public void testInsertAtVeryEnd() { // х больше имеющихся
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {1.0, 4.0, 9.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        function.insert(5.0, 25.0);
+
+        assertEquals(4, function.getCount());
+        assertEquals(3.0, function.getX(2));
+        assertEquals(5.0, function.getX(3));
+        assertEquals(25.0, function.getY(3));
+    }
+
+    @Test
+    public void testInsertIntoTwoPointFunction() { // ф-я из двух точек
+        double[] xValues = {1.0, 3.0};
+        double[] yValues = {1.0, 9.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        function.insert(2.0, 4.0);
+
+        assertEquals(3, function.getCount());
+        assertEquals(1.0, function.getX(0));
+        assertEquals(2.0, function.getX(1));
+        assertEquals(3.0, function.getX(2));
+        assertEquals(4.0, function.getY(1));
+    }
 }

@@ -157,38 +157,31 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     public void insert(double x, double y) {
-        int i = 0;
-        while(getX(i) < x && i < count) ++i;
-        if(getX(i) == x) setY(i, y);
-        else if (i < count){
-            double[] xTempFull = new double[count+1];
-            double[] yTempFull = new double[count+1];
-            System.arraycopy(xValues, 0, xTempFull, 0, i);
-            xTempFull[i] = x;
-            System.arraycopy(xValues, i, xTempFull, i + 1, count - i);
-            xValues = new double[count+1];
-            System.arraycopy(xTempFull, 0, xValues, 0, count + 1);
+        int index = 0;
 
-            System.arraycopy(yValues, 0, yTempFull, 0, i);
-            yTempFull[i] = y;
-            System.arraycopy(yValues, i, yTempFull, i + 1, count - i);
-            yValues = new double[count+1];
-            System.arraycopy(yTempFull, 0, yValues, 0, count + 1);
-            ++count;
+        while (index < count && xValues[index] < x) {
+            index++;
         }
-        else{
-            double[] xTempFull = new double[count+1];
-            double[] yTempFull = new double[count+1];
-            System.arraycopy(xValues, 0, xTempFull, 0, i);
-            xTempFull[i] = x;
-            xValues = new double[count+1];
-            System.arraycopy(xTempFull, 0, xValues, 0, count + 1);
 
-            System.arraycopy(yValues, 0, yTempFull, 0, i);
-            yTempFull[i] = y;
-            yValues = new double[count+1];
-            System.arraycopy(yTempFull, 0, yValues, 0, count + 1);
-            ++count;
+        if (index < count && Math.abs(xValues[index] - x) < 1e-10) { // тот же х
+            yValues[index] = y;
+            return;
         }
+
+        double[] newXValues = new double[count + 1];
+        double[] newYValues = new double[count + 1];
+
+        System.arraycopy(xValues, 0, newXValues, 0, index); // копирование до вставки
+        System.arraycopy(yValues, 0, newYValues, 0, index);
+
+        newXValues[index] = x; // вставка
+        newYValues[index] = y;
+
+        System.arraycopy(xValues, index, newXValues, index + 1, count - index); // остальное
+        System.arraycopy(yValues, index, newYValues, index + 1, count - index);
+
+        xValues = newXValues; // обновление
+        yValues = newYValues;
+        count++;
     }
 }
