@@ -49,6 +49,17 @@ class SimpleIterationsMethodTest {
     }
 
     @Test
+    void testFindRootDivergence() { // |(g(x))'|>1
+        MathFunction divergentFunction = (x) -> 2.0 * x;
+        SimpleIterationsMethod iterationMethod = new SimpleIterationsMethod(divergentFunction, 1e-6, 100);
+
+        double initial = 0.1;
+        double root = iterationMethod.findRoot(initial);
+
+        Assertions.assertTrue(Double.isFinite(root)); // факт возвращения последнего вычисленного значения после исчерпания итераций
+    }
+
+    @Test
     void testApplyMethod() { // проверка apply
         MathFunction squareRootFunction = (x) -> 0.5 * (x + 2 / x);
         SimpleIterationsMethod iterationMethod = new SimpleIterationsMethod(squareRootFunction, 1e-6, 1000);
