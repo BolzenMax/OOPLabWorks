@@ -12,9 +12,10 @@ class ConstantFunctionTest {
 
         // Проверяем, что всегда возвращается константа
         assertEquals(5.0, function.apply(0.0));
-        assertEquals(5.0, function.apply(10.0));
+        assertEquals(5.0, function.apply(1120));
         assertEquals(5.0, function.apply(-5.0));
-        assertEquals(5.0, function.apply(100.0));
+        assertEquals(5.0, function.apply(1230.0));
+        assertEquals(5.0, function.apply(12121212.1212));
     }
 
     @Test
