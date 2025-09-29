@@ -2,10 +2,10 @@ package ru.ssau.tk.labwork.ooplabworks.functions;
 
 import java.util.Arrays;
 
-public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
-    private final double[] xValues;
-    private final double[] yValues;
-    private final int count;
+public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable {
+    private double[] xValues;
+    private double[] yValues;
+    private int count;
 
     // Конструктор с двумя массивами
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
@@ -53,13 +53,13 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
 
     @Override
     public double getX(int index) {
-            return xValues[index];
+        return xValues[index];
 
     }
 
     @Override
     public double getY(int index) {
-            return yValues[index];
+        return yValues[index];
     }
 
     @Override
@@ -153,5 +153,42 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
         double rightY = yValues[floorIndex + 1];
 
         return interpolate(x, leftX, rightX, leftY, rightY);
+    }
+
+    @Override
+    public void insert(double x, double y) {
+        int i = 0;
+        while(getX(i) < x && i < count) ++i;
+        if(getX(i) == x) setY(i, y);
+        else if (i < count){
+            double[] xTempFull = new double[count+1];
+            double[] yTempFull = new double[count+1];
+            System.arraycopy(xValues, 0, xTempFull, 0, i);
+            xTempFull[i] = x;
+            System.arraycopy(xValues, i, xTempFull, i + 1, count - i);
+            xValues = new double[count+1];
+            System.arraycopy(xTempFull, 0, xValues, 0, count + 1);
+
+            System.arraycopy(yValues, 0, yTempFull, 0, i);
+            yTempFull[i] = y;
+            System.arraycopy(yValues, i, yTempFull, i + 1, count - i);
+            yValues = new double[count+1];
+            System.arraycopy(yTempFull, 0, yValues, 0, count + 1);
+            ++count;
+        }
+        else{
+            double[] xTempFull = new double[count+1];
+            double[] yTempFull = new double[count+1];
+            System.arraycopy(xValues, 0, xTempFull, 0, i);
+            xTempFull[i] = x;
+            xValues = new double[count+1];
+            System.arraycopy(xTempFull, 0, xValues, 0, count + 1);
+
+            System.arraycopy(yValues, 0, yTempFull, 0, i);
+            yTempFull[i] = y;
+            yValues = new double[count+1];
+            System.arraycopy(yTempFull, 0, yValues, 0, count + 1);
+            ++count;
+        }
     }
 }
