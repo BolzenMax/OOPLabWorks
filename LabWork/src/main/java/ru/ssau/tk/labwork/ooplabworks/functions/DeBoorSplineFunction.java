@@ -16,19 +16,21 @@ public class DeBoorSplineFunction implements MathFunction {
 
     @Override
     public double apply(double x) {
-        // Алгоритм де Бура для вычисления значения B-сплайна в точке x
         return deBoorAlgorithm(x);
     }
 
     private double deBoorAlgorithm(double x) {
-        // Находим интервал узлов, в который попадает x
+        // Находим интервал узлов [knots[k], knots[k+1]), содержащий x
         int k = findKnotInterval(x);
 
+        // Экстраполяция слева
         if (k < degree) {
-            return controlPoints[0]; // Экстраполяция слева
+            return controlPoints[0];
         }
-        if (k >= controlPoints.length) {
-            return controlPoints[controlPoints.length - 1]; // Экстраполяция справа
+
+        // Экстраполяция справа
+        if (k >= knots.length - degree - 1) {
+            return controlPoints[controlPoints.length - 1];
         }
 
         // Копируем контрольные точки для алгоритма
@@ -50,22 +52,26 @@ public class DeBoorSplineFunction implements MathFunction {
     }
 
     private int findKnotInterval(double x) {
-        // Находим интервал [knots[k], knots[k+1]), содержащий x
+        // Для экстраполяции справа
+        if (x >= knots[knots.length - degree - 1]) {
+            return knots.length - degree - 2;
+        }
+
+        // Для экстраполяции слева
+        if (x < knots[degree]) {
+            return degree;
+        }
+
+        // Ищем интервал для интерполяции
         for (int i = degree; i < knots.length - degree - 1; i++) {
             if (x >= knots[i] && x < knots[i + 1]) {
                 return i;
             }
         }
 
-        // Если x равен последнему узлу
-        if (x == knots[knots.length - degree - 1]) {
-            return knots.length - degree - 2;
-        }
-
-        return -1; // Вне диапазона
+        return degree; // fallback
     }
 
-    // Геттеры для тестирования
     public double[] getKnots() {
         return knots.clone();
     }
