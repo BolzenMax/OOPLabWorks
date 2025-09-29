@@ -97,7 +97,7 @@ public class ArrayTabulatedFunctionTest {
 
 
     @Test
-    public void testSinglePointFunction() {
+    public void testSinglePointFunctionn() {
         // Тест с одной точкой
         double[] xValues = {1.0};
         double[] yValues = {5.0};
@@ -205,6 +205,42 @@ public class ArrayTabulatedFunctionTest {
     }
 
     @Test
+    public void testSinglePointFunction() {
+        double[] xValues = {1.0};
+        double[] yValues = {5.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        // Для любой точки x должна возвращаться единственное значение y
+        assertEquals(5.0, function.apply(0.0), 1e-9);   // слева от единственной точки
+        assertEquals(5.0, function.apply(1.0), 1e-9);   // в самой точке
+        assertEquals(5.0, function.apply(2.0), 1e-9);   // справа от единственной точки
+    }
+
+    @Test
+    public void testInterpolateAtExactPoints() {
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {1.0, 4.0, 9.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        // Проверка в точках таблицы (должны возвращаться точные значения)
+        assertEquals(1.0, function.apply(1.0), 1e-9);
+        assertEquals(4.0, function.apply(2.0), 1e-9);
+        assertEquals(9.0, function.apply(3.0), 1e-9);
+    }
+
+    @Test
+    public void testInterpolateDifferentIntervals() {
+        double[] xValues = {0.0, 1.0, 3.0, 6.0}; // неравномерная сетка
+        double[] yValues = {0.0, 2.0, 8.0, 18.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        // Проверка интерполяции на разных интервалах
+        assertEquals(1.0, function.apply(0.5), 1e-9);   // первый интервал [0,1]
+        assertEquals(5.0, function.apply(2.0), 1e-9);   // второй интервал [1,3]
+        assertEquals(13.0, function.apply(4.5), 1e-9);  // третий интервал [3,6]
+    }
+
+    @Test
     public void testExtrapolateLeftAndRight() {
         double[] xValues = {1.0, 2.0, 3.0};
         double[] yValues = {1.0, 4.0, 9.0};
@@ -229,4 +265,32 @@ public class ArrayTabulatedFunctionTest {
         interpolated = function.apply(2.5);
         assertEquals(6.5, interpolated, 1e-9);
     }
+
+    @Test
+    public void testTwoPointFunction() {
+        double[] xValues = {1.0, 3.0};
+        double[] yValues = {2.0, 6.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        // Проверка всех случаев для функции из двух точек
+        assertEquals(0.0, function.apply(0.0), 1e-9);   // экстраполяция слева
+        assertEquals(2.0, function.apply(1.0), 1e-9);   // первая точка
+        assertEquals(4.0, function.apply(2.0), 1e-9);   // интерполяция между
+        assertEquals(6.0, function.apply(3.0), 1e-9);   // вторая точка
+        assertEquals(8.0, function.apply(4.0), 1e-9);   // экстраполяция справа
+    }
+
+    @Test
+    public void testDescendingXValues() {
+        double[] xValues = {3.0, 2.0, 1.0}; // убывающие значения x
+        double[] yValues = {9.0, 4.0, 1.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        // Проверка, что интерполяция работает корректно при убывающих x
+        assertEquals(-1.0, function.apply(1.0), 1e-9);
+        assertEquals(4.0, function.apply(2.0), 1e-9);
+        assertEquals(7.0, function.apply(3.0), 1e-9);
+        assertEquals(6.5, function.apply(2.5), 1e-9);   // интерполяция
+    }
+
 }
