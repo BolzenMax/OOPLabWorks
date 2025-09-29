@@ -387,6 +387,30 @@ public class ArrayTabulatedFunctionTest {
     }
 
     @Test
+    public void testInsertMaintainOrder() { // вставка в нужном порядке
+        double[] xValues = {1.0, 5.0};
+        double[] yValues = {1.0, 25.0};
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(xValues, yValues);
+
+        function.insert(3.0, 9.0);
+        function.insert(2.0, 4.0);
+        function.insert(4.0, 16.0);
+
+        assertEquals(5, function.getCount());
+        assertEquals(1.0, function.getX(0), 1e-9);
+        assertEquals(2.0, function.getX(1), 1e-9);
+        assertEquals(3.0, function.getX(2), 1e-9);
+        assertEquals(4.0, function.getX(3), 1e-9);
+        assertEquals(5.0, function.getX(4), 1e-9);
+
+        assertEquals(1.0, function.getY(0), 1e-9);
+        assertEquals(4.0, function.getY(1), 1e-9);
+        assertEquals(9.0, function.getY(2), 1e-9);
+        assertEquals(16.0, function.getY(3), 1e-9);
+        assertEquals(25.0, function.getY(4), 1e-9);
+    }
+
+    @Test
     public void testInsertAtVeryBeginning() { // х меньше имеющихся
         double[] xValues = {10.0, 20.0, 30.0};
         double[] yValues = {100.0, 400.0, 900.0};
