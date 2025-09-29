@@ -1,13 +1,6 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
-/* АХТУНГ! Это самая предварительная версия реализации данного класса!
-Надо дождаться реализации других используемых тут классов!
-Например, AbstractTabulatedFunction!
-Также внутри этого класса надо дописывать согласно ТЗ некоторые методы
-Возможно даже придётся переписать этот код полностью (надеюсь не потребуется)...
-Ну а также надо будет покрыть этот и не только классы тестами! */
-
-/* public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable {
+public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Removeable {
 
     private class Node {
         public Node next;
@@ -55,7 +48,7 @@ package ru.ssau.tk.labwork.ooplabworks.functions;
             xFrom = xTo;
             xTo = temp;
         }
-        else if (xFrom == xTo) {
+        if (xFrom == xTo) {
             for (int i = 0; i < count; ++i) {
                 addNode(xFrom, source.apply(xFrom));
             }
@@ -136,7 +129,6 @@ package ru.ssau.tk.labwork.ooplabworks.functions;
         return -1;
     }
 
-    // Методы floorIndexOfX и floorNodeOfX, хз-хз
     @Override
     protected int floorIndexOfX(double x) {
         if (x > getNode(count - 1).x)
@@ -152,21 +144,6 @@ package ru.ssau.tk.labwork.ooplabworks.functions;
         return count - 1;
     }
 
-    protected Node floorNodeOfX(double x) {
-        if (x > getNode(count - 1).x)
-            return getNode(0);
-        if (x < getNode(0).x)
-            return getNode(count - 1);
-        for (int i = 0; i < count - 1; ++i) {
-            if (getNode(i).x < x) {
-                if (getNode(i + 1).x >= x)
-                    return getNode(i);
-            }
-        }
-        return getNode(count - 1);
-    }
-
-    // apply. Вообще хз-хз
     @Override
     public double apply(double x) {
         if (x < getX(0))
@@ -176,11 +153,10 @@ package ru.ssau.tk.labwork.ooplabworks.functions;
         int index = indexOfX(x);
         if (index != -1)
             return getY(index);
-        Node nodeEl = floorNodeOfX(x);
+        int nodeEl = floorIndexOfX(x);
         return interpolate(x, nodeEl);
     }
 
-    // Интерполяция, экстраполяция. Хз-хз
     @Override
     protected double interpolate(double x, int floorIndex) {
         if (count == 1)
@@ -193,18 +169,6 @@ package ru.ssau.tk.labwork.ooplabworks.functions;
         double leftY = getY(floorIndex);
         double rightX = getX(floorIndex + 1);
         double rightY = getY(floorIndex + 1);
-
-        return interpolate(x, leftX, rightX, leftY, rightY);
-    }
-
-    protected double interpolate(double x, Node floorNode) {
-        if (count == 1)
-            return getY(0);
-
-        double leftX = floorNode.x;
-        double leftY = floorNode.y;
-        double rightX = floorNode.next.x;
-        double rightY = floorNode.next.y;
 
         return interpolate(x, leftX, rightX, leftY, rightY);
     }
@@ -224,7 +188,6 @@ package ru.ssau.tk.labwork.ooplabworks.functions;
         return interpolate(x, getX(k - 1), getX(k), getY(k - 1), getY(k));
     }
 
-    // Метод remove. Хз-хз
     @Override
     public void remove(int index) {
         Node remEl = getNode(index);
@@ -249,4 +212,4 @@ package ru.ssau.tk.labwork.ooplabworks.functions;
         }
         --count;
     }
-} */
+}
