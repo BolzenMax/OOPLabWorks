@@ -50,6 +50,8 @@ class AbstractTabulatedFunctionTest {
 
     @Test
     void getCount() {
+
+
     }
 
     @Test

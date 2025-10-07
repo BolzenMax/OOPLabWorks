@@ -19,7 +19,7 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
     protected int count;
     static void checkLengthIsTheSame(double[] xValues, double[] yValues){
         if(xValues.length != yValues.length) throw new DifferentLengthOfArraysException("Разная длина массивов!");
-    };
+    }
 
 
 
@@ -28,7 +28,7 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
             if(xValues[i] < xValues[i-1]) throw new ArrayIsNotSortedException("Массив не отсортирован!");
 
         }
-    };
+    }
 
 
     @Override

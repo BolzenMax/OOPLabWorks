@@ -17,6 +17,7 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(3.0, function.getX(2));
     }
 
+
     @Test
     public void testConstructorWithFunction() {
         ArrayTabulatedFunction function = new ArrayTabulatedFunction(new SqrFunction(), 0.0, 2.0, 3);
@@ -216,6 +217,8 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(5.0, function.apply(2.0), 1e-9);   // справа от единственной точки
     }
 
+
+
     @Test
     public void testInterpolateAtExactPoints() {
         double[] xValues = {1.0, 2.0, 3.0};
@@ -226,6 +229,22 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(1.0, function.apply(1.0), 1e-9);
         assertEquals(4.0, function.apply(2.0), 1e-9);
         assertEquals(9.0, function.apply(3.0), 1e-9);
+    }
+
+    @Test
+    public void interpolate() {
+        double[] xValues = {0.0, 1.0, 3.0, 6.0};
+        double[] yValues = {0.0, 2.0, 6.0, 12.0};
+        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+
+        assertEquals(16.0, function.interpolate(8,4), 1e-9);
+        assertEquals(-2.0, function.interpolate(-1,0), 1e-9);
+
+        double[] xValues1 = { 1.0};
+        double[] yValues1 = { 2.0};
+        ArrayTabulatedFunction function1 = new ArrayTabulatedFunction(xValues1, yValues1);
+        assertEquals(2.0, function1.interpolate( 12,213124), 1e-9);
     }
 
     @Test
@@ -251,6 +270,8 @@ public class ArrayTabulatedFunctionTest {
 
         double rightExtrapolated = function.apply(4.0);
         assertEquals(14.0, rightExtrapolated, 1e-9);
+
+        double count1 = function.apply(4.0);
     }
 
     @Test
