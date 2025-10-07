@@ -37,6 +37,10 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     }
 
     public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
+
+        checkLengthIsTheSame(xValues, yValues);
+        checkSorted(xValues);
+
         for (int i = 0; i < xValues.length; ++i) {
             addNode(xValues[i], yValues[i]);
         }
@@ -249,14 +253,14 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
             newNode.next = head;
             head.prev = newNode;
         } else if (current == head) {
-            // Вставка в начало списка
+
             newNode.next = head;
             newNode.prev = head.prev;
             head.prev.next = newNode;
             head.prev = newNode;
-            head = newNode; // Обновляем головную ссылку
+            head = newNode;
         } else {
-            // Вставка в середину списка
+
             newNode.next = current;
             newNode.prev = current.prev;
             current.prev.next = newNode;

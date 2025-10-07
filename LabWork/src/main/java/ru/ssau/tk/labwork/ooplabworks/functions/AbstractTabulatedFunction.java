@@ -1,5 +1,8 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
+import ru.ssau.tk.labwork.ooplabworks.exceptions.ArrayIsNotSortedException;
+import ru.ssau.tk.labwork.ooplabworks.exceptions.DifferentLengthOfArraysException;
+
 public abstract class AbstractTabulatedFunction implements TabulatedFunction {
     protected abstract int floorIndexOfX(double x);
 
@@ -14,6 +17,19 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
     }
 
     protected int count;
+    static void checkLengthIsTheSame(double[] xValues, double[] yValues){
+        if(xValues.length != yValues.length) throw new DifferentLengthOfArraysException("Разная длина массивов!");
+    };
+
+
+
+    static void checkSorted(double[] xValues){
+        for (int i = 1; i < xValues.length; i++){
+            if(xValues[i] < xValues[i-1]) throw new ArrayIsNotSortedException("Массив не отсортирован!");
+
+        }
+    };
+
 
     @Override
     public int getCount() {

@@ -10,6 +10,9 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     // Конструктор с двумя массивами
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
 
+        checkLengthIsTheSame(xValues, yValues);
+        checkSorted(xValues);
+
         this.count = xValues.length;
         this.xValues = Arrays.copyOf(xValues, count);
         this.yValues = Arrays.copyOf(yValues, count);
@@ -17,6 +20,8 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     // Конструктор с функцией и интервалом
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
+
+
 
 
         this.count = count;

@@ -280,18 +280,7 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(8.0, function.apply(4.0), 1e-9);   // экстраполяция справа
     }
 
-    @Test
-    public void testDescendingXValues() {
-        double[] xValues = {3.0, 2.0, 1.0}; // убывающие значения x
-        double[] yValues = {9.0, 4.0, 1.0};
-        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
 
-        // Проверка, что интерполяция работает корректно при убывающих x
-        assertEquals(-1.0, function.apply(1.0), 1e-9);
-        assertEquals(4.0, function.apply(2.0), 1e-9);
-        assertEquals(7.0, function.apply(3.0), 1e-9);
-        assertEquals(6.5, function.apply(2.5), 1e-9);   // интерполяция
-    }
 
     @Test
     public void testInsert() { // вставка в начало
