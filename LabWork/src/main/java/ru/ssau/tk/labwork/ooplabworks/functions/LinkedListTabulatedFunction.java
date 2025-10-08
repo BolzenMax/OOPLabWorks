@@ -1,8 +1,10 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
+import ru.ssau.tk.labwork.ooplabworks.exceptions.InterpolationException;
+
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable {
 
-    private class Node {
+  static  private class Node {
         public Node next;
         public Node prev;
         public double x;
@@ -164,8 +166,10 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         if (count == 1)
             return getY(0);
 
-        if (floorIndex < 0 || floorIndex >= count - 1)
-            return Double.NaN;
+
+        if (floorIndex < 0 || floorIndex > count - 1 || x < getX(floorIndex) || x > getX(floorIndex + 1))
+            throw new InterpolationException("Не верный диапазон интерполирования");
+
 
         double leftX = getX(floorIndex);
         double leftY = getY(floorIndex);

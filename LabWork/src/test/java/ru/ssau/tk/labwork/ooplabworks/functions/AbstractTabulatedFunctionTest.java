@@ -33,19 +33,15 @@ class AbstractTabulatedFunctionTest {
     void checkLengthIsTheSame() {
         double[] x = {1, 2, 2, 1, 23};
         double[] y = {1,3,4,5};
-        DifferentLengthOfArraysException exception = assertThrows(
-                DifferentLengthOfArraysException.class,
-                () -> { AbstractTabulatedFunction.checkLengthIsTheSame(x, y); }
-        );
+        assertThrows(DifferentLengthOfArraysException.class,
+                () -> AbstractTabulatedFunction.checkLengthIsTheSame(x, y));
     }
 
     @Test
     void checkSorted() {
         double[] x = {1, 2, 2, 1, 23};
-        ArrayIsNotSortedException exception = assertThrows(
-                ArrayIsNotSortedException.class,
-                () -> { AbstractTabulatedFunction.checkSorted(x); }
-        );
+        assertThrows(ArrayIsNotSortedException.class,
+                () -> AbstractTabulatedFunction.checkSorted(x));
     }
 
     @Test

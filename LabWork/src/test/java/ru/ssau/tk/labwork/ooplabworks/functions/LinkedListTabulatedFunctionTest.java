@@ -1,5 +1,5 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
-
+import ru.ssau.tk.labwork.ooplabworks.exceptions.InterpolationException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -310,21 +310,6 @@ class LinkedListTabulatedFunctionTest {
         assertEquals(10.0, result, 1e-10);
     }
 
-    @Test
-    void testInterpolateWithInvalidFloorIndex() {
-        double[] xValues = {1.0, 2.0, 3.0};
-        double[] yValues = {10.0, 20.0, 30.0};
-        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(xValues, yValues);
-
-        double result = function.interpolate(2.5, -1); // floorIndex < 0
-        assertTrue(Double.isNaN(result));
-
-        result = function.interpolate(2.5, 2); // floorIndex >= count - 1. count=3, count-1=2
-        assertTrue(Double.isNaN(result));
-
-        result = function.interpolate(2.5, 3); // за пределами
-        assertTrue(Double.isNaN(result));
-    }
 
     @Test
     void testFloorIndexOfXReturnCountMinusOne() {
@@ -347,4 +332,30 @@ class LinkedListTabulatedFunctionTest {
         assertEquals(0, function.getCount()); // проверка количество
         function.remove(0); // удаление...
     }
+
+    @Test
+    void InterpolateExceptionTest() {
+
+        double[] xValues = {0.0, 1.0, 3.0, 6.0, 8.0, 10.0};
+        double[] yValues = {0.0, 2.0, 6.0, 12.0, 16.0, 20.0};
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(xValues, yValues);
+
+
+        assertEquals(16.0, function.interpolate(8, 4), 1e-9);
+
+
+        double[] xValues1 = {1.0};
+        double[] yValues1 = {2.0};
+        LinkedListTabulatedFunction function1 = new LinkedListTabulatedFunction(xValues1, yValues1);
+        assertEquals(2.0, function1.interpolate(12, 213124), 1e-9);
+
+
+        assertThrows(InterpolationException.class, () -> function.interpolate(1.5, 2));
+        assertThrows(InterpolationException.class, () -> function.interpolate(2, 12));
+        assertThrows(InterpolationException.class, () -> function.interpolate(2, -3));
+        assertThrows(InterpolationException.class, () -> function.interpolate(3.5, 1 ));
+
+
+    }
+
 }

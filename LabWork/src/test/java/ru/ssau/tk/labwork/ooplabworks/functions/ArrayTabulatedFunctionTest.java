@@ -1,6 +1,9 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
+import ru.ssau.tk.labwork.ooplabworks.exceptions.InterpolationException;
 import org.junit.jupiter.api.Test;
+
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArrayTabulatedFunctionTest {
@@ -30,6 +33,7 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(1.0, function.getY(1));
         assertEquals(4.0, function.getY(2));
     }
+
     @Test
     public void testGetSetY() {
         double[] xValues = {1.0, 2.0, 3.0};
@@ -160,6 +164,7 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(1.0, function.getX(1));
         assertEquals(2.0, function.getX(2));
     }
+
     @Test
     public void testGetXWithInvalidIndex() {
         double[] xValues = {1.0, 2.0};
@@ -191,9 +196,6 @@ public class ArrayTabulatedFunctionTest {
     }
 
 
-
-
-
     @Test
     public void testApplyWithExactXValues() {
         double[] xValues = {1.0, 2.0, 3.0};
@@ -218,7 +220,6 @@ public class ArrayTabulatedFunctionTest {
     }
 
 
-
     @Test
     public void testInterpolateAtExactPoints() {
         double[] xValues = {1.0, 2.0, 3.0};
@@ -233,18 +234,25 @@ public class ArrayTabulatedFunctionTest {
 
     @Test
     public void interpolate() {
-        double[] xValues = {0.0, 1.0, 3.0, 6.0};
-        double[] yValues = {0.0, 2.0, 6.0, 12.0};
+        double[] xValues = {0.0, 1.0, 3.0, 6.0, 8.0, 10.0};
+        double[] yValues = {0.0, 2.0, 6.0, 12.0, 16.0, 20.0};
         ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
 
 
-        assertEquals(16.0, function.interpolate(8,4), 1e-9);
-        assertEquals(-2.0, function.interpolate(-1,0), 1e-9);
+        assertEquals(20.0, function.interpolate(10, 6), 1e-9);
+        assertEquals(-2.0, function.interpolate(-1, 0), 1e-9);
 
-        double[] xValues1 = { 1.0};
-        double[] yValues1 = { 2.0};
+        double[] xValues1 = {1.0};
+        double[] yValues1 = {2.0};
         ArrayTabulatedFunction function1 = new ArrayTabulatedFunction(xValues1, yValues1);
-        assertEquals(2.0, function1.interpolate( 12,213124), 1e-9);
+        assertEquals(2.0, function1.interpolate(12, 213124), 1e-9);
+
+
+        assertThrows(InterpolationException.class, () -> function.interpolate(1.5, 2));
+        assertThrows(InterpolationException.class, () -> function.interpolate(2, 12));
+        assertThrows(InterpolationException.class, () -> function.interpolate(2, -3));
+        assertThrows(InterpolationException.class, () -> function.interpolate(3.5, 1 ));
+
     }
 
     @Test
@@ -271,7 +279,6 @@ public class ArrayTabulatedFunctionTest {
         double rightExtrapolated = function.apply(4.0);
         assertEquals(14.0, rightExtrapolated, 1e-9);
 
-        double count1 = function.apply(4.0);
     }
 
     @Test
@@ -300,7 +307,6 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(6.0, function.apply(3.0), 1e-9);   // вторая точка
         assertEquals(8.0, function.apply(4.0), 1e-9);   // экстраполяция справа
     }
-
 
 
     @Test

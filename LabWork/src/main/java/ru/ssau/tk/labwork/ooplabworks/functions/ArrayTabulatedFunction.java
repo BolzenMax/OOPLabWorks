@@ -1,5 +1,7 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
+import ru.ssau.tk.labwork.ooplabworks.exceptions.InterpolationException;
+
 import java.util.Arrays;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable {
@@ -141,6 +143,8 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     protected double interpolate(double x, int floorIndex) {
+
+
         if (count == 1) {
             return yValues[0];
         }
@@ -151,6 +155,11 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         if (floorIndex == count) {
             return extrapolateRight(x);
         }
+
+
+        if (floorIndex < 0 || floorIndex > count || x < xValues[floorIndex] || x > xValues[floorIndex + 1])
+            throw new InterpolationException("Не верный диапазон интерполирования");
+
 
         double leftX = xValues[floorIndex];
         double rightX = xValues[floorIndex + 1];
