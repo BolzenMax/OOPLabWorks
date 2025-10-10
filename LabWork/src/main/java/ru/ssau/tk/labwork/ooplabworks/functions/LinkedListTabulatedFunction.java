@@ -4,7 +4,7 @@ import ru.ssau.tk.labwork.ooplabworks.exceptions.InterpolationException;
 
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable {
 
-  static  private class Node {
+    static  private class Node {
         public Node next;
         public Node prev;
         public double x;
@@ -153,8 +153,8 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         if (x < getNode(0).x)
             throw new IllegalArgumentException();
         for (int i = 0; i < count - 1; ++i) {
-                if (getNode(i + 1).x > x)
-                    return i;
+            if (getNode(i + 1).x > x)
+                return i;
         }
         return count - 1;
     }
