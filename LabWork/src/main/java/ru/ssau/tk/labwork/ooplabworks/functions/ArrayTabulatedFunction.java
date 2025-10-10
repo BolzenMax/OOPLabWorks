@@ -1,7 +1,6 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
 import ru.ssau.tk.labwork.ooplabworks.exceptions.InterpolationException;
-
 import java.util.Arrays;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable {

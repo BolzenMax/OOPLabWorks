@@ -194,7 +194,6 @@ public class ArrayTabulatedFunctionTest {
         assertThrows(IndexOutOfBoundsException.class, () -> function.setY(2, 5.0));
     }
 
-
     @Test
     public void testApplyWithExactXValues() {
         double[] xValues = {1.0, 2.0, 3.0};

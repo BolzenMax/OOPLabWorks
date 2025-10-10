@@ -1,6 +1,6 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
-public interface TabulatedFunction extends MathFunction, Iterable<Point> {
+public interface TabulatedFunction extends MathFunction {
     int getCount();
     double getX(int index);
     double getY(int index);

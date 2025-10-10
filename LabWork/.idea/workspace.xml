@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Добавлены исключения IndexOutOfBoundsException и IllegalArgumentException в ArrayTabulatedFunction. Схоже с LinkedList добавлены тесты проверяющие это. Удалены некоторые невостребованные тесты. Доработан тест interpolate. Одной ситуации достичь не выйдет, анлак">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Добавил наследование от Iterable&lt;Point&gt; для интерфейса TabulatedFunction">
       <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/ArrayTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/ArrayTabulatedFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/TabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/TabulatedFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/functions/ArrayTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/functions/ArrayTabulatedFunctionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -382,7 +385,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760112235454</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Добавил наследование от Iterable&lt;Point&gt; для интерфейса TabulatedFunction">
+      <option name="closed" value="true" />
+      <created>1760113154416</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1760113154416</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -421,7 +432,8 @@
     <MESSAGE value="Шаманство с LinkedListTabulatedFunction и тестами для него подходит к концу. Наверное... и деланье второй лабы. Наверное..." />
     <MESSAGE value="Добавлены исключения IllegalArgumentException в LinkedListTabulatedFunction. Добавлены тесты проверяющие это. Удалены некоторые невостребованные тесты. Доработан InterpolateExceptionTest. Некоторых ситуаций теперь достичь не выйдет... Тяжело..." />
     <MESSAGE value="Добавлены исключения IndexOutOfBoundsException и IllegalArgumentException в ArrayTabulatedFunction. Схоже с LinkedList добавлены тесты проверяющие это. Удалены некоторые невостребованные тесты. Доработан тест interpolate. Одной ситуации достичь не выйдет, анлак" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлены исключения IndexOutOfBoundsException и IllegalArgumentException в ArrayTabulatedFunction. Схоже с LinkedList добавлены тесты проверяющие это. Удалены некоторые невостребованные тесты. Доработан тест interpolate. Одной ситуации достичь не выйдет, анлак" />
+    <MESSAGE value="Добавил наследование от Iterable&lt;Point&gt; для интерфейса TabulatedFunction" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил наследование от Iterable&lt;Point&gt; для интерфейса TabulatedFunction" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabWork$SimpleIterationsMethodTest.ic" NAME="SimpleIterationsMethodTest Coverage Results" MODIFIED="1759135470984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
@@ -436,7 +448,7 @@
     <SUITE FILE_PATH="coverage/LabWork$CompositeFunctionTest.ic" NAME="CompositeFunctionTest Coverage Results" MODIFIED="1759139027276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_functions_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.functions in LabWork Coverage Results" MODIFIED="1760111879459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_functions_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.functions in LabWork Coverage Results" MODIFIED="1760113726623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$LinkedListTabulatedFunctionTest.ic" NAME="LinkedListTabulatedFunctionTest Coverage Results" MODIFIED="1760104542689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

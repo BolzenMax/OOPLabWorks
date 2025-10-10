@@ -1,6 +1,8 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
 import ru.ssau.tk.labwork.ooplabworks.exceptions.InterpolationException;
+/*import java.util.Iterator;
+import java.util.NoSuchElementException;*/
 
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable {
 
@@ -280,4 +282,27 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
         count++;
     }
+
+    /*@Override
+    public Iterator<Point> iterator() {
+        return new Iterator<Point>() {
+            private Node node = head;  // Начинаем с головы списка
+
+            @Override
+            public boolean hasNext() {
+                return node != null;  // Если node не null, то есть следующий элемент
+            }
+
+            @Override
+            public Point next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();  // Если элемента нет, выбрасываем исключение
+                }
+                Point point = new Point(node.x, node.y);  // Создаем Point из текущего узла
+                node = node.next != head ? node.next: null;  // Перемещаемся на следующий узел, если элемент последний, то присваиваем null
+
+                return point;  // Возвращаем созданный Point
+            }
+        };
+    }*/
 }
