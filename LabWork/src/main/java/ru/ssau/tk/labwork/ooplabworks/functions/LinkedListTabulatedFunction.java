@@ -39,6 +39,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     }
 
     public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
+        if (xValues.length < 2 && yValues.length < 2) throw new IllegalArgumentException();
 
         checkLengthIsTheSame(xValues, yValues);
         checkSorted(xValues);
@@ -49,6 +50,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     }
 
     public LinkedListTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
+        if (count < 2) throw new IllegalArgumentException();
         if (xFrom > xTo) {
             double temp = xFrom;
             xFrom = xTo;
@@ -104,17 +106,26 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     public double getX(int index) {
-        return getNode(index).x;
+        if (index >= 0 && index < count)
+            return getNode(index).x;
+        else
+            throw new IllegalArgumentException();
     }
 
     @Override
     public double getY(int index) {
-        return getNode(index).y;
+        if (index >= 0 && index < count)
+            return getNode(index).y;
+        else
+            throw new IllegalArgumentException();
     }
 
     @Override
     public void setY(int index, double value) {
-        getNode(index).y = value;
+        if (index >= 0 && index < count)
+            getNode(index).y = value;
+        else
+            throw new IllegalArgumentException();
     }
 
     @Override
@@ -138,9 +149,9 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     @Override
     protected int floorIndexOfX(double x) {
         if (x > getNode(count - 1).x)
-            return  count - 1;
+            throw new IllegalArgumentException();
         if (x < getNode(0).x)
-            return 0;
+            throw new IllegalArgumentException();
         for (int i = 0; i < count - 1; ++i) {
                 if (getNode(i + 1).x > x)
                     return i;
@@ -163,10 +174,6 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     protected double interpolate(double x, int floorIndex) {
-        if (count == 1)
-            return getY(0);
-
-
         if (floorIndex < 0 || floorIndex > count - 1 || x < getX(floorIndex) || x > getX(floorIndex + 1))
             throw new InterpolationException("Не верный диапазон интерполирования");
 
@@ -181,21 +188,25 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     protected double extrapolateLeft(double x) {
-        if (count == 1)
-            return getY(0);
+        /*if (count == 1)
+            return getY(0);*/
         return interpolate(x, getX(0), getX(1), getY(0), getY(1));
     }
 
     @Override
     protected double extrapolateRight(double x) {
-        if (count == 1)
-            return getY(0);
+        /*if (count == 1)
+            return getY(0);*/
         int k = count - 1;
         return interpolate(x, getX(k - 1), getX(k), getY(k - 1), getY(k));
     }
 
     @Override
     public void remove(int index) {
+        if (index < 0 || index >= count) {
+            throw new IllegalArgumentException();
+        }
+
         Node remEl = getNode(index);
 
         if(count == 0) {
