@@ -111,7 +111,7 @@ public class LinkedListTabulatedFunctionInsertableTest
         function.remove(0);
         function.remove(0);
 
-        function.insert(5.0, 50.0); // добавление элемента при count = 0
+        function.insert(5.0, 50.0); // добавление элемента с count = 0
 
         assertEquals(1, function.getCount());
     }

@@ -237,7 +237,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         for (int i = 0; i < count; ++i) {
             Node current = getNode(i);
             if (current.x == x) {
-                // Если нашли узел с таким x, заменяем y и завершаем
+                // Если нашли узел с таким x, то заменяем y и завершаем
                 current.y = y;
                 return;
             }

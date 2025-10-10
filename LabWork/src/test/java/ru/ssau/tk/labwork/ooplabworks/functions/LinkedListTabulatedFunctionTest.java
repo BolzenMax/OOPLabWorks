@@ -21,7 +21,7 @@ class LinkedListTabulatedFunctionTest {
     }
 
     @Test
-    void testConstructorWithThrowsException() { // маленький
+    void testConstructorWithThrowsException() { // Маленький
         double[] xValues = {1.0};
         double[] yValues = {10.0};
 
