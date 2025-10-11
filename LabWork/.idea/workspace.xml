@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Добавил тесты для ArrayTabulatedFunctionFactory и LinkedListTabulatedFunctionFactory">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Создал пакет operations и внутри него интерфейс DifferentialOperator">
       <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/operations/DifferentialOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/operations/TabulatedDifferentialOperator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -431,7 +431,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760175195782</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Создал пакет operations и внутри него интерфейс DifferentialOperator">
+      <option name="closed" value="true" />
+      <created>1760176237771</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1760176237771</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -446,7 +454,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Начал писать LinkedListTabulatedFunction. Предварительная реализация. Пу-пу-пу... Надо допиливать, ну и тесты" />
     <MESSAGE value="Начал писать LinkedListTabulatedFunction. Предварительная реализация. Пу-пу-пу... Надо допиливать, ну и тесты..." />
     <MESSAGE value="Предварительная реализация метода простых итераций SimpleIterationsMethod" />
     <MESSAGE value="Предварительный тест метода простых итераций SimpleIterationsMethodTest" />
@@ -471,7 +478,8 @@
     <MESSAGE value="Создал внутри пакета factory класс LinkedListTabulatedFunctionFactory" />
     <MESSAGE value="Аналогично создал внутри пакета factory класс ArrayTabulatedFunctionFactory" />
     <MESSAGE value="Добавил тесты для ArrayTabulatedFunctionFactory и LinkedListTabulatedFunctionFactory" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил тесты для ArrayTabulatedFunctionFactory и LinkedListTabulatedFunctionFactory" />
+    <MESSAGE value="Создал пакет operations и внутри него интерфейс DifferentialOperator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Создал пакет operations и внутри него интерфейс DifferentialOperator" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabWork$SimpleIterationsMethodTest.ic" NAME="SimpleIterationsMethodTest Coverage Results" MODIFIED="1759135470984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
@@ -486,7 +494,7 @@
     <SUITE FILE_PATH="coverage/LabWork$CompositeFunctionTest.ic" NAME="CompositeFunctionTest Coverage Results" MODIFIED="1759139027276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_functions_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.functions in LabWork Coverage Results" MODIFIED="1760175132798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_functions_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.functions in LabWork Coverage Results" MODIFIED="1760176179157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$LinkedListTabulatedFunctionTest.ic" NAME="LinkedListTabulatedFunctionTest Coverage Results" MODIFIED="1760104542689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
