@@ -6,16 +6,6 @@ public class LinkedListTabulatedFunctionInsertableTest
 
 {
     @Test
-    public void testInsertIntoEmptyList() {
-        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(new double[]{}, new double[]{});
-        function.insert(2.0, 4.0);
-
-        assertEquals(1, function.getCount());
-        assertEquals(2.0, function.getX(0), 1e-9);
-        assertEquals(4.0, function.getY(0), 1e-9);
-    }
-
-    @Test
     public void testInsertAtBeginning() {
         double[] xValues = {2.0, 3.0, 4.0};
         double[] yValues = {4.0, 9.0, 16.0};
@@ -100,20 +90,6 @@ public class LinkedListTabulatedFunctionInsertableTest
     }
 
     @Test
-    public void testInsertWithNegativeValues() {
-        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(new double[]{}, new double[]{});
-
-        function.insert(-2.0, 4.0);
-        function.insert(-1.0, 1.0);
-        function.insert(-3.0, 9.0);
-
-        assertEquals(3, function.getCount());
-        assertEquals(-3.0, function.getX(0), 1e-9);
-        assertEquals(-2.0, function.getX(1), 1e-9);
-        assertEquals(-1.0, function.getX(2), 1e-9);
-    }
-
-    @Test
     public void testInsertAndApply() {
         double[] xValues = {1.0, 3.0};
         double[] yValues = {1.0, 9.0};
@@ -125,5 +101,18 @@ public class LinkedListTabulatedFunctionInsertableTest
         assertEquals(2.5, function.apply(1.5), 1e-9);
         assertEquals(4.0, function.apply(2.0), 1e-9);
         assertEquals(6.5, function.apply(2.5), 1e-9);
+    }
+
+    @Test
+    void testInsertWithEmptyList() { // проверка для случая count = 0
+        double[] xValues = {1.0, 2.0}; // создание и удаление
+        double[] yValues = {10.0, 20.0};
+        LinkedListTabulatedFunction function = new LinkedListTabulatedFunction(xValues, yValues);
+        function.remove(0);
+        function.remove(0);
+
+        function.insert(5.0, 50.0); // добавление элемента с count = 0
+
+        assertEquals(1, function.getCount());
     }
 }

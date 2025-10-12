@@ -137,31 +137,6 @@ public class ArrayTabulatedFunctionRemoveTest {
     }
 
     @Test
-    public void testExtrapolationLeftWithSinglePoint() {
-        double[] xValues = {2.0};
-        double[] yValues = {4.0};
-        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
-
-        // Экстраполяция слева для функции с одной точкой
-        assertEquals(4.0, function.apply(0.0), 1e-9);
-        assertEquals(4.0, function.apply(1.0), 1e-9);
-        assertEquals(4.0, function.apply(2.0), 1e-9);
-        assertEquals(4.0, function.apply(3.0), 1e-9);
-    }
-
-    @Test
-    public void testExtrapolationRightWithSinglePoint() {
-        double[] xValues = {2.0};
-        double[] yValues = {4.0};
-        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
-
-        // Экстраполяция справа для функции с одной точкой
-        assertEquals(4.0, function.apply(3.0), 1e-9);
-        assertEquals(4.0, function.apply(4.0), 1e-9);
-        assertEquals(4.0, function.apply(5.0), 1e-9);
-    }
-
-    @Test
     public void testExtrapolationLeftWithTwoPoints() {
         double[] xValues = {2.0, 3.0};
         double[] yValues = {4.0, 9.0};

@@ -21,15 +21,12 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
         if(xValues.length != yValues.length) throw new DifferentLengthOfArraysException("Разная длина массивов!");
     }
 
-
-
     static void checkSorted(double[] xValues){
         for (int i = 1; i < xValues.length; i++){
             if(xValues[i] < xValues[i-1]) throw new ArrayIsNotSortedException("Массив не отсортирован!");
 
         }
     }
-
 
     @Override
     public int getCount() {
@@ -51,4 +48,16 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
             }
         }
     }
+
+    /*@Override
+    public String toString(){
+        StringBuilder str = new StringBuilder();
+        str.append(getClass().getName()).append(" size = ").append(getCount()).append('\n');
+
+        for (Point point : this) {
+            str.append('[').append(point.x).append(", ").append(point.y).append(']').append('\n');
+        }
+
+        return str.toString();
+    }*/
 }

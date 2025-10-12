@@ -20,6 +20,15 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(3.0, function.getX(2));
     }
 
+    @Test
+    void testConstructorWithThrowsException() { // Маленький
+        double[] xValues = {1.0};
+        double[] yValues = {10.0};
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new ArrayTabulatedFunction(xValues, yValues);
+        });
+    }
 
     @Test
     public void testConstructorWithFunction() {
@@ -32,6 +41,15 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(0.0, function.getY(0));
         assertEquals(1.0, function.getY(1));
         assertEquals(4.0, function.getY(2));
+    }
+
+    @Test
+    void testConstructorWithFunctionThrowsException() {
+        MathFunction source = new SqrFunction();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            new ArrayTabulatedFunction(source, 0.0, 1.0, 1);
+        });
     }
 
     @Test
@@ -94,24 +112,18 @@ public class ArrayTabulatedFunctionTest {
         double[] yValues = {1.0, 4.0, 9.0};
         ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
 
-        assertEquals(0, function.floorIndexOfX(0.5));   // слева
         assertEquals(0, function.floorIndexOfX(1.5));   // между 1 и 2
         assertEquals(1, function.floorIndexOfX(2.5));   // между 2 и 3
-        assertEquals(3, function.floorIndexOfX(3.5));   // справа
     }
 
-
     @Test
-    public void testSinglePointFunctionn() {
-        // Тест с одной точкой
-        double[] xValues = {1.0};
-        double[] yValues = {5.0};
+    void testFloorIndexOfXThrowException() {
+        double[] xValues = {1.0, 2.0, 3.0};
+        double[] yValues = {1.0, 4.0, 9.0};
         ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
 
-        assertEquals(1, function.getCount());
-        assertEquals(5.0, function.apply(1.0)); // точное значение
-        assertEquals(5.0, function.apply(0.0)); // экстраполяция слева
-        assertEquals(5.0, function.apply(2.0)); // экстраполяция справа
+        assertThrows(IndexOutOfBoundsException.class, () -> function.floorIndexOfX(0.5)); // x меньше
+        assertThrows(IndexOutOfBoundsException.class, () -> function.floorIndexOfX(3.5)); // х больше
     }
 
     @Test
@@ -125,19 +137,6 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(0, function.floorIndexOfX(1.0));
         assertEquals(1, function.floorIndexOfX(2.0));
         assertEquals(2, function.floorIndexOfX(3.0));
-    }
-
-    @Test
-    public void testInterpolateWithSinglePoint() {
-        // Тест интерполяции с одной точкой
-        double[] xValues = {2.0};
-        double[] yValues = {4.0};
-        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
-
-        // Все значения должны возвращать 4.0
-        assertEquals(4.0, function.apply(1.0));
-        assertEquals(4.0, function.apply(2.0));
-        assertEquals(4.0, function.apply(3.0));
     }
 
     @Test
@@ -195,7 +194,6 @@ public class ArrayTabulatedFunctionTest {
         assertThrows(IndexOutOfBoundsException.class, () -> function.setY(2, 5.0));
     }
 
-
     @Test
     public void testApplyWithExactXValues() {
         double[] xValues = {1.0, 2.0, 3.0};
@@ -206,19 +204,6 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(4.0, function.apply(2.0));
         assertEquals(9.0, function.apply(3.0));
     }
-
-    @Test
-    public void testSinglePointFunction() {
-        double[] xValues = {1.0};
-        double[] yValues = {5.0};
-        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
-
-        // Для любой точки x должна возвращаться единственное значение y
-        assertEquals(5.0, function.apply(0.0), 1e-9);   // слева от единственной точки
-        assertEquals(5.0, function.apply(1.0), 1e-9);   // в самой точке
-        assertEquals(5.0, function.apply(2.0), 1e-9);   // справа от единственной точки
-    }
-
 
     @Test
     public void testInterpolateAtExactPoints() {
@@ -238,15 +223,8 @@ public class ArrayTabulatedFunctionTest {
         double[] yValues = {0.0, 2.0, 6.0, 12.0, 16.0, 20.0};
         ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
 
-
         assertEquals(20.0, function.interpolate(10, 6), 1e-9);
         assertEquals(-2.0, function.interpolate(-1, 0), 1e-9);
-
-        double[] xValues1 = {1.0};
-        double[] yValues1 = {2.0};
-        ArrayTabulatedFunction function1 = new ArrayTabulatedFunction(xValues1, yValues1);
-        assertEquals(2.0, function1.interpolate(12, 213124), 1e-9);
-
 
         assertThrows(InterpolationException.class, () -> function.interpolate(1.5, 2));
         assertThrows(InterpolationException.class, () -> function.interpolate(2, 12));
@@ -364,21 +342,6 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(3, function.getCount()); // Количество не должно измениться
         assertEquals(2.0, function.getX(1));
         assertEquals(5.0, function.getY(1)); // Y должно обновиться
-    }
-
-    @Test
-    public void testInsertIntoEmptyFunction() { // вставка в ф-ю из одной точки
-        double[] xValues = {2.0};
-        double[] yValues = {4.0};
-        ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
-
-        function.insert(1.0, 1.0);
-
-        assertEquals(2, function.getCount());
-        assertEquals(1.0, function.getX(0));
-        assertEquals(1.0, function.getY(0));
-        assertEquals(2.0, function.getX(1));
-        assertEquals(4.0, function.getY(1));
     }
 
     @Test

@@ -1,10 +1,12 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
 import ru.ssau.tk.labwork.ooplabworks.exceptions.InterpolationException;
+/*import java.util.Iterator;
+import java.util.NoSuchElementException;*/
 
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable {
 
-  static  private class Node {
+    static  private class Node {
         public Node next;
         public Node prev;
         public double x;
@@ -39,6 +41,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     }
 
     public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
+        if (xValues.length < 2 && yValues.length < 2) throw new IllegalArgumentException();
 
         checkLengthIsTheSame(xValues, yValues);
         checkSorted(xValues);
@@ -49,6 +52,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     }
 
     public LinkedListTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
+        if (count < 2) throw new IllegalArgumentException();
         if (xFrom > xTo) {
             double temp = xFrom;
             xFrom = xTo;
@@ -104,17 +108,26 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     public double getX(int index) {
-        return getNode(index).x;
+        if (index >= 0 && index < count)
+            return getNode(index).x;
+        else
+            throw new IllegalArgumentException();
     }
 
     @Override
     public double getY(int index) {
-        return getNode(index).y;
+        if (index >= 0 && index < count)
+            return getNode(index).y;
+        else
+            throw new IllegalArgumentException();
     }
 
     @Override
     public void setY(int index, double value) {
-        getNode(index).y = value;
+        if (index >= 0 && index < count)
+            getNode(index).y = value;
+        else
+            throw new IllegalArgumentException();
     }
 
     @Override
@@ -138,12 +151,12 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     @Override
     protected int floorIndexOfX(double x) {
         if (x > getNode(count - 1).x)
-            return  count - 1;
+            throw new IllegalArgumentException();
         if (x < getNode(0).x)
-            return 0;
+            throw new IllegalArgumentException();
         for (int i = 0; i < count - 1; ++i) {
-                if (getNode(i + 1).x > x)
-                    return i;
+            if (getNode(i + 1).x > x)
+                return i;
         }
         return count - 1;
     }
@@ -163,10 +176,6 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     protected double interpolate(double x, int floorIndex) {
-        if (count == 1)
-            return getY(0);
-
-
         if (floorIndex < 0 || floorIndex > count - 1 || x < getX(floorIndex) || x > getX(floorIndex + 1))
             throw new InterpolationException("Не верный диапазон интерполирования");
 
@@ -181,21 +190,21 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     protected double extrapolateLeft(double x) {
-        if (count == 1)
-            return getY(0);
         return interpolate(x, getX(0), getX(1), getY(0), getY(1));
     }
 
     @Override
     protected double extrapolateRight(double x) {
-        if (count == 1)
-            return getY(0);
         int k = count - 1;
         return interpolate(x, getX(k - 1), getX(k), getY(k - 1), getY(k));
     }
 
     @Override
     public void remove(int index) {
+        if (index < 0 || index >= count) {
+            throw new IllegalArgumentException();
+        }
+
         Node remEl = getNode(index);
 
         if(count == 0) {
@@ -230,7 +239,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         for (int i = 0; i < count; ++i) {
             Node current = getNode(i);
             if (current.x == x) {
-                // Если нашли узел с таким x, заменяем y и завершаем
+                // Если нашли узел с таким x, то заменяем y и завершаем
                 current.y = y;
                 return;
             }
@@ -273,4 +282,27 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
         count++;
     }
+
+    /*@Override
+    public Iterator<Point> iterator() {
+        return new Iterator<Point>() {
+            private Node node = head;  // Начинаем с головы списка
+
+            @Override
+            public boolean hasNext() {
+                return node != null;  // Если node не null, то есть следующий элемент
+            }
+
+            @Override
+            public Point next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();  // Если элемента нет, выбрасываем исключение
+                }
+                Point point = new Point(node.x, node.y);  // Создаем Point из текущего узла
+                node = node.next != head ? node.next: null;  // Перемещаемся на следующий узел, если элемент последний, то присваиваем null
+
+                return point;  // Возвращаем созданный Point
+            }
+        };
+    }*/
 }

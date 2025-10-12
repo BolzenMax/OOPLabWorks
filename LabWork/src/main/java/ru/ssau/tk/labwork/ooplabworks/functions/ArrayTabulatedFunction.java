@@ -1,7 +1,6 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
 import ru.ssau.tk.labwork.ooplabworks.exceptions.InterpolationException;
-
 import java.util.Arrays;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable {
@@ -11,6 +10,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     // Конструктор с двумя массивами
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
+        if (xValues.length < 2 && yValues.length < 2) throw new IllegalArgumentException();
 
         checkLengthIsTheSame(xValues, yValues);
         checkSorted(xValues);
@@ -22,9 +22,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     // Конструктор с функцией и интервалом пвпа
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
-
-
-
+        if (count < 2) throw new IllegalArgumentException();
 
         this.count = count;
         this.xValues = new double[count];
@@ -60,19 +58,25 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     public double getX(int index) {
-        return xValues[index];
+        if(index >= 0 && index < count)
+            return xValues[index];
+        else
+            throw new IndexOutOfBoundsException();
 
     }
 
     @Override
     public double getY(int index) {
-        return yValues[index];
+        if (index >= 0 && index < count)
+            return yValues[index];
+        else
+            throw new IndexOutOfBoundsException();
     }
 
     @Override
     public void setY(int index, double value) {
         if (index < 0 || index >= count) {
-            throw new IndexOutOfBoundsException("Index is out of bounds");
+            throw new IndexOutOfBoundsException();
         }
         yValues[index] = value;
     }
@@ -111,10 +115,10 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     @Override
     protected int floorIndexOfX(double x) {
         if (x < xValues[0]) {
-            return 0;
+            throw new IndexOutOfBoundsException();
         }
         if (x > xValues[count - 1]) {
-            return count;
+            throw new IndexOutOfBoundsException();
         }
 
         for (int i = 1; i < count; i++) {
@@ -127,28 +131,16 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     protected double extrapolateLeft(double x) {
-        if (count == 1) {
-            return yValues[0];
-        }
         return interpolate(x, xValues[0], xValues[1], yValues[0], yValues[1]);
     }
 
     @Override
     protected double extrapolateRight(double x) {
-        if (count == 1) {
-            return yValues[0];
-        }
         return interpolate(x, xValues[count - 2], xValues[count - 1], yValues[count - 2], yValues[count - 1]);
     }
 
     @Override
     protected double interpolate(double x, int floorIndex) {
-
-
-        if (count == 1) {
-            return yValues[0];
-        }
-
         if (floorIndex == 0) {
             return extrapolateLeft(x);
         }
@@ -156,10 +148,8 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
             return extrapolateRight(x);
         }
 
-
         if (floorIndex < 0 || floorIndex > count || x < xValues[floorIndex] || x > xValues[floorIndex + 1])
             throw new InterpolationException("Не верный диапазон интерполирования");
-
 
         double leftX = xValues[floorIndex];
         double rightX = xValues[floorIndex + 1];
@@ -198,6 +188,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         yValues = newYValues;
         count++;
     }
+
     @Override
     public void remove(int index) {
         if (index < 0 || index >= count) {
