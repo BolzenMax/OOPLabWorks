@@ -20,7 +20,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         this.yValues = Arrays.copyOf(yValues, count);
     }
 
-    // Конструктор с функцией и интервалом
+    // Конструктор с функцией и интервалом пвпа
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
 
 
