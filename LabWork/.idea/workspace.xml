@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Реализовал TabulatedDifferentialOperator и покрыл его тестами. Тест для него в пакете operations">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Предварительная реализация методов умножения и деления функций в TabulatedFunctionOperationService. Для их работы жду реализации прошлых заданий напарника">
       <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/operations/TabulatedFunctionOperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/operations/TabulatedFunctionOperationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/AbstractTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/AbstractTabulatedFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/functions/AbstractTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/functions/AbstractTabulatedFunctionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +55,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.AbstractTabulatedFunctionTest.executor": "Run",
     "JUnit.ArrayTabulatedFunctionFactoryTest.executor": "Run",
     "JUnit.CompositeFunctionTest.executor": "Coverage",
     "JUnit.ConstantFunctionTest.executor": "Coverage",
@@ -79,6 +82,21 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.ru.ssau.tk.labwork.ooplabworks in LabWork">
+    <configuration name="AbstractTabulatedFunctionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LabWork" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.labwork.ooplabworks.functions" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.labwork.ooplabworks.functions.AbstractTabulatedFunctionTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ArrayTabulatedFunctionFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabWork" />
       <extension name="coverage">
@@ -105,22 +123,6 @@
       <option name="PACKAGE_NAME" value="ru.ssau.tk.labwork.ooplabworks.functions" />
       <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.labwork.ooplabworks.functions.LinkedListTabulatedFunctionTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LinkedListTabulatedFunctionTest.InterpolateExceptionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabWork" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.operations.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.labwork.ooplabworks.functions" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.labwork.ooplabworks.functions.LinkedListTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="InterpolateExceptionTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -156,10 +158,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ru.ssau.tk.labwork.ooplabworks in LabWork" />
+        <item itemvalue="JUnit.AbstractTabulatedFunctionTest" />
         <item itemvalue="JUnit.ru.ssau.tk.labwork.ooplabworks.functions in LabWork" />
         <item itemvalue="JUnit.ArrayTabulatedFunctionFactoryTest" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.InterpolateExceptionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -475,7 +477,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760334054194</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Предварительная реализация методов умножения и деления функций в TabulatedFunctionOperationService. Для их работы жду реализации прошлых заданий напарника">
+      <option name="closed" value="true" />
+      <created>1760334562567</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1760334562567</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +500,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил тесты для CompositeFunction. Скорее всего потом надо будет залить ещё..." />
     <MESSAGE value="Добавил ещё тесты для метода простых итераций. Потом надо будет залить ещё..." />
     <MESSAGE value="Добавил защищённое поле count и метод getCount. Нужно для реализации LinkedListTabulatedFunction" />
     <MESSAGE value="УРАААААА, ОНО ЗАРАБОТАЛО, но надо добить ещё несколько моментов..." />
@@ -515,13 +524,14 @@
     <MESSAGE value="Предварительно реализовал toString в AbstractTabulatedFunction. Для окончательной реализации и покрытия тестами надо сделать предыдущие задачи" />
     <MESSAGE value="Реализовал нужным образом iterator в LinkedListTabulatedFunction и тесты через while и for-each" />
     <MESSAGE value="Реализовал TabulatedDifferentialOperator и покрыл его тестами. Тест для него в пакете operations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Реализовал TabulatedDifferentialOperator и покрыл его тестами. Тест для него в пакете operations" />
+    <MESSAGE value="Предварительная реализация методов умножения и деления функций в TabulatedFunctionOperationService. Для их работы жду реализации прошлых заданий напарника" />
+    <option name="LAST_COMMIT_MESSAGE" value="Предварительная реализация методов умножения и деления функций в TabulatedFunctionOperationService. Для их работы жду реализации прошлых заданий напарника" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabWork$SimpleIterationsMethodTest.ic" NAME="SimpleIterationsMethodTest Coverage Results" MODIFIED="1759135470984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks in LabWork Coverage Results" MODIFIED="1760333701495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks in LabWork Coverage Results" MODIFIED="1760335430042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$LinkedListTabulatedFunctionTest_InterpolateExceptionTest.ic" NAME="LinkedListTabulatedFunctionTest.InterpolateExceptionTest Coverage Results" MODIFIED="1760091802387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

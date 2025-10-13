@@ -49,7 +49,7 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
         }
     }
 
-    /*@Override
+    @Override
     public String toString(){
         StringBuilder str = new StringBuilder();
         str.append(getClass().getName()).append(" size = ").append(getCount()).append('\n');
@@ -59,5 +59,5 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
         }
 
         return str.toString();
-    }*/
+    }
 }
