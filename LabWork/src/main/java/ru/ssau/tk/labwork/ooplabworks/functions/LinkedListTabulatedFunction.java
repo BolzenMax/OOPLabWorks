@@ -2,14 +2,17 @@ package ru.ssau.tk.labwork.ooplabworks.functions;
 
 import ru.ssau.tk.labwork.ooplabworks.exceptions.InterpolationException;
 
+import java.io.Serial;
 import java.util.NoSuchElementException;
 import java.util.Iterator;
 import java.io.Serializable;
 
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable, Serializable {
+    @Serial
     private static final long serialVersionUID = 4670621755522031840L;
 
     static private class Node implements Serializable {
+        @Serial
         private static final long serialVersionUID = 9195045994634828822L;
         public Node next;
         public Node prev;
