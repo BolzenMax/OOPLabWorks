@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Реализация deserialize в FunctionsIO">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Реализовал сериализацию в LinkedListTabulatedFunction, добавил serializable в FunctionsIO">
       <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/io/LinkedListTabulatedFunctionSerialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/io/FunctionsIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/io/FunctionsIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/AbstractTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/AbstractTabulatedFunction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -531,7 +527,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760365004640</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Реализовал сериализацию в LinkedListTabulatedFunction, добавил serializable в FunctionsIO">
+      <option name="closed" value="true" />
+      <created>1760367048172</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1760367048172</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -546,7 +550,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил в ArrayTabulatedFunction метод insert, при этом сделав xValues, yValues, count не final для работоспособности, но надо ещё тестами новый метод покрыть..." />
     <MESSAGE value="Доработал в ArrayTabulatedFunction метод insert, сделал тесты для insert в методе ArrayTabulatedFunctionTest" />
     <MESSAGE value="Добавил в ArrayTabulatedFunctionTest ещё один тест на вставку insert" />
     <MESSAGE value="Доработал метод простых итераций и добавил несколько тестов на него... надеюсь это то что нужно..." />
@@ -571,7 +574,8 @@
     <MESSAGE value="Реализовал в FunctionsIO readTabulatedFunction для inputStream, класс TabulatedFunctionFileInputStream и внёс небольшие корректировки в TabulatedFunctionFileOutputStream" />
     <MESSAGE value="Частично подготовил LinkedListTabulatedFunction к сериализации. После написания оставшихся методов мной и товарищем должно работать нормально" />
     <MESSAGE value="Реализация deserialize в FunctionsIO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Реализация deserialize в FunctionsIO" />
+    <MESSAGE value="Реализовал сериализацию в LinkedListTabulatedFunction, добавил serializable в FunctionsIO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Реализовал сериализацию в LinkedListTabulatedFunction, добавил serializable в FunctionsIO" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabWork$SimpleIterationsMethodTest.ic" NAME="SimpleIterationsMethodTest Coverage Results" MODIFIED="1759135470984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
