@@ -5,6 +5,8 @@ import ru.ssau.tk.labwork.ooplabworks.functions.TabulatedFunction;
 
 public class TabulatedFunctionOperationService {
 
+
+
     public static Point[] asPoints(TabulatedFunction tabulatedFunction) {
         if (tabulatedFunction == null) {
             return new Point[0];
