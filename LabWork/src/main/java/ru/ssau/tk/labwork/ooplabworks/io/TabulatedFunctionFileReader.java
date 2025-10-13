@@ -27,10 +27,11 @@ public class TabulatedFunctionFileReader {
                     new LinkedListTabulatedFunctionFactory()
             );
 
-            System.out.println(arrayFunction.toString());
-            System.out.println(linkedListFunction.toString());
+            System.out.println(arrayFunction);
+            System.out.println(linkedListFunction);
 
         } catch (IOException e) {
+            System.err.println("Ошибка: " + e.getMessage());
             e.printStackTrace();
         }
     }

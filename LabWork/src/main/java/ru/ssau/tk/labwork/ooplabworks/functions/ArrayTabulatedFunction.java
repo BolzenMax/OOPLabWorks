@@ -1,11 +1,15 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
 import ru.ssau.tk.labwork.ooplabworks.exceptions.InterpolationException;
+
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable {
+public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable, Serializable {
+
+    private static final long serialVersionUID = 3381979260518008217L;
     private double[] xValues;
     private double[] yValues;
     private int count;
