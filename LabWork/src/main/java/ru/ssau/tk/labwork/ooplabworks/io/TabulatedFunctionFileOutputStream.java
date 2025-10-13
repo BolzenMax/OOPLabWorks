@@ -9,8 +9,8 @@ import java.io.*;
 public class TabulatedFunctionFileOutputStream {
     public static void main(String[] args) {
         try (
-                FileOutputStream arrayFile = new FileOutputStream("LabWork/output/array output.bin");
-                FileOutputStream linkedListFile = new FileOutputStream("LabWork/output/linked list output.bin");
+                FileOutputStream arrayFile = new FileOutputStream("output/array function.bin");
+                FileOutputStream linkedListFile = new FileOutputStream("output/linked list function.bin");
                 BufferedOutputStream arrayBuffer = new BufferedOutputStream(arrayFile);
                 BufferedOutputStream linkedListBuffer = new BufferedOutputStream(linkedListFile)
         ) {
