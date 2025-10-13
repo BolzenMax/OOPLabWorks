@@ -18,4 +18,12 @@ public class TabulatedFunctionOperationService {
         }
         return points;
     }
+
+    /*public TabulatedFunction multiplication(TabulatedFunction a, TabulatedFunction b) { // умножение
+        return doOperation(a, b, (u, v) -> u * v);
+    }
+
+    public TabulatedFunction division(TabulatedFunction a, TabulatedFunction b) { // деление
+        return doOperation(a, b, (u, v) -> u / v);
+    }*/
 }
