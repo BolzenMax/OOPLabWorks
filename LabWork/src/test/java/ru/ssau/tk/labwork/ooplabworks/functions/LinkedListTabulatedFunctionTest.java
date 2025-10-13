@@ -2,6 +2,10 @@ package ru.ssau.tk.labwork.ooplabworks.functions;
 
 import ru.ssau.tk.labwork.ooplabworks.exceptions.InterpolationException;
 import org.junit.jupiter.api.Test;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTabulatedFunctionTest {
@@ -335,5 +339,49 @@ class LinkedListTabulatedFunctionTest {
         assertThrows(InterpolationException.class, () -> function.interpolate(2, -3));
         assertThrows(InterpolationException.class, () -> function.interpolate(3.5, 1 ));
 
+    }
+
+    @Test
+    void testIteratorWithWhile() {
+        double[] x = {1.0, 2.0, 3.0};
+        double[] y = {10.0, 20.0, 30.0};
+        LinkedListTabulatedFunction f = new LinkedListTabulatedFunction(x, y);
+
+        Iterator<Point> iterator = f.iterator();
+        int i = 0;
+        while (iterator.hasNext()) {
+            Point point = iterator.next();
+            assertEquals(x[i], point.x, 1e-10);
+            assertEquals(y[i], point.y, 1e-10);
+            i++;
+        }
+        assertEquals(3, i);
+    }
+
+    @Test
+    void testIteratorWithForEach() {
+        double[] x = {1.0, 2.0, 3.0};
+        double[] y = {10.0, 20.0, 30.0};
+        LinkedListTabulatedFunction f = new LinkedListTabulatedFunction(x, y);
+
+        int i = 0;
+        for (Point point : f) {
+            assertEquals(x[i], point.x, 1e-10);
+            assertEquals(y[i], point.y, 1e-10);
+            i++;
+        }
+        assertEquals(3, i);
+    }
+
+    @Test
+    void testIteratorNextAfterEndThrowsException() {
+        LinkedListTabulatedFunction f = new LinkedListTabulatedFunction(new double[]{1.0, 2.0}, new double[]{10.0, 20.0});
+        Iterator<Point> it = f.iterator();
+
+        it.next();
+        it.next();
+
+        assertFalse(it.hasNext());
+        assertThrows(NoSuchElementException.class, it::next);
     }
 }

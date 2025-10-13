@@ -1,8 +1,7 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
 import ru.ssau.tk.labwork.ooplabworks.exceptions.InterpolationException;
-/*import java.util.Iterator;
-import java.util.NoSuchElementException;*/
+import java.util.NoSuchElementException;
 import java.util.Iterator;
 
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removeable {
@@ -223,10 +222,6 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         }
         --count;
     }
-    @Override
-    public Iterator<Point> iterator() {
-        throw new UnsupportedOperationException("Iteration over TabulatedFunction is not supported.");
-    }
 
     @Override
     public void insert(double x, double y) {
@@ -284,28 +279,26 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         count++;
     }
 
-
-
-    /*@Override
+    @Override
     public Iterator<Point> iterator() {
         return new Iterator<Point>() {
-            private Node node = head;  // Начинаем с головы списка
+            private Node node = head;
 
             @Override
             public boolean hasNext() {
-                return node != null;  // Если node не null, то есть следующий элемент
+                return node != null;
             }
 
             @Override
             public Point next() {
                 if (!hasNext()) {
-                    throw new NoSuchElementException();  // Если элемента нет, выбрасываем исключение
+                    throw new NoSuchElementException();  // Если элемента нет
                 }
-                Point point = new Point(node.x, node.y);  // Создаем Point из текущего узла
-                node = node.next != head ? node.next: null;  // Перемещаемся на следующий узел, если элемент последний, то присваиваем null
 
-                return point;  // Возвращаем созданный Point
+                Point point = new Point(node.x, node.y);  // Создание Point
+                node = node.next != head ? node.next: null;  // Перемещение на след узел или null если элемент последний
+                return point;
             }
         };
-    }*/
+    }
 }
