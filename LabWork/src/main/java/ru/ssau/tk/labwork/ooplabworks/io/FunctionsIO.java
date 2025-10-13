@@ -1,11 +1,10 @@
 package ru.ssau.tk.labwork.ooplabworks.io;
 
+import ru.ssau.tk.labwork.ooplabworks.functions.Point;
 import ru.ssau.tk.labwork.ooplabworks.functions.TabulatedFunction;
 import ru.ssau.tk.labwork.ooplabworks.functions.factory.TabulatedFunctionFactory;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
@@ -40,5 +39,16 @@ public final class FunctionsIO {
         }
 
         return factory.create(xValues, yValues);
+    }
+
+    public static void writeTabulatedFunction(BufferedOutputStream outputStream, TabulatedFunction function) throws IOException {
+        try (DataOutputStream dataOutput = new DataOutputStream(outputStream)) {
+            dataOutput.writeInt(function.getCount());
+            for (Point point : function) {
+                dataOutput.writeDouble(point.x);
+                dataOutput.writeDouble(point.y);
+            }
+            dataOutput.flush(); // переброска из буфера
+        }
     }
 }
