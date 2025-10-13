@@ -1,11 +1,10 @@
 package ru.ssau.tk.labwork.ooplabworks.io;
 
+import ru.ssau.tk.labwork.ooplabworks.functions.Point;
 import ru.ssau.tk.labwork.ooplabworks.functions.TabulatedFunction;
 import ru.ssau.tk.labwork.ooplabworks.functions.factory.TabulatedFunctionFactory;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
@@ -18,6 +17,7 @@ public final class FunctionsIO {
 
     public static void writeTabulatedFunction(BufferedWriter bufferedWriter1, TabulatedFunction arrayFunction) {
     }
+
     public static TabulatedFunction readTabulatedFunction(BufferedReader reader, TabulatedFunctionFactory factory)
             throws IOException {
         String firstLine = reader.readLine();
@@ -40,5 +40,40 @@ public final class FunctionsIO {
         }
 
         return factory.create(xValues, yValues);
+    }
+
+    public static void writeTabulatedFunction(BufferedOutputStream outputStream, TabulatedFunction function) throws IOException {
+        try (DataOutputStream dataOutput = new DataOutputStream(outputStream)) {
+            dataOutput.writeInt(function.getCount());
+            for (Point point : function) {
+                dataOutput.writeDouble(point.x);
+                dataOutput.writeDouble(point.y);
+            }
+            dataOutput.flush(); // переброска из буфера
+        }
+    }
+
+    public static TabulatedFunction readTabulatedFunction(BufferedInputStream inputStream, TabulatedFunctionFactory factory) throws IOException {
+        DataInputStream stream = new DataInputStream(inputStream);
+        int length = stream.readInt();
+        double[] xValues = new double[length];
+        double[] yValues = new double[length];
+
+        for (int i = 0; i < length; ++i) {
+            xValues[i] = stream.readDouble();
+            yValues[i] = stream.readDouble();
+        }
+        return factory.create(xValues, yValues);
+    }
+
+    public static void serialize(BufferedOutputStream stream, TabulatedFunction function) throws IOException {
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(stream);
+        objectOutputStream.writeObject(function);
+        objectOutputStream.flush();
+    }
+
+    public static TabulatedFunction deserialize(BufferedInputStream stream) throws IOException, ClassNotFoundException {
+        ObjectInputStream objectInputStream = new ObjectInputStream(stream);
+        return (TabulatedFunction) objectInputStream.readObject();
     }
 }
