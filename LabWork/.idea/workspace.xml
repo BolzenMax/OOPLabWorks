@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Предварительно реализовал toString в AbstractTabulatedFunction. Для окончательной реализации и покрытия тестами надо сделать предыдущие задачи">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Реализовал нужным образом iterator в LinkedListTabulatedFunction и тесты через while и for-each">
       <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/operations/TabulatedDifferentialOperatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunctionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/operations/TabulatedDifferentialOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/operations/TabulatedDifferentialOperator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,33 +53,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.ArrayTabulatedFunctionFactoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CompositeFunctionTest.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.ConstantFunctionTest.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.IdentityFunctionTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LinkedListTabulatedFunctionTest.InterpolateExceptionTest.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.LinkedListTabulatedFunctionTest.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.SimpleIterationsMethodTest.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.ru.ssau.tk.labwork.ooplabworks.functions in LabWork.executor&quot;: &quot;Coverage&quot;,
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.ArrayTabulatedFunctionFactoryTest.executor": "Run",
+    "JUnit.CompositeFunctionTest.executor": "Coverage",
+    "JUnit.ConstantFunctionTest.executor": "Coverage",
+    "JUnit.IdentityFunctionTest.executor": "Run",
+    "JUnit.LinkedListTabulatedFunctionTest.InterpolateExceptionTest.executor": "Coverage",
+    "JUnit.LinkedListTabulatedFunctionTest.executor": "Coverage",
+    "JUnit.SimpleIterationsMethodTest.executor": "Coverage",
+    "JUnit.ru.ssau.tk.labwork.ooplabworks in LabWork.executor": "Coverage",
+    "JUnit.ru.ssau.tk.labwork.ooplabworks.functions in LabWork.executor": "Coverage",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "vcs.Git"
   }
-}</component>
-  <component name="RunManager" selected="JUnit.ru.ssau.tk.labwork.ooplabworks.functions in LabWork">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.ssau.tk.labwork.ooplabworks.operations" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.ru.ssau.tk.labwork.ooplabworks in LabWork">
     <configuration name="ArrayTabulatedFunctionFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabWork" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.functions.*" />
+          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.operations.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -90,26 +96,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConstantFunctionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabWork" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.labwork.ooplabworks.functions" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.labwork.ooplabworks.functions.ConstantFunctionTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="LinkedListTabulatedFunctionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabWork" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.functions.*" />
+          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.operations.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -124,7 +115,7 @@
       <module name="LabWork" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.functions.*" />
+          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.operations.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -136,11 +127,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ru.ssau.tk.labwork.ooplabworks in LabWork" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LabWork" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.labwork.ooplabworks" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ru.ssau.tk.labwork.ooplabworks.functions in LabWork" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabWork" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.functions.*" />
+          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.operations.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -152,11 +157,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ru.ssau.tk.labwork.ooplabworks in LabWork" />
         <item itemvalue="JUnit.ru.ssau.tk.labwork.ooplabworks.functions in LabWork" />
         <item itemvalue="JUnit.ArrayTabulatedFunctionFactoryTest" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest.InterpolateExceptionTest" />
-        <item itemvalue="JUnit.ConstantFunctionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -456,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760178020177</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Реализовал нужным образом iterator в LinkedListTabulatedFunction и тесты через while и for-each">
+      <option name="closed" value="true" />
+      <created>1760332370102</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1760332370102</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -471,7 +484,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Предварительный тест метода простых итераций SimpleIterationsMethodTest" />
     <MESSAGE value="Добавил ещё тестов для IdentityFunction" />
     <MESSAGE value="Добавил тесты для CompositeFunction. Скорее всего потом надо будет залить ещё..." />
     <MESSAGE value="Добавил ещё тесты для метода простых итераций. Потом надо будет залить ещё..." />
@@ -496,11 +508,15 @@
     <MESSAGE value="Создал пакет operations и внутри него интерфейс DifferentialOperator" />
     <MESSAGE value="Предварительно реализовал TabulatedDifferentialOperator. Для окончательной реализации и покрытия тестами жду напарника" />
     <MESSAGE value="Предварительно реализовал toString в AbstractTabulatedFunction. Для окончательной реализации и покрытия тестами надо сделать предыдущие задачи" />
-    <option name="LAST_COMMIT_MESSAGE" value="Предварительно реализовал toString в AbstractTabulatedFunction. Для окончательной реализации и покрытия тестами надо сделать предыдущие задачи" />
+    <MESSAGE value="Реализовал нужным образом iterator в LinkedListTabulatedFunction и тесты через while и for-each" />
+    <option name="LAST_COMMIT_MESSAGE" value="Реализовал нужным образом iterator в LinkedListTabulatedFunction и тесты через while и for-each" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabWork$SimpleIterationsMethodTest.ic" NAME="SimpleIterationsMethodTest Coverage Results" MODIFIED="1759135470984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks in LabWork Coverage Results" MODIFIED="1760333701495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.labwork.ooplabworks.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$LinkedListTabulatedFunctionTest_InterpolateExceptionTest.ic" NAME="LinkedListTabulatedFunctionTest.InterpolateExceptionTest Coverage Results" MODIFIED="1760091802387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
@@ -511,7 +527,7 @@
     <SUITE FILE_PATH="coverage/LabWork$CompositeFunctionTest.ic" NAME="CompositeFunctionTest Coverage Results" MODIFIED="1759139027276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_functions_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.functions in LabWork Coverage Results" MODIFIED="1760332269623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_functions_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.functions in LabWork Coverage Results" MODIFIED="1760333377610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$LinkedListTabulatedFunctionTest.ic" NAME="LinkedListTabulatedFunctionTest Coverage Results" MODIFIED="1760104542689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

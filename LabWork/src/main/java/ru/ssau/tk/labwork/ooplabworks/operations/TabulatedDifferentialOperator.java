@@ -5,7 +5,7 @@ import ru.ssau.tk.labwork.ooplabworks.functions.TabulatedFunction;
 import ru.ssau.tk.labwork.ooplabworks.functions.factory.ArrayTabulatedFunctionFactory;
 import ru.ssau.tk.labwork.ooplabworks.functions.factory.TabulatedFunctionFactory;
 
-/*public class TabulatedDifferentialOperator implements DifferentialOperator<TabulatedFunction>{
+public class TabulatedDifferentialOperator implements DifferentialOperator<TabulatedFunction>{
     private TabulatedFunctionFactory factory;
 
     public TabulatedDifferentialOperator(TabulatedFunctionFactory factory){
@@ -42,4 +42,4 @@ import ru.ssau.tk.labwork.ooplabworks.functions.factory.TabulatedFunctionFactory
 
         return factory.create(xValues, yValues);
     }
-}*/
+}
