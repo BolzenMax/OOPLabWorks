@@ -1,5 +1,6 @@
 package ru.ssau.tk.labwork.ooplabworks.operations;
 
+import ru.ssau.tk.labwork.ooplabworks.concurrent.SynchronizedTabulatedFunction;
 import ru.ssau.tk.labwork.ooplabworks.functions.Point;
 import ru.ssau.tk.labwork.ooplabworks.functions.TabulatedFunction;
 import ru.ssau.tk.labwork.ooplabworks.functions.factory.ArrayTabulatedFunctionFactory;
@@ -41,5 +42,16 @@ public class TabulatedDifferentialOperator implements DifferentialOperator<Tabul
         yValues[length - 1] = (points[length - 1].y - points[length - 2].y) / (points[length - 1].x - points[length - 2].x);
 
         return factory.create(xValues, yValues);
+    }
+    public TabulatedFunction deriveSynchronously(TabulatedFunction function) {
+        SynchronizedTabulatedFunction syncFunction;
+
+        if (function instanceof SynchronizedTabulatedFunction) {
+            syncFunction = (SynchronizedTabulatedFunction) function;
+        } else {
+            syncFunction = new SynchronizedTabulatedFunction(function);
+        }
+
+        return syncFunction.doSynchronously(this::derive);
     }
 }
