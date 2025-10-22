@@ -104,4 +104,76 @@ class SynchronizedTabulatedFunctionTest {
     public void testIterator() {
     }
 
+    @Test
+    public void testDoSynchronouslyWithReturnValue() {
+        TabulatedFunction arrayFunction = new ArrayTabulatedFunction(
+                new double[]{1, 2, 3, 4},
+                new double[]{10, 20, 30, 40}
+        );
+        SynchronizedTabulatedFunction syncFunction = new SynchronizedTabulatedFunction(arrayFunction);
+
+
+        Double result = syncFunction.doSynchronously(new SynchronizedTabulatedFunction.Operation<Double>() {
+            @Override
+            public Double apply(SynchronizedTabulatedFunction function) {
+                double sum = 0;
+                int count = function.getCount();
+                for (int i = 0; i < count; i++) {
+                    sum += function.getY(i);
+                }
+                return sum / count;
+            }
+        });
+
+        assertEquals(25.0, result); // (10+20+30+40)/4 = 25
+    }
+
+    @Test
+    public void testDoSynchronouslyWithVoid() {
+        TabulatedFunction arrayFunction = new ArrayTabulatedFunction(
+                new double[]{1, 2, 3},
+                new double[]{1, 2, 3}
+        );
+        SynchronizedTabulatedFunction syncFunction = new SynchronizedTabulatedFunction(arrayFunction);
+
+
+        Void result = syncFunction.doSynchronously(new SynchronizedTabulatedFunction.Operation<Void>() {
+            @Override
+            public Void apply(SynchronizedTabulatedFunction function) {
+                for (int i = 0; i < function.getCount(); i++) {
+                    function.setY(i, function.getY(i) * 2);
+                }
+                return null;
+            }
+        });
+
+        assertNull(result);
+
+
+        assertEquals(2.0, syncFunction.getY(0));
+        assertEquals(4.0, syncFunction.getY(1));
+        assertEquals(6.0, syncFunction.getY(2));
+    }
+    @Test
+    public void testDoSynchronouslyWithBooleanResult() {
+        TabulatedFunction arrayFunction = new ArrayTabulatedFunction(
+                new double[]{1, 2, 3},
+                new double[]{1, 2, 3}
+        );
+        SynchronizedTabulatedFunction syncFunction = new SynchronizedTabulatedFunction(arrayFunction);
+
+        Boolean isMonotonic = syncFunction.doSynchronously(new SynchronizedTabulatedFunction.Operation<Boolean>() {
+            @Override
+            public Boolean apply(SynchronizedTabulatedFunction function) {
+                for (int i = 0; i < function.getCount() - 1; i++) {
+                    if (function.getY(i) >= function.getY(i + 1)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        });
+
+        assertTrue(isMonotonic);
+    }
 }
