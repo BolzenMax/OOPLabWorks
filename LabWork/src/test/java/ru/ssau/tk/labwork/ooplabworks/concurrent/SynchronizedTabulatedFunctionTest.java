@@ -113,16 +113,13 @@ class SynchronizedTabulatedFunctionTest {
         SynchronizedTabulatedFunction syncFunction = new SynchronizedTabulatedFunction(arrayFunction);
 
 
-        Double result = syncFunction.doSynchronously(new SynchronizedTabulatedFunction.Operation<Double>() {
-            @Override
-            public Double apply(SynchronizedTabulatedFunction function) {
-                double sum = 0;
-                int count = function.getCount();
-                for (int i = 0; i < count; i++) {
-                    sum += function.getY(i);
-                }
-                return sum / count;
+        Double result = syncFunction.doSynchronously(function -> {
+            double sum = 0;
+            int count = function.getCount();
+            for (int i = 0; i < count; i++) {
+                sum += function.getY(i);
             }
+            return sum / count;
         });
 
         assertEquals(25.0, result); // (10+20+30+40)/4 = 25
@@ -137,14 +134,11 @@ class SynchronizedTabulatedFunctionTest {
         SynchronizedTabulatedFunction syncFunction = new SynchronizedTabulatedFunction(arrayFunction);
 
 
-        Void result = syncFunction.doSynchronously(new SynchronizedTabulatedFunction.Operation<Void>() {
-            @Override
-            public Void apply(SynchronizedTabulatedFunction function) {
-                for (int i = 0; i < function.getCount(); i++) {
-                    function.setY(i, function.getY(i) * 2);
-                }
-                return null;
+        Void result = syncFunction.doSynchronously(function -> {
+            for (int i = 0; i < function.getCount(); i++) {
+                function.setY(i, function.getY(i) * 2);
             }
+            return null;
         });
 
         assertNull(result);
@@ -162,16 +156,13 @@ class SynchronizedTabulatedFunctionTest {
         );
         SynchronizedTabulatedFunction syncFunction = new SynchronizedTabulatedFunction(arrayFunction);
 
-        Boolean isMonotonic = syncFunction.doSynchronously(new SynchronizedTabulatedFunction.Operation<Boolean>() {
-            @Override
-            public Boolean apply(SynchronizedTabulatedFunction function) {
-                for (int i = 0; i < function.getCount() - 1; i++) {
-                    if (function.getY(i) >= function.getY(i + 1)) {
-                        return false;
-                    }
+        Boolean isMonotonic = syncFunction.doSynchronously(function -> {
+            for (int i = 0; i < function.getCount() - 1; i++) {
+                if (function.getY(i) >= function.getY(i + 1)) {
+                    return false;
                 }
-                return true;
             }
+            return true;
         });
 
         assertTrue(isMonotonic);
