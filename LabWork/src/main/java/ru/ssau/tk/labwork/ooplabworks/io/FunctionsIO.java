@@ -15,9 +15,17 @@ public final class FunctionsIO {
         throw new UnsupportedOperationException("Error");
     }
 
-    public static void writeTabulatedFunction(BufferedWriter bufferedWriter1, TabulatedFunction arrayFunction) {
-    }
+    public static void writeTabulatedFunction(BufferedWriter writer, TabulatedFunction function) {
+        PrintWriter printWriter = new PrintWriter(writer);
+        int count = function.getCount();
+        printWriter.println(count);
 
+        for (Point point : function) {
+            printWriter.printf("%f %f\n", point.x, point.y);
+        }
+
+        printWriter.flush();
+    }
     public static TabulatedFunction readTabulatedFunction(BufferedReader reader, TabulatedFunctionFactory factory)
             throws IOException {
         String firstLine = reader.readLine();
