@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Реализован класс ReadTask в пакете concurrent">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Реализован WriteTask в пакете concurrent">
       <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/concurrent/ReadWriteTaskExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +55,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.LinkedListTabulatedFunctionSerialization.executor": "Run",
+    "Application.ReadWriteTaskExecutor.executor": "Run",
     "Application.TabulatedFunctionFileInputStream.executor": "Run",
     "Application.TabulatedFunctionFileOutputStream.executor": "Run",
     "JUnit.AbstractTabulatedFunctionTest.executor": "Run",
@@ -88,7 +91,7 @@
       <recent name="ru.ssau.tk.labwork.ooplabworks.operations" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ooplabworks in LabWork">
+  <component name="RunManager" selected="Application.ReadWriteTaskExecutor">
     <configuration name="LinkedListTabulatedFunctionSerialization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.labwork.ooplabworks.io.LinkedListTabulatedFunctionSerialization" />
       <module name="LabWork" />
@@ -102,12 +105,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TabulatedFunctionFileInputStream" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.labwork.ooplabworks.io.TabulatedFunctionFileInputStream" />
+    <configuration name="ReadWriteTaskExecutor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.labwork.ooplabworks.concurrent.ReadWriteTaskExecutor" />
       <module name="LabWork" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.io.*" />
+          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.concurrent.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -154,11 +157,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ReadWriteTaskExecutor" />
         <item itemvalue="JUnit.ooplabworks in LabWork" />
         <item itemvalue="Application.LinkedListTabulatedFunctionSerialization" />
         <item itemvalue="JUnit.AbstractTabulatedFunctionTest" />
         <item itemvalue="JUnit.ru.ssau.tk.labwork.ooplabworks in LabWork" />
-        <item itemvalue="Application.TabulatedFunctionFileInputStream" />
       </list>
     </recent_temporary>
   </component>
@@ -546,7 +549,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761390618028</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Реализован WriteTask в пакете concurrent">
+      <option name="closed" value="true" />
+      <created>1761390734328</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1761390734328</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -561,7 +572,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Доработал метод простых итераций и добавил несколько тестов на него... надеюсь это то что нужно..." />
     <MESSAGE value="Добавил один немаловажный тестик на метод простых итераций..." />
     <MESSAGE value="Шаманство с LinkedListTabulatedFunction и тестами для него подходит к концу. Наверное... и деланье второй лабы. Наверное..." />
     <MESSAGE value="Добавлены исключения IllegalArgumentException в LinkedListTabulatedFunction. Добавлены тесты проверяющие это. Удалены некоторые невостребованные тесты. Доработан InterpolateExceptionTest. Некоторых ситуаций теперь достичь не выйдет... Тяжело..." />
@@ -586,7 +596,8 @@
     <MESSAGE value="Реализовал сериализацию в LinkedListTabulatedFunction, добавил serializable в FunctionsIO" />
     <MESSAGE value="Сериализация и в AbstractTabulatedFunction как фикс для нормального отображения количества элементов списка" />
     <MESSAGE value="Реализован класс ReadTask в пакете concurrent" />
-    <option name="LAST_COMMIT_MESSAGE" value="Реализован класс ReadTask в пакете concurrent" />
+    <MESSAGE value="Реализован WriteTask в пакете concurrent" />
+    <option name="LAST_COMMIT_MESSAGE" value="Реализован WriteTask в пакете concurrent" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabWork$SimpleIterationsMethodTest.ic" NAME="SimpleIterationsMethodTest Coverage Results" MODIFIED="1759135470984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
