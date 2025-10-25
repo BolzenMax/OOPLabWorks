@@ -2,7 +2,12 @@ package ru.ssau.tk.labwork.ooplabworks.concurrent;
 
 import org.junit.jupiter.api.Test;
 import ru.ssau.tk.labwork.ooplabworks.functions.ArrayTabulatedFunction;
+import ru.ssau.tk.labwork.ooplabworks.functions.Point;
 import ru.ssau.tk.labwork.ooplabworks.functions.TabulatedFunction;
+import ru.ssau.tk.labwork.ooplabworks.functions.factory.LinkedListTabulatedFunctionFactory;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -101,10 +106,6 @@ class SynchronizedTabulatedFunctionTest {
     }
 
     @Test
-    public void testIterator() {
-    }
-
-    @Test
     public void testDoSynchronouslyWithReturnValue() {
         TabulatedFunction arrayFunction = new ArrayTabulatedFunction(
                 new double[]{1, 2, 3, 4},
@@ -166,5 +167,48 @@ class SynchronizedTabulatedFunctionTest {
         });
 
         assertTrue(isMonotonic);
+    }
+
+    @Test
+    void testIteratorHasNextAndNext() {
+        double[] xValues = {1.0, 2.0, 3.0, 4.0};
+        double[] yValues = {10.0, 20.0, 30.0, 40.0};
+        TabulatedFunction baseFunction = new LinkedListTabulatedFunctionFactory().create(xValues, yValues);
+        SynchronizedTabulatedFunction syncFunction = new SynchronizedTabulatedFunction(baseFunction);
+        Iterator<Point> iterator = syncFunction.iterator();
+
+        assertTrue(iterator.hasNext()); // проверка наличия
+
+        Point point1 = iterator.next(); // проверка последовательного чтения всех точек
+        assertEquals(1.0, point1.x, 1e-9);
+        assertEquals(10.0, point1.y, 1e-9);
+
+        Point point2 = iterator.next();
+        assertEquals(2.0, point2.x, 1e-9);
+        assertEquals(20.0, point2.y, 1e-9);
+
+        Point point3 = iterator.next();
+        assertEquals(3.0, point3.x, 1e-9);
+        assertEquals(30.0, point3.y, 1e-9);
+
+        Point point4 = iterator.next();
+        assertEquals(4.0, point4.x, 1e-9);
+        assertEquals(40.0, point4.y, 1e-9);
+
+        assertFalse(iterator.hasNext()); // проверка того, что после прохождения hasNext идёт в false
+    }
+
+    @Test
+    void testIteratorNoSuchElementException() {
+        double[] xValues = {1.0, 2.0, 3.0, 4.0};
+        double[] yValues = {10.0, 20.0, 30.0, 40.0};
+        TabulatedFunction baseFunction = new LinkedListTabulatedFunctionFactory().create(xValues, yValues);
+        SynchronizedTabulatedFunction syncFunction = new SynchronizedTabulatedFunction(baseFunction);
+        Iterator<Point> iterator = syncFunction.iterator();
+
+        while (iterator.hasNext()) {
+            iterator.next();
+        }
+        assertThrows(NoSuchElementException.class, iterator::next);
     }
 }

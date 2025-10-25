@@ -2,96 +2,96 @@ package ru.ssau.tk.labwork.ooplabworks.concurrent;
 
 import ru.ssau.tk.labwork.ooplabworks.functions.Point;
 import ru.ssau.tk.labwork.ooplabworks.functions.TabulatedFunction;
+import ru.ssau.tk.labwork.ooplabworks.operations.TabulatedFunctionOperationService;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class SynchronizedTabulatedFunction implements TabulatedFunction {
-
     private final TabulatedFunction function;
-    private final Object mutex;
 
-    public SynchronizedTabulatedFunction(TabulatedFunction function) {
+    public SynchronizedTabulatedFunction (TabulatedFunction function) {
         this.function = function;
-        this.mutex = this;
     }
-    public interface Operation<T>{
 
-        T apply(SynchronizedTabulatedFunction function);
-
-    }
-    public <T> T doSynchronously(Operation<? extends T> operation) {
-        synchronized (mutex) {
+    public <T> T doSynchronously (Operation<? extends T> operation) {
+        synchronized (function) {
             return operation.apply(this);
         }
     }
 
-    @Override
-    public int getCount() {
-        synchronized (mutex) {
-            return function.getCount();
-        }
+    @FunctionalInterface
+    public interface Operation<T> {
+        T apply(SynchronizedTabulatedFunction function);
     }
 
     @Override
-    public double getX(int index) {
-        synchronized (mutex) {
-            return function.getX(index);
-        }
+    public synchronized int getCount() {
+        return function.getCount();
     }
 
     @Override
-    public double getY(int index) {
-        synchronized (mutex) {
-            return function.getY(index);
-        }
+    public synchronized double getX (int index) {
+        return function.getX(index);
     }
 
     @Override
-    public void setY(int index, double value) {
-        synchronized (mutex) {
-            function.setY(index, value);
-        }
+    public synchronized double getY (int index) {
+        return function.getY(index);
     }
 
     @Override
-    public int indexOfX(double x) {
-        synchronized (mutex) {
-            return function.indexOfX(x);
-        }
+    public synchronized void setY (int index, double value) {
+        function.setY(index, value);
     }
 
     @Override
-    public int indexOfY(double y) {
-        synchronized (mutex) {
-            return function.indexOfY(y);
-        }
+    public synchronized double leftBound() {
+        return function.leftBound();
     }
 
     @Override
-    public double leftBound() {
-        synchronized (mutex) {
-            return function.leftBound();
-        }
+    public synchronized double rightBound() {
+        return function.rightBound();
     }
 
     @Override
-    public double rightBound() {
-        synchronized (mutex) {
-            return function.rightBound();
-        }
+    public synchronized int indexOfX (double x) {
+        return function.indexOfX(x);
+    }
+
+    @Override
+    public synchronized int indexOfY (double y) {
+        return function.indexOfY(y);
+    }
+
+    @Override
+    public synchronized double apply (double x) {
+        return function.apply(x);
     }
 
     @Override
     public Iterator<Point> iterator() {
-        synchronized (mutex) {
-            return function.iterator();
-        }
-    }
+        synchronized (function) {
+            Point[] copyPoints = TabulatedFunctionOperationService.asPoints(function);
 
-    @Override
-    public double apply(double x) {
-        synchronized (mutex) {
-            return function.apply(x);
+            return new Iterator<Point>() {
+                private int currIndex = 0;
+                private final Point[] points = copyPoints;
+
+                @Override
+                public boolean hasNext() {
+                    return currIndex < points.length;
+                }
+
+                @Override
+                public Point next() {
+                    if (!hasNext()) {
+                        throw new NoSuchElementException();
+                    }
+                    return points[currIndex++];
+                }
+            };
         }
     }
 }
