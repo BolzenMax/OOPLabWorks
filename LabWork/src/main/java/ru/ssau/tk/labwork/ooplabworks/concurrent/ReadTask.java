@@ -17,7 +17,6 @@ public class ReadTask implements Runnable {
                 double x = function.getX(i);
                 double y = function.getY(i);
                 System.out.printf("After read: i = %d, x = %f, y = %f\n", i, x, y);
-                System.out.flush();
             }
         }
     }

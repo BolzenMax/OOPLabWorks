@@ -18,7 +18,6 @@ public class WriteTask implements Runnable {
             synchronized (function) {
                 function.setY(i, value);
                 System.out.printf("Writing for index %d complete\n", i);
-                System.out.flush();
             }
         }
     }

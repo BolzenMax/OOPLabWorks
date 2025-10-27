@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Доработка SynchronizedTabulatedFunction. Пу-пу-пу...">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Доработал ReadWriteTaskExecutor для завершения работы обоих потоков">
       <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/concurrent/ReadWriteTaskExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/concurrent/ReadWriteTaskExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/concurrent/ReadTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/concurrent/ReadTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/concurrent/WriteTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/concurrent/WriteTask.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,14 +172,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1759042244778</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Insertable. Надеюсь так можно...">
-      <option name="closed" value="true" />
-      <created>1759046612507</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1759046612507</updated>
     </task>
     <task id="LOCAL-00005" summary="Removeable. Надеюсь так можно...">
       <option name="closed" value="true" />
@@ -565,7 +557,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761582036544</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Доработал ReadWriteTaskExecutor для завершения работы обоих потоков">
+      <option name="closed" value="true" />
+      <created>1761583530165</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1761583530165</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -580,7 +580,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил наследование от Iterable&lt;Point&gt; для интерфейса TabulatedFunction" />
     <MESSAGE value="Откатил добавление наследования от Iterator&lt;Point&gt; для TabulatedFunction, жду реализации от товарища метода в ArrayTabulatedFunction. Я же предварительно реализовал метод iterator в LinkedListTabulatedFunction. Позже будут добавлены тесты" />
     <MESSAGE value="Создал пакет factory, внутри него интерфейс TabulatedFunctionFactory" />
     <MESSAGE value="Создал внутри пакета factory класс LinkedListTabulatedFunctionFactory" />
@@ -605,7 +604,8 @@
     <MESSAGE value="Доработан класс SynchronizedTabulatedFunction. Реализован iterator. Написаны тесты для него в SynchronizedTabulatedFunctionTest. Надеюсь нормально вышло..." />
     <MESSAGE value="Доработка SynchronizedTabulatedFunction для работы блокировок. Пу-пу-пу..." />
     <MESSAGE value="Доработка SynchronizedTabulatedFunction. Пу-пу-пу..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Доработка SynchronizedTabulatedFunction. Пу-пу-пу..." />
+    <MESSAGE value="Доработал ReadWriteTaskExecutor для завершения работы обоих потоков" />
+    <option name="LAST_COMMIT_MESSAGE" value="Доработал ReadWriteTaskExecutor для завершения работы обоих потоков" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabWork$SimpleIterationsMethodTest.ic" NAME="SimpleIterationsMethodTest Coverage Results" MODIFIED="1759135470984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
