@@ -8,13 +8,16 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class SynchronizedTabulatedFunction implements TabulatedFunction {
-
     private final TabulatedFunction function;
-    private final Object mutex;
 
-    public SynchronizedTabulatedFunction(TabulatedFunction function) {
+    public SynchronizedTabulatedFunction (TabulatedFunction function) {
         this.function = function;
-        this.mutex = this;
+    }
+
+    public <T> T doSynchronously (Operation<? extends T> operation) {
+        synchronized (function) {
+            return operation.apply(this);
+        }
     }
 
     @FunctionalInterface
@@ -22,71 +25,54 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
         T apply(SynchronizedTabulatedFunction function);
     }
 
-    public <T> T doSynchronously(Operation<? extends T> operation) {
-        synchronized (mutex) {
-            return operation.apply(this);
-        }
+    @Override
+    public synchronized int getCount() {
+        return function.getCount();
     }
 
     @Override
-    public int getCount() {
-        synchronized (mutex) {
-            return function.getCount();
-        }
+    public synchronized double getX (int index) {
+        return function.getX(index);
     }
 
     @Override
-    public double getX(int index) {
-        synchronized (mutex) {
-            return function.getX(index);
-        }
+    public synchronized double getY (int index) {
+        return function.getY(index);
     }
 
     @Override
-    public double getY(int index) {
-        synchronized (mutex) {
-            return function.getY(index);
-        }
+    public synchronized void setY (int index, double value) {
+        function.setY(index, value);
     }
 
     @Override
-    public void setY(int index, double value) {
-        synchronized (mutex) {
-            function.setY(index, value);
-        }
+    public synchronized double leftBound() {
+        return function.leftBound();
     }
 
     @Override
-    public int indexOfX(double x) {
-        synchronized (mutex) {
-            return function.indexOfX(x);
-        }
+    public synchronized double rightBound() {
+        return function.rightBound();
     }
 
     @Override
-    public int indexOfY(double y) {
-        synchronized (mutex) {
-            return function.indexOfY(y);
-        }
+    public synchronized int indexOfX (double x) {
+        return function.indexOfX(x);
     }
 
     @Override
-    public double leftBound() {
-        synchronized (mutex) {
-            return function.leftBound();
-        }
+    public synchronized int indexOfY (double y) {
+        return function.indexOfY(y);
     }
 
     @Override
-    public double rightBound() {
-        synchronized (mutex) {
-            return function.rightBound();
-        }
+    public synchronized double apply (double x) {
+        return function.apply(x);
     }
 
     @Override
     public Iterator<Point> iterator() {
-        synchronized (mutex) {
+        synchronized (function) {
             Point[] copyPoints = TabulatedFunctionOperationService.asPoints(function);
 
             return new Iterator<Point>() {
@@ -101,18 +87,11 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
                 @Override
                 public Point next() {
                     if (!hasNext()) {
-                        throw new NoSuchElementException("No more elements");
+                        throw new NoSuchElementException();
                     }
                     return points[currIndex++];
                 }
             };
-        }
-    }
-
-    @Override
-    public double apply(double x) {
-        synchronized (mutex) {
-            return function.apply(x);
         }
     }
 }
