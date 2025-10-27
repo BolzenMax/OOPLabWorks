@@ -14,12 +14,12 @@ public class ReadWriteTaskExecutor {
         Thread readThread = new Thread(readTask, "ReadThread");
         Thread writeThread = new Thread(writeTask, "WriteThread");
 
-        writeThread.start();
         readThread.start();
+        writeThread.start();
 
-        try {
-            writeThread.join();
+        try { // дождаться завершения обоих потоков
             readThread.join();
+            writeThread.join();
         }
         catch (InterruptedException e) {
             e.printStackTrace();

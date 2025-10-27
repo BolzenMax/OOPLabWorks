@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Доработка SynchronizedTabulatedFunction для работы блокировок. Пу-пу-пу...">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Доработка SynchronizedTabulatedFunction. Пу-пу-пу...">
       <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/concurrent/SynchronizedTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/concurrent/SynchronizedTabulatedFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/concurrent/ReadWriteTaskExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/concurrent/ReadWriteTaskExecutor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,8 +158,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ReadWriteTaskExecutor" />
-        <item itemvalue="Application.MultiplyingTaskExecutor" />
         <item itemvalue="JUnit.ooplabworks in LabWork" />
+        <item itemvalue="Application.MultiplyingTaskExecutor" />
         <item itemvalue="Application.LinkedListTabulatedFunctionSerialization" />
         <item itemvalue="JUnit.AbstractTabulatedFunctionTest" />
       </list>
@@ -172,14 +172,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1759042244778</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Реализовал интерфейс TabulatedFunction">
-      <option name="closed" value="true" />
-      <created>1759045149853</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1759045149853</updated>
     </task>
     <task id="LOCAL-00004" summary="Insertable. Надеюсь так можно...">
       <option name="closed" value="true" />
@@ -565,7 +557,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761402008072</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Доработка SynchronizedTabulatedFunction. Пу-пу-пу...">
+      <option name="closed" value="true" />
+      <created>1761582036543</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1761582036544</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -580,7 +580,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавлены исключения IndexOutOfBoundsException и IllegalArgumentException в ArrayTabulatedFunction. Схоже с LinkedList добавлены тесты проверяющие это. Удалены некоторые невостребованные тесты. Доработан тест interpolate. Одной ситуации достичь не выйдет, анлак" />
     <MESSAGE value="Добавил наследование от Iterable&lt;Point&gt; для интерфейса TabulatedFunction" />
     <MESSAGE value="Откатил добавление наследования от Iterator&lt;Point&gt; для TabulatedFunction, жду реализации от товарища метода в ArrayTabulatedFunction. Я же предварительно реализовал метод iterator в LinkedListTabulatedFunction. Позже будут добавлены тесты" />
     <MESSAGE value="Создал пакет factory, внутри него интерфейс TabulatedFunctionFactory" />
@@ -605,7 +604,8 @@
     <MESSAGE value="Реализован ReadWriteTaskExecutor в пакете concurrent. Ох уж эта многопоточка..." />
     <MESSAGE value="Доработан класс SynchronizedTabulatedFunction. Реализован iterator. Написаны тесты для него в SynchronizedTabulatedFunctionTest. Надеюсь нормально вышло..." />
     <MESSAGE value="Доработка SynchronizedTabulatedFunction для работы блокировок. Пу-пу-пу..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Доработка SynchronizedTabulatedFunction для работы блокировок. Пу-пу-пу..." />
+    <MESSAGE value="Доработка SynchronizedTabulatedFunction. Пу-пу-пу..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Доработка SynchronizedTabulatedFunction. Пу-пу-пу..." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabWork$SimpleIterationsMethodTest.ic" NAME="SimpleIterationsMethodTest Coverage Results" MODIFIED="1759135470984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
@@ -626,7 +626,7 @@
     <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_functions_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.functions in LabWork Coverage Results" MODIFIED="1760333377610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$ooplabworks_in_LabWork.ic" NAME="ooplabworks in LabWork Coverage Results" MODIFIED="1761401866384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/LabWork$ooplabworks_in_LabWork.ic" NAME="ooplabworks in LabWork Coverage Results" MODIFIED="1761582066647" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/LabWork$LinkedListTabulatedFunctionTest.ic" NAME="LinkedListTabulatedFunctionTest Coverage Results" MODIFIED="1760104542689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
