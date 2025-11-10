@@ -1,0 +1,21 @@
+CREATE TABLE users (
+                       id SERIAL PRIMARY KEY,
+                       login VARCHAR(255) UNIQUE NOT NULL,
+                       role VARCHAR(255) DEFAULT 'USER',
+                       password VARCHAR(255),
+                       enabled BOOLEAN NOT NULL
+);
+
+CREATE TABLE functions (
+                          id SERIAL PRIMARY KEY,
+                          user_id INT NOT NULL,
+                          name VARCHAR(255) NOT NULL,
+                          signature VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE points (
+                       id SERIAL PRIMARY KEY,
+                       function_id INT NOT NULL,
+                       x_value FLOAT NOT NULL,
+                       y_value FLOAT NOT NULL
+);
