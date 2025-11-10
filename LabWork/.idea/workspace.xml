@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="А кто такие фиксики? Большой-большой секрет!">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Небольшой фикс Performance тестов">
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PerformanceFramework.csv" beforeDir="false" afterPath="$PROJECT_DIR$/PerformanceFramework.csv" afterDir="false" />
@@ -128,7 +128,7 @@
       <recent name="ru.ssau.tk.labwork.ooplabworks.operations" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ooplabworks in LabWork">
+  <component name="RunManager" selected="JUnit.java in LabWork">
     <configuration name="PerformanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabWork" />
       <extension name="coverage">
@@ -192,9 +192,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.java in LabWork" />
         <item itemvalue="JUnit.ooplabworks in LabWork" />
         <item itemvalue="JUnit.PerformanceTest" />
-        <item itemvalue="JUnit.java in LabWork" />
         <item itemvalue="JUnit.performances in LabWork" />
         <item itemvalue="JUnit.SearchSortPerformanceTest" />
       </list>
@@ -217,15 +217,7 @@
       <updated>1759042244778</updated>
       <workItem from="1762668367233" duration="15096000" />
       <workItem from="1762689127782" duration="21490000" />
-      <workItem from="1762749632658" duration="11968000" />
-    </task>
-    <task id="LOCAL-00009" summary="Предварительная реализация метода простых итераций SimpleIterationsMethod">
-      <option name="closed" value="true" />
-      <created>1759054953219</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1759054953219</updated>
+      <workItem from="1762749632658" duration="14319000" />
     </task>
     <task id="LOCAL-00010" summary="Предварительный тест метода простых итераций SimpleIterationsMethodTest">
       <option name="closed" value="true" />
@@ -611,7 +603,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762761636512</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Небольшой фикс Performance тестов">
+      <option name="closed" value="true" />
+      <created>1762762811684</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1762762811684</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -641,7 +641,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил тесты для ArrayTabulatedFunctionFactory и LinkedListTabulatedFunctionFactory" />
     <MESSAGE value="Создал пакет operations и внутри него интерфейс DifferentialOperator" />
     <MESSAGE value="Предварительно реализовал TabulatedDifferentialOperator. Для окончательной реализации и покрытия тестами жду напарника" />
     <MESSAGE value="Предварительно реализовал toString в AbstractTabulatedFunction. Для окончательной реализации и покрытия тестами надо сделать предыдущие задачи" />
@@ -666,7 +665,8 @@
     <MESSAGE value="Мда... Предварительно (а может и окончательно) реализованы репозитории для доступа к БД и обработки Entity. Вроде покрыты тестами... (P. S. для тестов отдельная БД)" />
     <MESSAGE value="У тебя такой большой... коммит! Ветка framework. Небольшая перегруппировка папок. Реализованы UserService, FunctionService и PointService. Помимо этого реализованы одиночный и множественный поиск, а также сортировки в SearchSortService. Написаны perfomance-тесты обычный и поиска с сортировками, результаты по таймингам выводятся в таблицы" />
     <MESSAGE value="А кто такие фиксики? Большой-большой секрет!" />
-    <option name="LAST_COMMIT_MESSAGE" value="А кто такие фиксики? Большой-большой секрет!" />
+    <MESSAGE value="Небольшой фикс Performance тестов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Небольшой фикс Performance тестов" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
@@ -676,7 +676,7 @@
     <SUITE FILE_PATH="coverage/LabWork$ConstantFunctionTest.ic" NAME="ConstantFunctionTest Coverage Results" MODIFIED="1759139056743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$ooplabworks_in_LabWork.ic" NAME="ooplabworks in LabWork Coverage Results" MODIFIED="1762762552105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/LabWork$ooplabworks_in_LabWork.ic" NAME="ooplabworks in LabWork Coverage Results" MODIFIED="1762763807423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/LabWork$UserServiceTest.ic" NAME="UserServiceTest Coverage Results" MODIFIED="1762703478819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.jpa.services.*</FILTER>
     </SUITE>
