@@ -37,11 +37,6 @@ public class PerformanceTest {
     private PointRepository pointRepository;
 
     private final Random random = new Random();
-    private List<User> createdUsers = new ArrayList<>();
-    private List<Function> createdFunctions = new ArrayList<>();
-    private List<Point> createdPoints = new ArrayList<>();
-
-    // таблица
 
     @BeforeAll
     static void setupCsv() throws IOException {
@@ -55,7 +50,8 @@ public class PerformanceTest {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(CSV_FILE, true))) {
             writer.write(String.format(Locale.US, "%s,%d", operation, duration));
             writer.newLine();
-        } catch (IOException ignore) {}
+        } catch (IOException ignore) {
+        }
     }
 
     // пользователь
@@ -63,6 +59,8 @@ public class PerformanceTest {
     @Test
     @Order(1)
     void user_crud_operations() {
+        List<User> createdUsers = new ArrayList<>();
+
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < RECORDS_COUNT; i++) {
             User user = new User("test_user_" + i, "password_" + i);
@@ -71,7 +69,9 @@ public class PerformanceTest {
             }
             user = userRepository.save(user);
             createdUsers.add(user);
-            if (i % 1000 == 0) userRepository.flush();
+            if (i % 1000 == 0) {
+                userRepository.flush();
+            }
         }
         userRepository.flush();
         long duration = System.currentTimeMillis() - startTime;
@@ -79,14 +79,14 @@ public class PerformanceTest {
 
         startTime = System.currentTimeMillis();
         for (User user : createdUsers) {
-            userRepository.findById(user.getId());
+            userRepository.findById(user.getId()).orElse(null);
         }
         duration = System.currentTimeMillis() - startTime;
         appendResult("user_find_by_id", duration);
 
         startTime = System.currentTimeMillis();
         for (User user : createdUsers) {
-            userRepository.findByLogin(user.getLogin());
+            userRepository.findByLogin(user.getLogin()).orElse(null);
         }
         duration = System.currentTimeMillis() - startTime;
         appendResult("user_find_by_login", duration);
@@ -106,13 +106,27 @@ public class PerformanceTest {
     @Test
     @Order(2)
     void function_crud_operations() {
+        List<User> users = new ArrayList<>(); // создание 100 пользователей
+        for (int i = 0; i < 100; i++) {
+            User user = new User("func_user_" + i, "pass_" + i);
+            users.add(userRepository.save(user));
+        }
+        userRepository.flush();
+
+        List<Function> createdFunctions = new ArrayList<>();
+
         long startTime = System.currentTimeMillis();
         int count = 0;
-        for (User user : createdUsers) {
-            Function function = new Function(user.getId(), "function_" + count, "signature_" + count);
-            function = functionRepository.save(function);
-            createdFunctions.add(function);
-            if (++count % 1000 == 0) functionRepository.flush();
+        for (User user : users) {
+            for (int j = 0; j < 100; j++) { // 100 функций у каждого юзера
+                Function function = new Function(user.getId(), "function_" + count, "signature_" + count);
+                function = functionRepository.save(function);
+                createdFunctions.add(function);
+                count++;
+            }
+            if (count % 1000 == 0) {
+                functionRepository.flush();
+            }
         }
         functionRepository.flush();
         long duration = System.currentTimeMillis() - startTime;
@@ -120,13 +134,13 @@ public class PerformanceTest {
 
         startTime = System.currentTimeMillis();
         for (Function function : createdFunctions) {
-            functionRepository.findById(function.getId());
+            functionRepository.findById(function.getId()).orElse(null);
         }
         duration = System.currentTimeMillis() - startTime;
         appendResult("function_find_by_id", duration);
 
         startTime = System.currentTimeMillis();
-        for (User user : createdUsers) {
+        for (User user : users) {
             functionRepository.findByUserId(user.getId());
         }
         duration = System.currentTimeMillis() - startTime;
@@ -140,6 +154,8 @@ public class PerformanceTest {
         functionRepository.flush();
         duration = System.currentTimeMillis() - startTime;
         appendResult("function_update", duration);
+
+        userRepository.deleteAll(users);
     }
 
     // точки
@@ -147,15 +163,28 @@ public class PerformanceTest {
     @Test
     @Order(3)
     void point_crud_operations() {
+        User user = userRepository.save(new User("point_user", "pass")); // создание 1000 функций
+        List<Function> functions = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            Function function = new Function(user.getId(), "point_func_" + i, "sig_" + i);
+            functions.add(functionRepository.save(function));
+        }
+        functionRepository.flush();
+
+        List<Point> createdPoints = new ArrayList<>();
+
         long startTime = System.currentTimeMillis();
         int count = 0;
-        for (Function function : createdFunctions) {
-            for (int j = 0; j < 3; j++) {
+        for (Function function : functions) {
+            for (int j = 0; j < 100; j++) { // 100 точек на каждую функцию
                 Point point = new Point(function.getId(), random.nextDouble() * 100, random.nextDouble() * 100);
                 point = pointRepository.save(point);
                 createdPoints.add(point);
+                count++;
             }
-            if (++count % 1000 == 0) pointRepository.flush();
+            if (count % 1000 == 0) {
+                pointRepository.flush();
+            }
         }
         pointRepository.flush();
         long duration = System.currentTimeMillis() - startTime;
@@ -163,13 +192,13 @@ public class PerformanceTest {
 
         startTime = System.currentTimeMillis();
         for (Point point : createdPoints) {
-            pointRepository.findById(point.getId());
+            pointRepository.findById(point.getId()).orElse(null);
         }
         duration = System.currentTimeMillis() - startTime;
         appendResult("point_find_by_id", duration);
 
         startTime = System.currentTimeMillis();
-        for (Function function : createdFunctions) {
+        for (Function function : functions) {
             pointRepository.findByFunctionId(function.getId());
         }
         duration = System.currentTimeMillis() - startTime;
@@ -183,6 +212,10 @@ public class PerformanceTest {
         pointRepository.flush();
         duration = System.currentTimeMillis() - startTime;
         appendResult("point_update", duration);
+
+        pointRepository.deleteAll();
+        functionRepository.deleteAll(functions);
+        userRepository.delete(user);
     }
 
     // удаление
@@ -190,20 +223,38 @@ public class PerformanceTest {
     @Test
     @Order(4)
     void delete_operations() {
+        User user = userRepository.save(new User("delete_user", "pass")); // 1 юзер
+        List<Function> functions = new ArrayList<>();
+        List<Point> points = new ArrayList<>();
+
+        for (int i = 0; i < 100; i++) { // 100 функций
+            Function function = new Function(user.getId(), "del_func_" + i, "sig");
+            functions.add(functionRepository.save(function));
+        }
+        functionRepository.flush();
+
+        for (Function function : functions) { // 100 точек
+            for (int j = 0; j < 100; j++) {
+                Point point = new Point(function.getId(), random.nextDouble() * 100, random.nextDouble() * 100);
+                points.add(pointRepository.save(point));
+            }
+        }
+        pointRepository.flush();
+
         long startTime = System.currentTimeMillis();
-        pointRepository.deleteAll();
+        pointRepository.deleteAll(points);
         pointRepository.flush();
         long duration = System.currentTimeMillis() - startTime;
         appendResult("point_delete_all", duration);
 
         startTime = System.currentTimeMillis();
-        functionRepository.deleteAll();
+        functionRepository.deleteAll(functions);
         functionRepository.flush();
         duration = System.currentTimeMillis() - startTime;
         appendResult("function_delete_all", duration);
 
         startTime = System.currentTimeMillis();
-        userRepository.deleteAll();
+        userRepository.delete(user);
         userRepository.flush();
         duration = System.currentTimeMillis() - startTime;
         appendResult("user_delete_all", duration);

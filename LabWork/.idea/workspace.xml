@@ -4,29 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Мда... Предварительно (а может и окончательно) реализованы репозитории для доступа к БД и обработки Entity. Вроде покрыты тестами... (P. S. для тестов отдельная БД)">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="У тебя такой большой... коммит! Ветка framework. Небольшая перегруппировка папок. Реализованы UserService, FunctionService и PointService. Помимо этого реализованы одиночный и множественный поиск, а также сортировки в SearchSortService. Написаны perfomance-тесты обычный и поиска с сортировками, результаты по таймингам выводятся в таблицы">
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/services/FunctionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/services/PointService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/services/SearchSortService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/services/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/PerformanceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/SearchSortPerformanceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/jpa/Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/jpa/entities/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/entities/Function.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/jpa/entities/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/entities/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/jpa/entities/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/entities/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/jpa/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/jpa/repositories/FunctionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/repositories/FunctionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/jpa/repositories/PointRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/repositories/PointRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/jpa/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/jpa/ApplicationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/jpa/repositories/FunctionRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/repositories/FunctionRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/jpa/repositories/PointRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/repositories/PointRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/jpa/repositories/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/repositories/UserRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerformanceFramework.csv" beforeDir="false" afterPath="$PROJECT_DIR$/PerformanceFramework.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/PerformanceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +71,7 @@
     "JUnit.IdentityFunctionTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.InterpolateExceptionTest.executor": "Coverage",
     "JUnit.LinkedListTabulatedFunctionTest.executor": "Coverage",
+    "JUnit.PerformanceTest.executor": "Coverage",
     "JUnit.PointRepositoryTest.executor": "Coverage",
     "JUnit.PointRepositoryTest.testFindByFunctionId.executor": "Debug",
     "JUnit.SearchServiceTest.executor": "Coverage",
@@ -145,6 +128,21 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.java in LabWork">
+    <configuration name="PerformanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LabWork" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.performances.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.labwork.ooplabworks.performances" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.labwork.ooplabworks.performances.PerformanceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SearchSortPerformanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabWork" />
       <extension name="coverage">
@@ -184,14 +182,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="repositories in LabWork" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabWork" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/jpa/repositories" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="LabWork" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ru.ssau.tk.labwork.ooplabworks.jpa.Application" />
@@ -202,10 +192,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.java in LabWork" />
+        <item itemvalue="JUnit.PerformanceTest" />
         <item itemvalue="JUnit.performances in LabWork" />
         <item itemvalue="JUnit.SearchSortPerformanceTest" />
         <item itemvalue="JUnit.ooplabworks in LabWork" />
-        <item itemvalue="JUnit.repositories in LabWork" />
       </list>
     </recent_temporary>
   </component>
@@ -226,15 +216,7 @@
       <updated>1759042244778</updated>
       <workItem from="1762668367233" duration="15096000" />
       <workItem from="1762689127782" duration="21490000" />
-      <workItem from="1762749632658" duration="9167000" />
-    </task>
-    <task id="LOCAL-00007" summary="Начал писать LinkedListTabulatedFunction. Предварительная реализация. Пу-пу-пу... Надо допиливать, ну и тесты...">
-      <option name="closed" value="true" />
-      <created>1759054175375</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1759054175375</updated>
+      <workItem from="1762749632658" duration="10782000" />
     </task>
     <task id="LOCAL-00008" summary="Начал писать LinkedListTabulatedFunction. Предварительная реализация. Пу-пу-пу... Надо допиливать, ну и тесты...">
       <option name="closed" value="true" />
@@ -620,7 +602,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762693516582</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="У тебя такой большой... коммит! Ветка framework. Небольшая перегруппировка папок. Реализованы UserService, FunctionService и PointService. Помимо этого реализованы одиночный и множественный поиск, а также сортировки в SearchSortService. Написаны perfomance-тесты обычный и поиска с сортировками, результаты по таймингам выводятся в таблицы">
+      <option name="closed" value="true" />
+      <created>1762760420265</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1762760420266</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +640,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Создал внутри пакета factory класс LinkedListTabulatedFunctionFactory" />
     <MESSAGE value="Аналогично создал внутри пакета factory класс ArrayTabulatedFunctionFactory" />
     <MESSAGE value="Добавил тесты для ArrayTabulatedFunctionFactory и LinkedListTabulatedFunctionFactory" />
     <MESSAGE value="Создал пакет operations и внутри него интерфейс DifferentialOperator" />
@@ -675,7 +664,8 @@
     <MESSAGE value="Доработал ReadWriteTaskExecutor для завершения работы обоих потоков" />
     <MESSAGE value="Проект разделён на ветки manual и framework. В ветке framework подключён springframework, реализованы entity для модели БД. Вроде работает... пока по крайней мере (P. S. для реализации этого всего мне пришлось перейти на Ultimate edition IDE вместо Community Edition)" />
     <MESSAGE value="Мда... Предварительно (а может и окончательно) реализованы репозитории для доступа к БД и обработки Entity. Вроде покрыты тестами... (P. S. для тестов отдельная БД)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Мда... Предварительно (а может и окончательно) реализованы репозитории для доступа к БД и обработки Entity. Вроде покрыты тестами... (P. S. для тестов отдельная БД)" />
+    <MESSAGE value="У тебя такой большой... коммит! Ветка framework. Небольшая перегруппировка папок. Реализованы UserService, FunctionService и PointService. Помимо этого реализованы одиночный и множественный поиск, а также сортировки в SearchSortService. Написаны perfomance-тесты обычный и поиска с сортировками, результаты по таймингам выводятся в таблицы" />
+    <option name="LAST_COMMIT_MESSAGE" value="У тебя такой большой... коммит! Ветка framework. Небольшая перегруппировка папок. Реализованы UserService, FunctionService и PointService. Помимо этого реализованы одиночный и множественный поиск, а также сортировки в SearchSortService. Написаны perfomance-тесты обычный и поиска с сортировками, результаты по таймингам выводятся в таблицы" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
@@ -707,13 +697,14 @@
       <FILTER>ru.ssau.tk.labwork.ooplabworks.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$repositories_in_LabWork.ic" NAME="repositories in LabWork Coverage Results" MODIFIED="1762713107387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/LabWork$performances_in_LabWork.ic" NAME="performances in LabWork Coverage Results" MODIFIED="1762759850442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/LabWork$SimpleIterationsMethodTest.ic" NAME="SimpleIterationsMethodTest Coverage Results" MODIFIED="1759135470984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$LinkedListTabulatedFunctionTest.ic" NAME="LinkedListTabulatedFunctionTest Coverage Results" MODIFIED="1760104542689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$java_in_LabWork.ic" NAME="java in LabWork Coverage Results" MODIFIED="1762753476973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/LabWork$java_in_LabWork.ic" NAME="java in LabWork Coverage Results" MODIFIED="1762760035468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_functions_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.functions in LabWork Coverage Results" MODIFIED="1760333377610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
@@ -722,6 +713,9 @@
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$PointRepositoryTest.ic" NAME="PointRepositoryTest Coverage Results" MODIFIED="1762691782495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.jpa.repositories.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabWork$PerformanceTest.ic" NAME="PerformanceTest Coverage Results" MODIFIED="1762760772883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.labwork.ooplabworks.performances.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$SearchServiceTest.ic" NAME="SearchServiceTest Coverage Results" MODIFIED="1762696872554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.jpa.services.*</FILTER>
