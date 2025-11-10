@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="У тебя такой большой... коммит! Ветка framework. Небольшая перегруппировка папок. Реализованы UserService, FunctionService и PointService. Помимо этого реализованы одиночный и множественный поиск, а также сортировки в SearchSortService. Написаны perfomance-тесты обычный и поиска с сортировками, результаты по таймингам выводятся в таблицы">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="А кто такие фиксики? Большой-большой секрет!">
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PerformanceFramework.csv" beforeDir="false" afterPath="$PROJECT_DIR$/PerformanceFramework.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SearchSortPerformanceFramework.csv" beforeDir="false" afterPath="$PROJECT_DIR$/SearchSortPerformanceFramework.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/PerformanceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +128,7 @@
       <recent name="ru.ssau.tk.labwork.ooplabworks.operations" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.java in LabWork">
+  <component name="RunManager" selected="JUnit.ooplabworks in LabWork">
     <configuration name="PerformanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabWork" />
       <extension name="coverage">
@@ -191,11 +192,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.java in LabWork" />
+        <item itemvalue="JUnit.ooplabworks in LabWork" />
         <item itemvalue="JUnit.PerformanceTest" />
+        <item itemvalue="JUnit.java in LabWork" />
         <item itemvalue="JUnit.performances in LabWork" />
         <item itemvalue="JUnit.SearchSortPerformanceTest" />
-        <item itemvalue="JUnit.ooplabworks in LabWork" />
       </list>
     </recent_temporary>
   </component>
@@ -216,15 +217,7 @@
       <updated>1759042244778</updated>
       <workItem from="1762668367233" duration="15096000" />
       <workItem from="1762689127782" duration="21490000" />
-      <workItem from="1762749632658" duration="10782000" />
-    </task>
-    <task id="LOCAL-00008" summary="Начал писать LinkedListTabulatedFunction. Предварительная реализация. Пу-пу-пу... Надо допиливать, ну и тесты...">
-      <option name="closed" value="true" />
-      <created>1759054584954</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1759054584954</updated>
+      <workItem from="1762749632658" duration="11968000" />
     </task>
     <task id="LOCAL-00009" summary="Предварительная реализация метода простых итераций SimpleIterationsMethod">
       <option name="closed" value="true" />
@@ -610,7 +603,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762760420266</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="А кто такие фиксики? Большой-большой секрет!">
+      <option name="closed" value="true" />
+      <created>1762761636512</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1762761636512</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -640,7 +641,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Аналогично создал внутри пакета factory класс ArrayTabulatedFunctionFactory" />
     <MESSAGE value="Добавил тесты для ArrayTabulatedFunctionFactory и LinkedListTabulatedFunctionFactory" />
     <MESSAGE value="Создал пакет operations и внутри него интерфейс DifferentialOperator" />
     <MESSAGE value="Предварительно реализовал TabulatedDifferentialOperator. Для окончательной реализации и покрытия тестами жду напарника" />
@@ -665,17 +665,18 @@
     <MESSAGE value="Проект разделён на ветки manual и framework. В ветке framework подключён springframework, реализованы entity для модели БД. Вроде работает... пока по крайней мере (P. S. для реализации этого всего мне пришлось перейти на Ultimate edition IDE вместо Community Edition)" />
     <MESSAGE value="Мда... Предварительно (а может и окончательно) реализованы репозитории для доступа к БД и обработки Entity. Вроде покрыты тестами... (P. S. для тестов отдельная БД)" />
     <MESSAGE value="У тебя такой большой... коммит! Ветка framework. Небольшая перегруппировка папок. Реализованы UserService, FunctionService и PointService. Помимо этого реализованы одиночный и множественный поиск, а также сортировки в SearchSortService. Написаны perfomance-тесты обычный и поиска с сортировками, результаты по таймингам выводятся в таблицы" />
-    <option name="LAST_COMMIT_MESSAGE" value="У тебя такой большой... коммит! Ветка framework. Небольшая перегруппировка папок. Реализованы UserService, FunctionService и PointService. Помимо этого реализованы одиночный и множественный поиск, а также сортировки в SearchSortService. Написаны perfomance-тесты обычный и поиска с сортировками, результаты по таймингам выводятся в таблицы" />
+    <MESSAGE value="А кто такие фиксики? Большой-большой секрет!" />
+    <option name="LAST_COMMIT_MESSAGE" value="А кто такие фиксики? Большой-большой секрет!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LabWork$ooplabworks_in_LabWork.ic" NAME="ooplabworks in LabWork Coverage Results" MODIFIED="1762714415635" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/LabWork$ConstantFunctionTest.ic" NAME="ConstantFunctionTest Coverage Results" MODIFIED="1759139056743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/LabWork$ooplabworks_in_LabWork.ic" NAME="ooplabworks in LabWork Coverage Results" MODIFIED="1762762552105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/LabWork$UserServiceTest.ic" NAME="UserServiceTest Coverage Results" MODIFIED="1762703478819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.jpa.services.*</FILTER>
     </SUITE>
@@ -704,7 +705,7 @@
     <SUITE FILE_PATH="coverage/LabWork$LinkedListTabulatedFunctionTest.ic" NAME="LinkedListTabulatedFunctionTest Coverage Results" MODIFIED="1760104542689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$java_in_LabWork.ic" NAME="java in LabWork Coverage Results" MODIFIED="1762760035468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/LabWork$java_in_LabWork.ic" NAME="java in LabWork Coverage Results" MODIFIED="1762761556742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_functions_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.functions in LabWork Coverage Results" MODIFIED="1760333377610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
@@ -714,7 +715,7 @@
     <SUITE FILE_PATH="coverage/LabWork$PointRepositoryTest.ic" NAME="PointRepositoryTest Coverage Results" MODIFIED="1762691782495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.jpa.repositories.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$PerformanceTest.ic" NAME="PerformanceTest Coverage Results" MODIFIED="1762760772883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/LabWork$PerformanceTest.ic" NAME="PerformanceTest Coverage Results" MODIFIED="1762762500108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.performances.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$SearchServiceTest.ic" NAME="SearchServiceTest Coverage Results" MODIFIED="1762696872554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

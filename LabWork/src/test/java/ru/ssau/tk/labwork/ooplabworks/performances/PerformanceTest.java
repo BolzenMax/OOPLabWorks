@@ -218,12 +218,10 @@ public class PerformanceTest {
         userRepository.delete(user);
     }
 
-    // удаление
-
     @Test
     @Order(4)
-    void delete_operations() {
-        User user = userRepository.save(new User("delete_user", "pass")); // 1 юзер
+    void delete_points_and_functions_operations() {
+        User user = userRepository.save(new User("delete_user", "pass"));
         List<Function> functions = new ArrayList<>();
         List<Point> points = new ArrayList<>();
 
@@ -252,11 +250,29 @@ public class PerformanceTest {
         functionRepository.flush();
         duration = System.currentTimeMillis() - startTime;
         appendResult("function_delete_all", duration);
+    }
+
+    // удаление юзеров
+
+    @Test
+    @Order(5)
+    void delete_users_operations() {
+        List<User> usersToDelete = new ArrayList<>();
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < 100; i++) { // 100 пользователей
+            User user = new User("delete_user_" + i, "password_" + i);
+            usersToDelete.add(userRepository.save(user));
+            if (i % 10 == 0) {
+                userRepository.flush();
+            }
+        }
+        userRepository.flush();
 
         startTime = System.currentTimeMillis();
-        userRepository.delete(user);
+        userRepository.deleteAll(usersToDelete);
         userRepository.flush();
-        duration = System.currentTimeMillis() - startTime;
+        long duration = System.currentTimeMillis() - startTime;
         appendResult("user_delete_all", duration);
     }
 }
