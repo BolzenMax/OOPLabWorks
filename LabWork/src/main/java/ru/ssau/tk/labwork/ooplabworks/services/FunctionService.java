@@ -31,21 +31,6 @@ public class FunctionService {
         return functionRepository.findById(id);
     }
 
-    /*public List<Function> getFunctionsByUserId(Long userId) {
-        log.debug("Получение функций пользователя с ID: {}", userId);
-        return functionRepository.findByUserId(userId);
-    }
-
-    public List<Function> searchFunctionsByName(String name) {
-        log.debug("Поиск функций по имени: {}", name);
-        return functionRepository.findByNameContaining(name);
-    }
-
-    public List<Function> searchFunctionsByUserIdAndName(Long userId, String name) {
-        log.debug("Поиск функций по пользовательскому ID: {} с именем: {}", userId, name);
-        return functionRepository.findByUserIdAndNameContaining(userId, name);
-    }*/
-
     public List<Function> getAllFunctions() {
         log.debug("Поиск всех функций");
         return functionRepository.findAll();

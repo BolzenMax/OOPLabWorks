@@ -35,26 +35,6 @@ public class PointService {
         return pointRepository.findById(id);
     }
 
-    /*public List<Point> getPointsByFunctionId(Long functionId) {
-        log.debug("Получение точек функции с ID: {}", functionId);
-        return pointRepository.findByFunctionId(functionId);
-    }
-
-    public List<Point> getPointsByFunctionIdAndXRange(Long functionId, Double minX, Double maxX) {
-        log.debug("Получение точек функции с ID: {} где X в интервале [{}, {}]", functionId, minX, maxX);
-        return pointRepository.findByFunctionIdAndXBetween(functionId, minX, maxX);
-    }
-
-    public List<Point> getPointsByFunctionIdOrderedByXAsc(Long functionId) {
-        log.debug("Получение точек функции с ID: {} где X по возрастанию", functionId);
-        return pointRepository.findByFunctionIdOrderByXAsc(functionId);
-    }
-
-    public List<Point> getPointsByFunctionIdOrderedByXDesc(Long functionId) {
-        log.debug("Получение точек функции с ID: {} где X по убыванию", functionId);
-        return pointRepository.findByFunctionIdOrderByXDesc(functionId);
-    }*/
-
     public List<Point> getAllPoints() {
         log.debug("Получение всех точек");
         return pointRepository.findAll();

@@ -38,16 +38,6 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    /*public List<User> getUsersByRole(String role) {
-        log.debug("Получение пользователей имеющих роль: {}", role);
-        return userRepository.findByRole(role);
-    }
-
-    public List<User> searchUsersByLogin(String keyword) {
-        log.debug("Поиск пользователей по логину: {}", keyword);
-        return userRepository.findByLoginContaining(keyword);
-    }*/
-
     public User updateUser(User user) {
         log.info("Актуализация пользователя с ID: {}", user.getId());
         User updatedUser = userRepository.save(user);
