@@ -1,10 +1,10 @@
-package ru.ssau.tk.labwork.ooplabworks.jpa.repositories;
+package ru.ssau.tk.labwork.ooplabworks.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import ru.ssau.tk.labwork.ooplabworks.jpa.entities.Point;
+import ru.ssau.tk.labwork.ooplabworks.entities.Point;
 
 import java.util.List;
 
@@ -23,4 +23,6 @@ public interface PointRepository extends JpaRepository<Point, Long> {
 
     @Query("SELECT p FROM Point p WHERE p.functionId = :functionId ORDER BY p.x DESC")
     List<Point> findByFunctionIdOrderByXDesc(@Param("functionId") Long functionId);
+
+    void deleteByFunctionId(Long functionId);
 }

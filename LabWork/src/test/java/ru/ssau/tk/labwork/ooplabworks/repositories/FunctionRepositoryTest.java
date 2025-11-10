@@ -1,4 +1,4 @@
-package ru.ssau.tk.labwork.ooplabworks.jpa.repositories;
+package ru.ssau.tk.labwork.ooplabworks.repositories;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
-import ru.ssau.tk.labwork.ooplabworks.jpa.entities.Function;
-import ru.ssau.tk.labwork.ooplabworks.jpa.entities.User;
+import ru.ssau.tk.labwork.ooplabworks.entities.Function;
+import ru.ssau.tk.labwork.ooplabworks.entities.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -47,14 +47,11 @@ class FunctionRepositoryTest {
         User testUser = createTestUser();
         User otherUser = createUser("other", "pass");
 
-        // Создаем несколько функций для пользователя
         functionRepository.save(new Function(testUser.getId(), "func1", "double f1(double x)"));
         functionRepository.save(new Function(testUser.getId(), "func2", "double f2(double x)"));
 
-        // Создаем функцию для другого пользователя
         functionRepository.save(new Function(otherUser.getId(), "func3", "double f3(double x)"));
 
-        // Ищем функции только для testUser
         List<Function> userFunctions = functionRepository.findByUserId(testUser.getId());
 
         assertEquals(2, userFunctions.size());

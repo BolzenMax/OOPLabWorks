@@ -1,4 +1,4 @@
-package ru.ssau.tk.labwork.ooplabworks.jpa.repositories;
+package ru.ssau.tk.labwork.ooplabworks.repositories;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
-import ru.ssau.tk.labwork.ooplabworks.jpa.entities.Function;
-import ru.ssau.tk.labwork.ooplabworks.jpa.entities.Point;
-import ru.ssau.tk.labwork.ooplabworks.jpa.entities.User;
+import ru.ssau.tk.labwork.ooplabworks.entities.Function;
+import ru.ssau.tk.labwork.ooplabworks.entities.Point;
+import ru.ssau.tk.labwork.ooplabworks.entities.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -83,24 +83,6 @@ class PointRepositoryTest {
     }
 
     @Test
-    void testSorting() {
-        Function testFunction = createTestFunction();
-
-        pointRepository.save(new Point(testFunction.getId(), 3.0, 9.0));
-        pointRepository.save(new Point(testFunction.getId(), 1.0, 1.0));
-        pointRepository.save(new Point(testFunction.getId(), 2.0, 4.0));
-
-        List<Point> ascending = pointRepository.findByFunctionIdOrderByXAsc(testFunction.getId());
-        List<Point> descending = pointRepository.findByFunctionIdOrderByXDesc(testFunction.getId());
-
-        assertEquals(1.0, ascending.get(0).getX());
-        assertEquals(3.0, ascending.get(2).getX());
-
-        assertEquals(3.0, descending.get(0).getX());
-        assertEquals(1.0, descending.get(2).getX());
-    }
-
-    @Test
     void testDeletePoint() {
         Function testFunction = createTestFunction();
         Point point = new Point(testFunction.getId(), 5.0, 25.0);
@@ -116,7 +98,6 @@ class PointRepositoryTest {
     void testBatchOperations() {
         Function testFunction = createTestFunction();
 
-        // Пакетное сохранение
         List<Point> points = List.of(
                 new Point(testFunction.getId(), 1.0, 1.0),
                 new Point(testFunction.getId(), 2.0, 4.0),

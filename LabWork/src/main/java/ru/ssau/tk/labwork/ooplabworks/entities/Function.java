@@ -1,4 +1,4 @@
-package ru.ssau.tk.labwork.ooplabworks.jpa.entities;
+package ru.ssau.tk.labwork.ooplabworks.entities;
 
 import jakarta.persistence.*;
 

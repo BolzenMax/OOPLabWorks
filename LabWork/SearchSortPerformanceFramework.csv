@@ -1,0 +1,17 @@
+Операция,Время (мс)
+search_users_by_login_pattern,0.91
+search_users_by_role,0.83
+search_functions_by_name,1.78
+search_functions_by_user_id,0.51
+search_functions_combined,0.26
+search_points_by_function_id,0.77
+search_points_by_x_range,0.67
+sort_users_by_login_asc,0.77
+sort_users_by_login_desc,0.65
+sort_users_by_id_asc,0.53
+sort_functions_by_name_asc,3.13
+sort_functions_by_user_id_asc,1.32
+sort_points_by_x_asc,10.44
+sort_points_by_function_id_asc,9.09
+sort_points_by_function_x_asc,0.50
+sort_points_by_function_x_desc,0.47

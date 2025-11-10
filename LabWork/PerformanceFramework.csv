@@ -1,0 +1,16 @@
+Операция,Время (мс)
+user_create,1808
+user_find_by_id,1371
+user_find_by_login,1772
+user_update,3075
+function_create,0
+function_find_by_id,0
+function_find_by_user_id,0
+function_update,0
+point_create,0
+point_find_by_id,0
+point_find_by_function_id,0
+point_update,0
+point_delete_all,597
+function_delete_all,52
+user_delete_all,514
