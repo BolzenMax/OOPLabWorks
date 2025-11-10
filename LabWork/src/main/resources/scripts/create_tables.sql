@@ -1,7 +1,7 @@
 CREATE TABLE users (
                        id SERIAL PRIMARY KEY,
                        login VARCHAR(255) UNIQUE NOT NULL,
-                       role VARCHAR(255) DEFAULT 'USER',
+                       role VARCHAR(255) DEFAULT 'CIVIL',
                        password VARCHAR(255),
                        enabled BOOLEAN NOT NULL
 );
