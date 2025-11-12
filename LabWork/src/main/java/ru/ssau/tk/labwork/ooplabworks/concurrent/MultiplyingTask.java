@@ -9,6 +9,8 @@ public class MultiplyingTask implements Runnable {
     public MultiplyingTask(TabulatedFunction function) {
         this.function = function;
     }
+
+
     @Override
     public void run() {
         for (int i = 0; i < function.getCount(); i++){
