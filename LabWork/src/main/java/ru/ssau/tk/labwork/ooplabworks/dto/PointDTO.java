@@ -1,4 +1,4 @@
-package ru.ssau.tk.labwork.ooplabworks.DTO;
+package ru.ssau.tk.labwork.ooplabworks.dto;
 
 
 public class PointDTO {
