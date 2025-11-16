@@ -26,3 +26,9 @@
 | Select 10k | 780       |
 | Update 10k | 665       |
 | Delete 10k | 587       |
+
+## Test: sorting 10 000 users
+
+| Layer / DAO Type | Time (ms) |
+|------------------|-----------|
+| Manual DAO       | 150    |

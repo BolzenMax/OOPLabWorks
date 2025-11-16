@@ -22,4 +22,5 @@ public interface UsersDao {
 
     // DELETE
     boolean delete(int id);
+    List<UserDTO> findAllSortedBy(String field);
 }

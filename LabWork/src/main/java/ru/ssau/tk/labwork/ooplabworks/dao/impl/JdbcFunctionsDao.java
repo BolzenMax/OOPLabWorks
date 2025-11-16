@@ -130,4 +130,56 @@ public class JdbcFunctionsDao implements FunctionsDao {
                 rs.getString("signature")
         );
     }
+    @Override
+    public List<FunctionDTO> findByName(String name) {
+        String sql = "SELECT * FROM functions WHERE name = ?";
+
+        log.debug("SELECT Functions by name={}", name);
+
+        try (Connection c = ds.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+
+            List<FunctionDTO> list = new ArrayList<>();
+            while (rs.next()) list.add(map(rs));
+
+            return list;
+
+        } catch (SQLException e) {
+            log.error("findByName failed", e);
+            throw new RuntimeException(e);
+        }
+    }
+    @Override
+    public List<FunctionDTO> findByNames(Collection<String> names) {
+        if (names == null || names.isEmpty()) return List.of();
+
+        String placeholders = String.join(",", Collections.nCopies(names.size(), "?"));
+        String sql = "SELECT * FROM functions WHERE name IN (" + placeholders + ")";
+
+        log.debug("SELECT Functions by names={}", names);
+
+        try (Connection c = ds.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
+
+            int index = 1;
+            for (String n : names) {
+                ps.setString(index++, n);
+            }
+
+            ResultSet rs = ps.executeQuery();
+
+            List<FunctionDTO> list = new ArrayList<>();
+            while (rs.next()) list.add(map(rs));
+
+            return list;
+
+        } catch (SQLException e) {
+            log.error("findByNames failed", e);
+            throw new RuntimeException(e);
+        }
+    }
+
 }

@@ -164,4 +164,28 @@ public class JdbcUsersDao implements UsersDao {
                 rs.getBoolean("enabled")
         );
     }
+    @Override
+    public List<UserDTO> findAllSortedBy(String field) {
+        log.debug("findAllSortedBy field={}", field);
+
+        // защищаемся от SQL injection
+        if (!Set.of("login", "role", "enabled", "id").contains(field)) {
+            throw new IllegalArgumentException("Invalid sort field: " + field);
+        }
+
+        String sql = "SELECT * FROM users ORDER BY " + field;
+
+        try (Connection c = ds.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            List<UserDTO> list = new ArrayList<>();
+            while (rs.next()) list.add(map(rs));
+            return list;
+
+        } catch (SQLException e) {
+            log.error("findAllSortedBy failed", e);
+            throw new RuntimeException(e);
+        }
+    }
 }

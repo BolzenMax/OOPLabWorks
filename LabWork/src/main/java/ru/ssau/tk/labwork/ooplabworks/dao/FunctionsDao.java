@@ -2,6 +2,7 @@ package ru.ssau.tk.labwork.ooplabworks.dao;
 
 import ru.ssau.tk.labwork.ooplabworks.dto.FunctionDTO;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,4 +21,7 @@ public interface FunctionsDao {
 
     // DELETE
     boolean delete(int id);
+    List<FunctionDTO> findByName(String name);
+
+    List<FunctionDTO> findByNames(Collection<String> names);
 }
