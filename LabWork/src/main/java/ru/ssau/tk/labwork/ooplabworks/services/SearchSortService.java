@@ -11,7 +11,7 @@ import ru.ssau.tk.labwork.ooplabworks.repositories.FunctionRepository;
 import ru.ssau.tk.labwork.ooplabworks.repositories.PointRepository;
 import ru.ssau.tk.labwork.ooplabworks.repositories.UserRepository;
 
-import java.util.List;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -111,5 +111,54 @@ public class SearchSortService {
         log.debug("Поиск всех точЕК с сортировкой по X (по возрастанию: {})", ascending);
         Sort sort = ascending ? Sort.by(Sort.Direction.ASC, "x") : Sort.by(Sort.Direction.DESC, "x");
         return pointRepository.findAll(sort);
+    }
+
+    // иерархия
+
+    public UserHierarchy getUserHierarchy(Long userId) {
+        log.info("Данные о пользователе с ID: {}", userId);
+
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isEmpty()) {
+            return null;
+        }
+
+        List<Function> functions = functionRepository.findByUserId(userId);
+        Map<Long, List<Point>> functionPoints = new HashMap<>();
+
+        for (Function function : functions) {
+            List<Point> points = pointRepository.findByFunctionId(function.getId());
+            functionPoints.put(function.getId(), points);
+        }
+
+        return new UserHierarchy(user.get(), functions, functionPoints);
+    }
+
+    public static class UserHierarchy { // вспомогательный класс
+        private final User user;
+        private final List<Function> functions;
+        private final Map<Long, List<Point>> functionPoints;
+
+        public UserHierarchy(User user, List<Function> functions, Map<Long, List<Point>> functionPoints) {
+            this.user = user;
+            this.functions = functions;
+            this.functionPoints = functionPoints;
+        }
+
+        public User getUser() {
+            return user;
+        }
+
+        public List<Function> getFunctions() {
+            return functions;
+        }
+
+        public Map<Long, List<Point>> getFunctionPoints() {
+            return functionPoints;
+        }
+
+        public List<Point> getPointsForFunction(Long functionId) {
+            return functionPoints.getOrDefault(functionId, new ArrayList<>());
+        }
     }
 }
