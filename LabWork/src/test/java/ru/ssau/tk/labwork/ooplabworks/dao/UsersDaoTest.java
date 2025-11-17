@@ -41,7 +41,7 @@ class UsersDaoTest {
         );
 
         // schema.sql
-        String schema = new String(Files.readAllBytes(Paths.get("src/main/resources/schema.sql")));
+        String schema = new String(Files.readAllBytes(Paths.get("src/main/resources/scripts/schema.sql")));
         try (Connection c = ds.getConnection(); Statement st = c.createStatement()) {
             st.execute(schema);
         }
