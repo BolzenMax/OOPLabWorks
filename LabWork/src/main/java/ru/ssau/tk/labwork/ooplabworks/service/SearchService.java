@@ -25,67 +25,8 @@ public class SearchService {
         this.pointsDao = pointsDao;
     }
 
-    // DFS — поиск в глубину (User -> Function -> Points)
 
-    public List<Object> depthFirstSearch(int rootUserId) {
-        log.info("DFS start from user {}", rootUserId);
 
-        List<Object> result = new ArrayList<>();
-        UserDTO user = usersDao.findById(rootUserId)
-                .orElseThrow(() -> new IllegalArgumentException("User not found"));
-
-        dfsUser(user, result);
-        return result;
-    }
-
-    private void dfsUser(UserDTO user, List<Object> result) {
-        result.add(user);
-        log.debug("DFS: visit User {}", user.getId());
-
-        List<FunctionDTO> functions = functionsDao.findByUserId(user.getId());
-
-        for (FunctionDTO f : functions) {
-            result.add(f);
-            log.debug("DFS: visit Function {}", f.getId());
-
-            List<PointDTO> points = pointsDao.findByFunctionId(f.getId());
-            result.addAll(points);
-
-            for (PointDTO p : points) {
-                log.debug("DFS: visit Point {}", p.getId());
-            }
-        }
-    }
-
-    // BFS — поиск в ширину
-    public List<Object> breadthFirstSearch() {
-        log.info("BFS start");
-
-        List<Object> result = new ArrayList<>();
-
-        Queue<Object> queue = new LinkedList<>();
-
-        // 1 уровень — Users
-        List<UserDTO> users = usersDao.findAll();
-        queue.addAll(users);
-
-        while (!queue.isEmpty()) {
-            Object obj = queue.poll();
-            result.add(obj);
-
-            if (obj instanceof UserDTO user) {
-                log.debug("BFS: user {}", user.getId());
-                queue.addAll(functionsDao.findByUserId(user.getId()));
-            } else if (obj instanceof FunctionDTO function) {
-                log.debug("BFS: function {}", function.getId());
-                queue.addAll(pointsDao.findByFunctionId(function.getId()));
-            } else if (obj instanceof PointDTO point) {
-                log.debug("BFS: point {}", point.getId());
-            }
-        }
-
-        return result;
-    }
 
     // Иерархический поиск ( User → Functions → Points)
     public Map<String, Object> loadUserTree(int userId) {
