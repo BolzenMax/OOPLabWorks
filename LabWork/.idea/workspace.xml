@@ -144,21 +144,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SearchSortPerformanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabWork" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.labwork.ooplabworks" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.labwork.ooplabworks.SearchSortPerformanceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="java in LabWork" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabWork" />
       <option name="TEST_OBJECT" value="directory" />
@@ -183,6 +168,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="repositories in LabWork" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LabWork" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/repositories" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="LabWork" />
@@ -201,10 +194,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.java in LabWork" />
+        <item itemvalue="JUnit.repositories in LabWork" />
         <item itemvalue="JUnit.ooplabworks in LabWork" />
         <item itemvalue="JUnit.PerformanceTest" />
         <item itemvalue="JUnit.performances in LabWork" />
-        <item itemvalue="JUnit.SearchSortPerformanceTest" />
       </list>
     </recent_temporary>
   </component>
