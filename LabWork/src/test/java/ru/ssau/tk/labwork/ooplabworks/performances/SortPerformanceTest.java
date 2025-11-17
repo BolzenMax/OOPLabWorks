@@ -78,7 +78,7 @@ public class SortPerformanceTest {
         Random random = new Random(42);
 
         for (int i = 0; i < 100; i++) { // 100 пользователей
-            User user = new User("user_" + i, "password_" + i);
+            User user = new User("user_" + i, "password_" + i, "civil", true);
             if (i % 10 == 0) {
                 user.setRole("ADMIN");
             }

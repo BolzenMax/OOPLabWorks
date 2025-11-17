@@ -1,10 +1,10 @@
 Операция,Время (мс)
-sort_users_by_login_asc,62.00
-sort_users_by_login_desc,46.00
-sort_users_by_id_asc,40.00
-sort_functions_by_name_asc,316.00
-sort_functions_by_user_id_asc,140.00
-sort_points_by_x_asc,1059.00
-sort_points_by_function_id_asc,941.00
+sort_users_by_login_asc,83.00
+sort_users_by_login_desc,58.00
+sort_users_by_id_asc,51.00
+sort_functions_by_name_asc,310.00
+sort_functions_by_user_id_asc,127.00
+sort_points_by_x_asc,1047.00
+sort_points_by_function_id_asc,924.00
 sort_points_by_function_x_asc,60.00
-sort_points_by_function_x_desc,53.00
+sort_points_by_function_x_desc,58.00

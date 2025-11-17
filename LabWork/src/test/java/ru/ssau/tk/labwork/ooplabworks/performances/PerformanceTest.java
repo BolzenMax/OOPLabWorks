@@ -62,7 +62,7 @@ public class PerformanceTest {
 
         long startTime = System.currentTimeMillis(); // 10000 юзеров
         for (int i = 0; i < RECORDS_COUNT; i++) {
-            User user = new User("test_user_" + i, "password_" + i);
+            User user = new User("test_user_" + i, "password_" + i, "civil", true);
             if (i % 10 == 0) {
                 user.setRole("ADMIN");
             }
@@ -111,7 +111,7 @@ public class PerformanceTest {
     void function_crud_operations() {
         List<User> users = new ArrayList<>();
         for (int i = 0; i < 1; i++) { // юзер
-            User user = new User("func_user_" + i, "pass_" + i);
+            User user = new User("func_user_" + i, "pass_" + i, "civil", true);
             users.add(userRepository.save(user));
         }
         userRepository.flush();
@@ -168,7 +168,7 @@ public class PerformanceTest {
     @Test
     @Order(3)
     void point_crud_operations() {
-        User user = userRepository.save(new User("point_user", "pass"));
+        User user = userRepository.save(new User("point_user", "pass", "civil", true));
         List<Function> functions = new ArrayList<>();
         for (int i = 0; i < 1; i++) { // функция
             Function function = new Function(user.getId(), "point_func_" + i, "sig_" + i);
@@ -232,7 +232,7 @@ public class PerformanceTest {
         long startTime = System.currentTimeMillis();
 
         for (int i = 0; i < 10000; i++) { // 10000 человек
-            User user = new User("delete_user_" + i, "password_" + i);
+            User user = new User("delete_user_" + i, "password_" + i, "civil", true);
             usersToDelete.add(userRepository.save(user));
             if (i % 100 == 0) {
                 userRepository.flush();
@@ -251,7 +251,7 @@ public class PerformanceTest {
     @Test
     @Order(5)
     void delete_functions_operations() {
-        User user = userRepository.save(new User("delete_this_user", "pass_user"));
+        User user = userRepository.save(new User("delete_this_user", "pass_user", "civil", true));
         List<Function> functionsToDelete = new ArrayList<>();
         for (int i = 0; i < 10000; i++) { // 100 функций
             Function function = new Function(user.getId(), "del_func_" + i, "sig");
@@ -270,7 +270,7 @@ public class PerformanceTest {
     @Test
     @Order(6)
     void delete_points_operations() {
-        User user = userRepository.save(new User("delete_user", "pass"));
+        User user = userRepository.save(new User("delete_user", "pass", "civil", true));
         Function function = functionRepository.save(new Function(user.getId(), "del_func_", "sig"));
         List<Function> functions = new ArrayList<>();
         List<Point> points = new ArrayList<>();

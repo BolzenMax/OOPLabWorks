@@ -28,7 +28,7 @@ class UserRepositoryTest {
 
     @Test
     void testSaveAndFindUser() {
-        User user = new User("testuser", "password123");
+        User user = new User("testuser", "password123", "civil", true);
         User savedUser = userRepository.save(user);
 
         Optional<User> foundUser = userRepository.findById(savedUser.getId());
@@ -40,7 +40,7 @@ class UserRepositoryTest {
 
     @Test
     void testFindByLogin() {
-        User user = new User("uniqueuser", "password");
+        User user = new User("uniqueuser", "password", "civil", true);
         userRepository.save(user);
 
         Optional<User> foundUser = userRepository.findByLogin("uniqueuser");
@@ -51,9 +51,9 @@ class UserRepositoryTest {
 
     @Test
     void testFindByLoginContaining() {
-        userRepository.save(new User("john_doe", "pass1"));
-        userRepository.save(new User("jane_doe", "pass2"));
-        userRepository.save(new User("bob_smith", "pass3"));
+        userRepository.save(new User("john_doe", "pass1", "civil", true));
+        userRepository.save(new User("jane_doe", "pass2", "civil", true));
+        userRepository.save(new User("bob_smith", "pass3", "civil", true));
 
         List<User> users = userRepository.findByLoginContaining("doe");
 
@@ -64,11 +64,11 @@ class UserRepositoryTest {
 
     @Test
     void testFindByRole() {
-        User admin = new User("admin", "adminpass");
+        User admin = new User("admin", "adminpass", "civil", true);
         admin.setRole("admin");
         userRepository.save(admin);
 
-        userRepository.save(new User("user1", "pass1"));
+        userRepository.save(new User("user1", "pass1", "civil", true));
 
         List<User> admins = userRepository.findByRole("admin");
         List<User> civilians = userRepository.findByRole("civil");
@@ -80,7 +80,7 @@ class UserRepositoryTest {
 
     @Test
     void testDeleteUser() {
-        User user = new User("todelete", "password");
+        User user = new User("todelete", "password", "civil", true);
         User savedUser = userRepository.save(user);
 
         userRepository.deleteById(savedUser.getId());

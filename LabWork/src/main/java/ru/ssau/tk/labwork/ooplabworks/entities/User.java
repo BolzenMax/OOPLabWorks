@@ -18,11 +18,16 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private boolean enabled = true;
+
     public User() {}
 
-    public User(String login, String password) {
+    public User(String login, String password, String role, boolean enabled) {
         this.login = login;
         this.password = password;
+        this.role = role;
+        this.enabled = enabled;
     }
 
     public Long getId() {
@@ -55,5 +60,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

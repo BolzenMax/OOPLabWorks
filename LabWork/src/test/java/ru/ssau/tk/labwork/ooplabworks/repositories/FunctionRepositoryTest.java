@@ -45,7 +45,7 @@ class FunctionRepositoryTest {
     @Test
     void testFindByUserId() {
         User testUser = createTestUser();
-        User otherUser = createUser("other", "pass");
+        User otherUser = createUser("other", "pass", "civil", true);
 
         functionRepository.save(new Function(testUser.getId(), "func1", "double f1(double x)"));
         functionRepository.save(new Function(testUser.getId(), "func2", "double f2(double x)"));
@@ -76,7 +76,7 @@ class FunctionRepositoryTest {
     @Test
     void testFindByUserIdAndNameContaining() {
         User testUser = createTestUser();
-        User otherUser = createUser("other", "pass");
+        User otherUser = createUser("other", "pass", "civil", true);
 
         functionRepository.save(new Function(testUser.getId(), "linear_function", "double linear(double x)"));
         functionRepository.save(new Function(testUser.getId(), "quadratic_function", "double quadratic(double x)"));
@@ -102,11 +102,11 @@ class FunctionRepositoryTest {
     }
 
     private User createTestUser() {
-        return createUser("testuser", "password");
+        return createUser("testuser", "password", "civil", true);
     }
 
-    private User createUser(String login, String password) {
-        User user = new User(login, password);
+    private User createUser(String login, String password, String role, boolean enabled) {
+        User user = new User(login, password, role, enabled);
         return userRepository.save(user);
     }
 }
