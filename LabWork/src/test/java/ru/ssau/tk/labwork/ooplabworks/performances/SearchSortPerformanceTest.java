@@ -124,7 +124,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("search_users_by_login_pattern", avgTime);
     }
 
@@ -139,7 +139,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("search_users_by_role", avgTime);
     }
 
@@ -154,7 +154,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("search_functions_by_name", avgTime);
     }
 
@@ -169,7 +169,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("search_functions_by_user_id", avgTime);
     }
 
@@ -184,7 +184,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("search_functions_combined", avgTime);
     }
 
@@ -199,7 +199,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("search_points_by_function_id", avgTime);
     }
 
@@ -214,7 +214,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("search_points_by_x_range", avgTime);
     }
 
@@ -231,7 +231,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_users_by_login_asc", avgTime);
     }
 
@@ -246,7 +246,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_users_by_login_desc", avgTime);
     }
 
@@ -261,7 +261,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_users_by_id_asc", avgTime);
     }
 
@@ -276,7 +276,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_functions_by_name_asc", avgTime);
     }
 
@@ -291,7 +291,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_functions_by_user_id_asc", avgTime);
     }
 
@@ -306,7 +306,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_points_by_x_asc", avgTime);
     }
 
@@ -321,7 +321,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_points_by_function_id_asc", avgTime);
     }
 
@@ -336,7 +336,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_points_by_function_x_asc", avgTime);
     }
 
@@ -351,7 +351,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_points_by_function_x_desc", avgTime);
     }
 }

@@ -74,7 +74,7 @@ public class PerformanceTest {
         }
         userRepository.flush();
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / RECORDS_COUNT;
+        double avgTime = (double) totalTime;
         appendResult("user_create", avgTime);
 
         startTime = System.currentTimeMillis();
@@ -82,7 +82,7 @@ public class PerformanceTest {
             userRepository.findById(user.getId()).orElse(null);
         }
         totalTime = System.currentTimeMillis() - startTime;
-        avgTime = (double) totalTime / RECORDS_COUNT;
+        avgTime = (double) totalTime;
         appendResult("user_find_by_id", avgTime);
 
         startTime = System.currentTimeMillis();
@@ -90,7 +90,7 @@ public class PerformanceTest {
             userRepository.findByLogin(user.getLogin()).orElse(null);
         }
         totalTime = System.currentTimeMillis() - startTime;
-        avgTime = (double) totalTime / RECORDS_COUNT;
+        avgTime = (double) totalTime;
         appendResult("user_find_by_login", avgTime);
 
         startTime = System.currentTimeMillis();
@@ -100,7 +100,7 @@ public class PerformanceTest {
         }
         userRepository.flush();
         totalTime = System.currentTimeMillis() - startTime;
-        avgTime = (double) totalTime / RECORDS_COUNT;
+        avgTime = (double) totalTime;
         appendResult("user_update", avgTime);
     }
 
@@ -110,7 +110,7 @@ public class PerformanceTest {
     @Order(2)
     void function_crud_operations() {
         List<User> users = new ArrayList<>();
-        for (int i = 0; i < 100; i++) { // 100 юзеров
+        for (int i = 0; i < 1; i++) { // юзер
             User user = new User("func_user_" + i, "pass_" + i);
             users.add(userRepository.save(user));
         }
@@ -121,7 +121,7 @@ public class PerformanceTest {
         long startTime = System.currentTimeMillis();
         int count = 0;
         for (User user : users) {
-            for (int j = 0; j < 100; j++) { // 100 функций
+            for (int j = 0; j < 10000; j++) { // 10000 функций
                 Function function = new Function(user.getId(), "function_" + count, "signature_" + count);
                 function = functionRepository.save(function);
                 createdFunctions.add(function);
@@ -133,7 +133,7 @@ public class PerformanceTest {
         }
         functionRepository.flush();
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / RECORDS_COUNT;
+        double avgTime = (double) totalTime;
         appendResult("function_create", avgTime);
 
         startTime = System.currentTimeMillis();
@@ -141,7 +141,7 @@ public class PerformanceTest {
             functionRepository.findById(function.getId()).orElse(null);
         }
         totalTime = System.currentTimeMillis() - startTime;
-        avgTime = (double) totalTime / RECORDS_COUNT;
+        avgTime = (double) totalTime;
         appendResult("function_find_by_id", avgTime);
 
         startTime = System.currentTimeMillis();
@@ -149,7 +149,7 @@ public class PerformanceTest {
             functionRepository.findByUserId(user.getId());
         }
         totalTime = System.currentTimeMillis() - startTime;
-        avgTime = (double) totalTime / users.size();
+        avgTime = (double) totalTime;
         appendResult("function_find_by_user_id", avgTime);
 
         startTime = System.currentTimeMillis();
@@ -159,7 +159,7 @@ public class PerformanceTest {
         }
         functionRepository.flush();
         totalTime = System.currentTimeMillis() - startTime;
-        avgTime = (double) totalTime / RECORDS_COUNT;
+        avgTime = (double) totalTime;
         appendResult("function_update", avgTime);
     }
 
@@ -170,7 +170,7 @@ public class PerformanceTest {
     void point_crud_operations() {
         User user = userRepository.save(new User("point_user", "pass"));
         List<Function> functions = new ArrayList<>();
-        for (int i = 0; i < 1000; i++) { // 1000 функций
+        for (int i = 0; i < 1; i++) { // функция
             Function function = new Function(user.getId(), "point_func_" + i, "sig_" + i);
             functions.add(functionRepository.save(function));
         }
@@ -181,7 +181,7 @@ public class PerformanceTest {
         long startTime = System.currentTimeMillis();
         int count = 0;
         for (Function function : functions) {
-            for (int j = 0; j < 10; j++) { // 10 точек
+            for (int j = 0; j < 10000; j++) { // 10 точек
                 Point point = new Point(function.getId(), random.nextDouble() * 100, random.nextDouble() * 100);
                 point = pointRepository.save(point);
                 createdPoints.add(point);
@@ -193,7 +193,7 @@ public class PerformanceTest {
         }
         pointRepository.flush();
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / RECORDS_COUNT;
+        double avgTime = (double) totalTime;
         appendResult("point_create", avgTime);
 
         startTime = System.currentTimeMillis();
@@ -201,7 +201,7 @@ public class PerformanceTest {
             pointRepository.findById(point.getId()).orElse(null);
         }
         totalTime = System.currentTimeMillis() - startTime;
-        avgTime = (double) totalTime / RECORDS_COUNT;
+        avgTime = (double) totalTime;
         appendResult("point_find_by_id", avgTime);
 
         startTime = System.currentTimeMillis();
@@ -209,7 +209,7 @@ public class PerformanceTest {
             pointRepository.findByFunctionId(function.getId());
         }
         totalTime = System.currentTimeMillis() - startTime;
-        avgTime = (double) totalTime / functions.size();
+        avgTime = (double) totalTime;
         appendResult("point_find_by_function_id", avgTime);
 
         startTime = System.currentTimeMillis();
@@ -219,7 +219,7 @@ public class PerformanceTest {
         }
         pointRepository.flush();
         totalTime = System.currentTimeMillis() - startTime;
-        avgTime = (double) totalTime / RECORDS_COUNT;
+        avgTime = (double) totalTime;
         appendResult("point_update", avgTime);
     }
 
@@ -227,47 +227,11 @@ public class PerformanceTest {
 
     @Test
     @Order(4)
-    void delete_points_and_functions_operations() {
-        User user = userRepository.save(new User("delete_user", "pass"));
-        List<Function> functions = new ArrayList<>();
-        List<Point> points = new ArrayList<>();
-
-        for (int i = 0; i < 100; i++) { // 100 функций
-            Function function = new Function(user.getId(), "del_func_" + i, "sig");
-            functions.add(functionRepository.save(function));
-        }
-        functionRepository.flush();
-
-        for (Function function : functions) {
-            for (int j = 0; j < 100; j++) { // 100 точек
-                Point point = new Point(function.getId(), random.nextDouble() * 100, random.nextDouble() * 100);
-                points.add(pointRepository.save(point));
-            }
-        }
-        pointRepository.flush();
-
-        long startTime = System.currentTimeMillis();
-        pointRepository.deleteAll(points);
-        pointRepository.flush();
-        long duration = System.currentTimeMillis() - startTime;
-        double avgTime = (double) duration / 10000;
-        appendResult("point_delete_all", avgTime);
-
-        startTime = System.currentTimeMillis();
-        functionRepository.deleteAll(functions);
-        functionRepository.flush();
-        duration = System.currentTimeMillis() - startTime;
-        avgTime = (double) duration / 100;
-        appendResult("function_delete_all", avgTime);
-    }
-
-    @Test
-    @Order(5)
     void delete_users_operations() {
         List<User> usersToDelete = new ArrayList<>();
         long startTime = System.currentTimeMillis();
 
-        for (int i = 0; i < 1000; i++) { // 1000 человек
+        for (int i = 0; i < 10000; i++) { // 10000 человек
             User user = new User("delete_user_" + i, "password_" + i);
             usersToDelete.add(userRepository.save(user));
             if (i % 100 == 0) {
@@ -280,7 +244,48 @@ public class PerformanceTest {
         userRepository.deleteAll(usersToDelete);
         userRepository.flush();
         long duration = System.currentTimeMillis() - startTime;
-        double avgTime = (double) duration / 1000;
+        double avgTime = (double) duration;
         appendResult("user_delete_all", avgTime);
+    }
+
+    @Test
+    @Order(5)
+    void delete_functions_operations() {
+        User user = userRepository.save(new User("delete_this_user", "pass_user"));
+        List<Function> functionsToDelete = new ArrayList<>();
+        for (int i = 0; i < 10000; i++) { // 100 функций
+            Function function = new Function(user.getId(), "del_func_" + i, "sig");
+            functionsToDelete.add(functionRepository.save(function));
+        }
+        functionRepository.flush();
+
+        long startTime = System.currentTimeMillis();
+        functionRepository.deleteAll(functionsToDelete);
+        functionRepository.flush();
+        long duration = System.currentTimeMillis() - startTime;
+        double avgTime = (double) duration;
+        appendResult("function_delete_all", avgTime);
+    }
+
+    @Test
+    @Order(6)
+    void delete_points_operations() {
+        User user = userRepository.save(new User("delete_user", "pass"));
+        Function function = functionRepository.save(new Function(user.getId(), "del_func_", "sig"));
+        List<Function> functions = new ArrayList<>();
+        List<Point> points = new ArrayList<>();
+
+        for (int j = 0; j < 10000; j++) { // 10000 точек
+            Point point = new Point(function.getId(), random.nextDouble() * 100, random.nextDouble() * 100);
+            points.add(pointRepository.save(point));
+        }
+        pointRepository.flush();
+
+        long startTime = System.currentTimeMillis();
+        pointRepository.deleteAll(points);
+        pointRepository.flush();
+        long duration = System.currentTimeMillis() - startTime;
+        double avgTime = (double) duration;
+        appendResult("point_delete_all", avgTime);
     }
 }
