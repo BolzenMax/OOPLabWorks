@@ -8,9 +8,7 @@
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PerformanceFramework.csv" beforeDir="false" afterPath="$PROJECT_DIR$/PerformanceFramework.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SearchSortPerformanceFramework.csv" beforeDir="false" afterPath="$PROJECT_DIR$/SearchSortPerformanceFramework.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/PerformanceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/SearchSortPerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/SearchSortPerformanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SortPerformanceFramework.csv" beforeDir="false" afterPath="$PROJECT_DIR$/SortPerformanceFramework.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,69 +56,69 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.LinkedListTabulatedFunctionSerialization.executor": "Run",
-    "Application.MultiplyingTaskExecutor.executor": "Run",
-    "Application.ReadWriteTaskExecutor.executor": "Run",
-    "Application.TabulatedFunctionFileInputStream.executor": "Run",
-    "Application.TabulatedFunctionFileOutputStream.executor": "Run",
-    "JUnit.AbstractTabulatedFunctionTest.executor": "Run",
-    "JUnit.ArrayTabulatedFunctionFactoryTest.executor": "Run",
-    "JUnit.CompositeFunctionTest.executor": "Coverage",
-    "JUnit.ConstantFunctionTest.executor": "Coverage",
-    "JUnit.FunctionRepositoryTest.executor": "Coverage",
-    "JUnit.IdentityFunctionTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.InterpolateExceptionTest.executor": "Coverage",
-    "JUnit.LinkedListTabulatedFunctionTest.executor": "Coverage",
-    "JUnit.PerformanceTest.delete_functions_operations.executor": "Coverage",
-    "JUnit.PerformanceTest.executor": "Coverage",
-    "JUnit.PointRepositoryTest.executor": "Coverage",
-    "JUnit.PointRepositoryTest.testFindByFunctionId.executor": "Debug",
-    "JUnit.SearchServiceTest.executor": "Coverage",
-    "JUnit.SearchSortPerformanceTest.executor": "Coverage",
-    "JUnit.SimpleIterationsMethodTest.executor": "Coverage",
-    "JUnit.UserRepositoryTest.executor": "Coverage",
-    "JUnit.UserServiceTest.executor": "Coverage",
-    "JUnit.java in LabWork.executor": "Coverage",
-    "JUnit.jpa in LabWork.executor": "Coverage",
-    "JUnit.ooplabworks in LabWork.executor": "Coverage",
-    "JUnit.performances in LabWork.executor": "Coverage",
-    "JUnit.repositories in LabWork.executor": "Coverage",
-    "JUnit.ru.ssau.tk.labwork.ooplabworks in LabWork.executor": "Coverage",
-    "JUnit.ru.ssau.tk.labwork.ooplabworks.functions in LabWork.executor": "Coverage",
-    "JUnit.ru.ssau.tk.labwork.ooplabworks.jpa.services in LabWork.executor": "Coverage",
-    "JUnit.services in LabWork.executor": "Coverage",
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.Application.executor": "Debug",
-    "git-widget-placeholder": "framework",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "SQL Dialects",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.LinkedListTabulatedFunctionSerialization.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MultiplyingTaskExecutor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ReadWriteTaskExecutor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TabulatedFunctionFileInputStream.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TabulatedFunctionFileOutputStream.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AbstractTabulatedFunctionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArrayTabulatedFunctionFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CompositeFunctionTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ConstantFunctionTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.FunctionRepositoryTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.IdentityFunctionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.InterpolateExceptionTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.PerformanceTest.delete_functions_operations.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.PerformanceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.PointRepositoryTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.PointRepositoryTest.testFindByFunctionId.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.SearchServiceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.SearchSortPerformanceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.SimpleIterationsMethodTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserRepositoryTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.java in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.jpa in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ooplabworks in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.performances in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.repositories in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ru.ssau.tk.labwork.ooplabworks in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ru.ssau.tk.labwork.ooplabworks.functions in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ru.ssau.tk.labwork.ooplabworks.jpa.services in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.services in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Application.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;framework&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SQL Dialects&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\voroz\IdeaProjects\OOPLabWorks\LabWork\input" />
@@ -130,7 +128,7 @@
       <recent name="ru.ssau.tk.labwork.ooplabworks.operations" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SearchSortPerformanceTest">
+  <component name="RunManager" selected="JUnit.java in LabWork">
     <configuration name="PerformanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabWork" />
       <extension name="coverage">
@@ -210,11 +208,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.java in LabWork" />
         <item itemvalue="JUnit.SearchSortPerformanceTest" />
         <item itemvalue="JUnit.PerformanceTest" />
         <item itemvalue="JUnit.PerformanceTest.delete_functions_operations" />
         <item itemvalue="JUnit.ooplabworks in LabWork" />
-        <item itemvalue="JUnit.java in LabWork" />
       </list>
     </recent_temporary>
   </component>
@@ -747,7 +745,7 @@
     <SUITE FILE_PATH="coverage/LabWork$LinkedListTabulatedFunctionTest.ic" NAME="LinkedListTabulatedFunctionTest Coverage Results" MODIFIED="1760104542689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$java_in_LabWork.ic" NAME="java in LabWork Coverage Results" MODIFIED="1763363862665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/LabWork$java_in_LabWork.ic" NAME="java in LabWork Coverage Results" MODIFIED="1763394225633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_functions_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.functions in LabWork Coverage Results" MODIFIED="1760333377610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
