@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Final">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="чуть-чуть подкорректировал сервисы">
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/dto/AuthRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/dto/FunctionRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/dto/FunctionResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/dto/PointRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/dto/PointResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/dto/UserRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/dto/UserResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -226,14 +233,6 @@
       <workItem from="1762749632658" duration="14319000" />
       <workItem from="1763366305072" duration="3595000" />
       <workItem from="1763395907263" duration="856000" />
-    </task>
-    <task id="LOCAL-00011" summary="Добавил ещё тестов для IdentityFunction">
-      <option name="closed" value="true" />
-      <created>1759128407228</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1759128407228</updated>
     </task>
     <task id="LOCAL-00012" summary="Добавил тесты для CompositeFunction. Скорее всего потом надо будет залить ещё...">
       <option name="closed" value="true" />
@@ -619,7 +618,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763394612023</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="чуть-чуть подкорректировал сервисы">
+      <option name="closed" value="true" />
+      <created>1763962586119</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1763962586119</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +656,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Предварительно реализовал TabulatedDifferentialOperator. Для окончательной реализации и покрытия тестами жду напарника" />
     <MESSAGE value="Предварительно реализовал toString в AbstractTabulatedFunction. Для окончательной реализации и покрытия тестами надо сделать предыдущие задачи" />
     <MESSAGE value="Реализовал нужным образом iterator в LinkedListTabulatedFunction и тесты через while и for-each" />
     <MESSAGE value="Реализовал TabulatedDifferentialOperator и покрыл его тестами. Тест для него в пакете operations" />
@@ -674,7 +680,8 @@
     <MESSAGE value="А кто такие фиксики? Большой-большой секрет!" />
     <MESSAGE value="Небольшой фикс Performance тестов" />
     <MESSAGE value="Final" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final" />
+    <MESSAGE value="чуть-чуть подкорректировал сервисы" />
+    <option name="LAST_COMMIT_MESSAGE" value="чуть-чуть подкорректировал сервисы" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
