@@ -1,6 +1,7 @@
 package ru.ssau.tk.labwork.ooplabworks.services;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.ssau.tk.labwork.ooplabworks.entities.Point;
@@ -9,9 +10,10 @@ import ru.ssau.tk.labwork.ooplabworks.repositories.PointRepository;
 import java.util.List;
 import java.util.Optional;
 
-@Slf4j
 @Service
 public class PointService {
+
+    private static final Logger log = LoggerFactory.getLogger(PointService.class);
 
     @Autowired
     private PointRepository pointRepository;
