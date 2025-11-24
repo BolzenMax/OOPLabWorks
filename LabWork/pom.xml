@@ -7,7 +7,8 @@
     <groupId>ru.ssau.tk.labwork.ooplabworks</groupId>
     <artifactId>LabWork</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+
+    <packaging>war</packaging>
 
     <name>LabWork</name>
 
@@ -20,6 +21,21 @@
 
     <dependencies>
 
+        <!-- Servlet API for Tomcat 10 -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>5.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- JSON -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+
         <!-- PostgreSQL JDBC Driver -->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -27,28 +43,28 @@
             <version>42.7.2</version>
         </dependency>
 
-        <!-- HikariCP Connection Pool -->
+        <!-- HikariCP -->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
             <version>5.1.0</version>
         </dependency>
 
-        <!-- SLF4J Logging API -->
+        <!-- SLF4J API -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.12</version>
         </dependency>
 
-        <!-- Logback - SLF4J Implementation -->
+        <!-- Logback -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.4.12</version>
         </dependency>
 
-        <!-- JUnit 5 -->
+        <!-- JUnit (test scope) -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -56,7 +72,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Faker for random data generation -->
+        <!-- Faker -->
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
@@ -64,7 +80,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Testcontainers (PostgreSQL) — optional but recommended -->
+        <!-- Testcontainers -->
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>postgresql</artifactId>
@@ -75,6 +91,8 @@
     </dependencies>
 
     <build>
+        <finalName>LabWork</finalName>
+
         <plugins>
 
             <!-- Compiler plugin -->
@@ -88,13 +106,23 @@
                 </configuration>
             </plugin>
 
-            <!-- JUnit 5 Plugin -->
+            <!-- Testing -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
+                </configuration>
+            </plugin>
+
+            <!-- War packaging -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
 
