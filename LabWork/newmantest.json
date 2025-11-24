@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "LabWork Complete API Tests",
-    "description": "Complete API test suite for LabWork application - All endpoints covered",
+    "description": "Complete API test suite for LabWork application",
     "version": "1.0.0"
   },
   "variable": [
@@ -48,7 +48,7 @@
   ],
   "item": [
     {
-      "name": "🔄 Setup - Generate Timestamp",
+      "name": "Setup - Generate Timestamp",
       "event": [
         {
           "listen": "prerequest",
@@ -68,7 +68,7 @@
       }
     },
     {
-      "name": "1. 🔐 Authentication Tests",
+      "name": "1. Authentication Tests",
       "item": [
         {
           "name": "1.1 Auth - User Registration",
@@ -149,7 +149,7 @@
       ]
     },
     {
-      "name": "2. 👥 Users Management Tests",
+      "name": "2. Users Management Tests",
       "item": [
         {
           "name": "2.1 Users - Create New User (Admin)",
@@ -298,7 +298,7 @@
       ]
     },
     {
-      "name": "3. 📊 Functions Management Tests",
+      "name": "3. Functions Management Tests",
       "item": [
         {
           "name": "3.1 Functions - Create Function (Admin)",
@@ -410,7 +410,7 @@
       ]
     },
     {
-      "name": "4. 📍 Points Management Tests",
+      "name": "4. Points Management Tests",
       "item": [
         {
           "name": "4.1 Points - Create Point (Admin)",
@@ -563,7 +563,7 @@
       ]
     },
     {
-      "name": "5. 🧹 Cleanup Tests",
+      "name": "5. Cleanup Tests",
       "item": [
         {
           "name": "5.1 Points - Delete Point (Admin)",
