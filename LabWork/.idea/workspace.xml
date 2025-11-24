@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="я схожу с умааааа">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Это же newman!!!">
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerformanceFramework.csv" beforeDir="false" afterPath="$PROJECT_DIR$/PerformanceFramework.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SortPerformanceFramework.csv" beforeDir="false" afterPath="$PROJECT_DIR$/SortPerformanceFramework.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,14 +230,6 @@
       <workItem from="1762749632658" duration="14319000" />
       <workItem from="1763366305072" duration="3595000" />
       <workItem from="1763395907263" duration="856000" />
-    </task>
-    <task id="LOCAL-00014" summary="Добавил защищённое поле count и метод getCount. Нужно для реализации LinkedListTabulatedFunction">
-      <option name="closed" value="true" />
-      <created>1759154171432</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1759154171432</updated>
     </task>
     <task id="LOCAL-00015" summary="УРАААААА, ОНО ЗАРАБОТАЛО, но надо добить ещё несколько моментов...">
       <option name="closed" value="true" />
@@ -618,7 +615,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763964028182</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Это же newman!!!">
+      <option name="closed" value="true" />
+      <created>1763964345667</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1763964345667</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +653,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Реализовал TabulatedDifferentialOperator и покрыл его тестами. Тест для него в пакете operations" />
     <MESSAGE value="Предварительная реализация методов умножения и деления функций в TabulatedFunctionOperationService. Для их работы жду реализации прошлых заданий напарника" />
     <MESSAGE value="Реализовал toString в AbstractTabulatedFunction. Но как его покрыть тестами..." />
     <MESSAGE value="Корректировка реализации toString в AbstractTabulatedFunction" />
@@ -673,7 +677,8 @@
     <MESSAGE value="чуть-чуть подкорректировал сервисы" />
     <MESSAGE value="dto поделены на request и response" />
     <MESSAGE value="я схожу с умааааа" />
-    <option name="LAST_COMMIT_MESSAGE" value="я схожу с умааааа" />
+    <MESSAGE value="Это же newman!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Это же newman!!!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
