@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Небольшой фикс Performance тестов">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Final">
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/services/FunctionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/services/FunctionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/services/PointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/services/PointService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/PerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/PerformanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/SortPerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances/SortPerformanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/repositories/FunctionRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/repositories/FunctionRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/repositories/PointRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/repositories/PointRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/repositories/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/repositories/UserRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +75,7 @@
     &quot;JUnit.IdentityFunctionTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.LinkedListTabulatedFunctionTest.InterpolateExceptionTest.executor&quot;: &quot;Coverage&quot;,
     &quot;JUnit.LinkedListTabulatedFunctionTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.PerformanceTest.delete_functions_operations.executor&quot;: &quot;Coverage&quot;,
     &quot;JUnit.PerformanceTest.executor&quot;: &quot;Coverage&quot;,
     &quot;JUnit.PointRepositoryTest.executor&quot;: &quot;Coverage&quot;,
     &quot;JUnit.PointRepositoryTest.testFindByFunctionId.executor&quot;: &quot;Debug&quot;,
@@ -128,7 +132,7 @@
       <recent name="ru.ssau.tk.labwork.ooplabworks.operations" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.java in LabWork">
+  <component name="RunManager" selected="JUnit.ooplabworks in LabWork">
     <configuration name="PerformanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabWork" />
       <extension name="coverage">
@@ -148,12 +152,12 @@
       <module name="LabWork" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.*" />
+          <option name="PATTERN" value="ru.ssau.tk.labwork.ooplabworks.performances.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.labwork.ooplabworks" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.labwork.ooplabworks.SearchSortPerformanceTest" />
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.labwork.ooplabworks.performances" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.labwork.ooplabworks.performances.SearchSortPerformanceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -175,10 +179,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="performances in LabWork" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="repositories in LabWork" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabWork" />
       <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/performances" />
+      <dir value="$PROJECT_DIR$/src/test/java/ru/ssau/tk/labwork/ooplabworks/repositories" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -200,11 +204,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.java in LabWork" />
         <item itemvalue="JUnit.ooplabworks in LabWork" />
-        <item itemvalue="JUnit.PerformanceTest" />
-        <item itemvalue="JUnit.performances in LabWork" />
+        <item itemvalue="JUnit.repositories in LabWork" />
+        <item itemvalue="JUnit.java in LabWork" />
         <item itemvalue="JUnit.SearchSortPerformanceTest" />
+        <item itemvalue="JUnit.PerformanceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -226,14 +230,8 @@
       <workItem from="1762668367233" duration="15096000" />
       <workItem from="1762689127782" duration="21490000" />
       <workItem from="1762749632658" duration="14319000" />
-    </task>
-    <task id="LOCAL-00010" summary="Предварительный тест метода простых итераций SimpleIterationsMethodTest">
-      <option name="closed" value="true" />
-      <created>1759055467928</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1759055467928</updated>
+      <workItem from="1763366305072" duration="3595000" />
+      <workItem from="1763395907263" duration="856000" />
     </task>
     <task id="LOCAL-00011" summary="Добавил ещё тестов для IdentityFunction">
       <option name="closed" value="true" />
@@ -619,7 +617,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762762811684</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Final">
+      <option name="closed" value="true" />
+      <created>1763394612023</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1763394612023</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +655,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Создал пакет operations и внутри него интерфейс DifferentialOperator" />
     <MESSAGE value="Предварительно реализовал TabulatedDifferentialOperator. Для окончательной реализации и покрытия тестами жду напарника" />
     <MESSAGE value="Предварительно реализовал toString в AbstractTabulatedFunction. Для окончательной реализации и покрытия тестами надо сделать предыдущие задачи" />
     <MESSAGE value="Реализовал нужным образом iterator в LinkedListTabulatedFunction и тесты через while и for-each" />
@@ -674,19 +679,19 @@
     <MESSAGE value="У тебя такой большой... коммит! Ветка framework. Небольшая перегруппировка папок. Реализованы UserService, FunctionService и PointService. Помимо этого реализованы одиночный и множественный поиск, а также сортировки в SearchSortService. Написаны perfomance-тесты обычный и поиска с сортировками, результаты по таймингам выводятся в таблицы" />
     <MESSAGE value="А кто такие фиксики? Большой-большой секрет!" />
     <MESSAGE value="Небольшой фикс Performance тестов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Небольшой фикс Performance тестов" />
+    <MESSAGE value="Final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LabWork$ConstantFunctionTest.ic" NAME="ConstantFunctionTest Coverage Results" MODIFIED="1759139056743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$ooplabworks_in_LabWork.ic" NAME="ooplabworks in LabWork Coverage Results" MODIFIED="1762763807423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/LabWork$UserServiceTest.ic" NAME="UserServiceTest Coverage Results" MODIFIED="1762703478819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.jpa.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabWork$PerformanceTest_delete_functions_operations.ic" NAME="PerformanceTest.delete_functions_operations Coverage Results" MODIFIED="1763369693707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.labwork.ooplabworks.performances.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$jpa_in_LabWork.ic" NAME="jpa in LabWork Coverage Results" MODIFIED="1762706540069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_jpa_services_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.jpa.services in LabWork Coverage Results" MODIFIED="1762696204159" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
@@ -695,6 +700,30 @@
     <SUITE FILE_PATH="coverage/LabWork$UserRepositoryTest.ic" NAME="UserRepositoryTest Coverage Results" MODIFIED="1762691692703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.jpa.repositories.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/LabWork$performances_in_LabWork.ic" NAME="performances in LabWork Coverage Results" MODIFIED="1762759850442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/LabWork$SearchServiceSortTest.ic" NAME="SearchServiceSortTest Coverage Results" MODIFIED="1763360361500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.labwork.ooplabworks.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabWork$repositories_in_LabWork.ic" NAME="repositories in LabWork Coverage Results" MODIFIED="1763363850809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/LabWork$SimpleIterationsMethodTest.ic" NAME="SimpleIterationsMethodTest Coverage Results" MODIFIED="1759135470984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabWork$CompositeFunctionTest.ic" NAME="CompositeFunctionTest Coverage Results" MODIFIED="1759139027276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabWork$FunctionsDaoTest.ic" NAME="FunctionsDaoTest Coverage Results" MODIFIED="1763363720388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.labwork.ooplabworks.dao.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabWork$SearchServiceTest.ic" NAME="SearchServiceTest Coverage Results" MODIFIED="1762696872554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.labwork.ooplabworks.jpa.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabWork$ConstantFunctionTest.ic" NAME="ConstantFunctionTest Coverage Results" MODIFIED="1759139056743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabWork$ooplabworks_in_LabWork.ic" NAME="ooplabworks in LabWork Coverage Results" MODIFIED="1763365547012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/LabWork$PointsDaoTest.ic" NAME="PointsDaoTest Coverage Results" MODIFIED="1763365250995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.labwork.ooplabworks.dao.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$services_in_LabWork.ic" NAME="services in LabWork Coverage Results" MODIFIED="1762704270339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/LabWork$FunctionRepositoryTest.ic" NAME="FunctionRepositoryTest Coverage Results" MODIFIED="1762705990760" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.jpa.repositories.*</FILTER>
@@ -702,32 +731,26 @@
     <SUITE FILE_PATH="coverage/LabWork$LinkedListTabulatedFunctionTest_InterpolateExceptionTest.ic" NAME="LinkedListTabulatedFunctionTest.InterpolateExceptionTest Coverage Results" MODIFIED="1760091802387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/LabWork$performance_in_LabWork.ic" NAME="performance in LabWork Coverage Results" MODIFIED="1763363695147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks in LabWork Coverage Results" MODIFIED="1760364842681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$repositories_in_LabWork.ic" NAME="repositories in LabWork Coverage Results" MODIFIED="1762713107387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/LabWork$performances_in_LabWork.ic" NAME="performances in LabWork Coverage Results" MODIFIED="1762759850442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
-    <SUITE FILE_PATH="coverage/LabWork$SimpleIterationsMethodTest.ic" NAME="SimpleIterationsMethodTest Coverage Results" MODIFIED="1759135470984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
+    <SUITE FILE_PATH="coverage/LabWork$dto_in_LabWork.ic" NAME="dto in LabWork Coverage Results" MODIFIED="1763363781011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/LabWork$UsersDaoTest.ic" NAME="UsersDaoTest Coverage Results" MODIFIED="1763365341882" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.labwork.ooplabworks.dao.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$LinkedListTabulatedFunctionTest.ic" NAME="LinkedListTabulatedFunctionTest Coverage Results" MODIFIED="1760104542689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$java_in_LabWork.ic" NAME="java in LabWork Coverage Results" MODIFIED="1762765046915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/LabWork$java_in_LabWork.ic" NAME="java in LabWork Coverage Results" MODIFIED="1763394477880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/LabWork$ru_ssau_tk_labwork_ooplabworks_functions_in_LabWork.ic" NAME="ru.ssau.tk.labwork.ooplabworks.functions in LabWork Coverage Results" MODIFIED="1760333377610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$CompositeFunctionTest.ic" NAME="CompositeFunctionTest Coverage Results" MODIFIED="1759139027276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.functions.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$PointRepositoryTest.ic" NAME="PointRepositoryTest Coverage Results" MODIFIED="1762691782495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.jpa.repositories.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$PerformanceTest.ic" NAME="PerformanceTest Coverage Results" MODIFIED="1762762500108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/LabWork$PerformanceTest.ic" NAME="PerformanceTest Coverage Results" MODIFIED="1763369765577" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.performances.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LabWork$SearchServiceTest.ic" NAME="SearchServiceTest Coverage Results" MODIFIED="1762696872554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>ru.ssau.tk.labwork.ooplabworks.jpa.services.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LabWork$SearchSortPerformanceTest.ic" NAME="SearchSortPerformanceTest Coverage Results" MODIFIED="1762758776135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ru.ssau.tk.labwork.ooplabworks.*</FILTER>

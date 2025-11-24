@@ -22,10 +22,10 @@ import java.util.Random;
 @SpringBootTest
 @TestPropertySource(locations = "classpath:application-test.properties")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class SearchSortPerformanceTest {
+public class SortPerformanceTest {
 
     private static final int ITERATIONS = 100;
-    private static final String CSV_FILE = "SearchSortPerformanceFramework.csv";
+    private static final String CSV_FILE = "SortPerformanceFramework.csv";
 
     @Autowired
     private UserRepository userRepository;
@@ -62,6 +62,8 @@ public class SearchSortPerformanceTest {
         } catch (IOException ignore) {}
     }
 
+    // подготовка
+
     private void prepareDataOnce() {
         if (dataPrepared) return;
 
@@ -76,7 +78,7 @@ public class SearchSortPerformanceTest {
         Random random = new Random(42);
 
         for (int i = 0; i < 100; i++) { // 100 пользователей
-            User user = new User("user_" + i, "password_" + i);
+            User user = new User("user_" + i, "password_" + i, "civil", true);
             if (i % 10 == 0) {
                 user.setRole("ADMIN");
             }
@@ -111,117 +113,8 @@ public class SearchSortPerformanceTest {
         dataPrepared = true;
     }
 
-    // поиск
-
     @Test
     @Order(1)
-    void search_users_by_login_pattern() {
-        prepareDataOnce();
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < ITERATIONS; i++) {
-            List<User> users = searchSortService.findUsersByLogin("user_");
-        }
-
-        long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
-        appendResult("search_users_by_login_pattern", avgTime);
-    }
-
-    @Test
-    @Order(2)
-    void search_users_by_role() {
-        prepareDataOnce();
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < ITERATIONS; i++) {
-            List<User> users = searchSortService.findUsersByRole("ADMIN");
-        }
-
-        long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
-        appendResult("search_users_by_role", avgTime);
-    }
-
-    @Test
-    @Order(3)
-    void search_functions_by_name() {
-        prepareDataOnce();
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < ITERATIONS; i++) {
-            List<Function> functions = searchSortService.findFunctionsByName("function_");
-        }
-
-        long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
-        appendResult("search_functions_by_name", avgTime);
-    }
-
-    @Test
-    @Order(4)
-    void search_functions_by_user_id() {
-        prepareDataOnce();
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < ITERATIONS; i++) {
-            List<Function> functions = searchSortService.findFunctionsByUserId(testUserId);
-        }
-
-        long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
-        appendResult("search_functions_by_user_id", avgTime);
-    }
-
-    @Test
-    @Order(5)
-    void search_functions_combined() {
-        prepareDataOnce();
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < ITERATIONS; i++) {
-            List<Function> functions = searchSortService.findFunctionsByUserIdAndName(testUserId, "function_");
-        }
-
-        long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
-        appendResult("search_functions_combined", avgTime);
-    }
-
-    @Test
-    @Order(6)
-    void search_points_by_function_id() {
-        prepareDataOnce();
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < ITERATIONS; i++) {
-            List<Point> points = searchSortService.findPointsByFunctionId(testFunctionId);
-        }
-
-        long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
-        appendResult("search_points_by_function_id", avgTime);
-    }
-
-    @Test
-    @Order(7)
-    void search_points_by_x_range() {
-        prepareDataOnce();
-        long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < ITERATIONS; i++) {
-            List<Point> points = searchSortService.findPointsByFunctionIdAndXRange(testFunctionId, 0.0, 50.0);
-        }
-
-        long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
-        appendResult("search_points_by_x_range", avgTime);
-    }
-
-    // сортировки
-
-    @Test
-    @Order(8)
     void sort_users_by_login_asc() {
         prepareDataOnce();
         long startTime = System.currentTimeMillis();
@@ -231,12 +124,12 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_users_by_login_asc", avgTime);
     }
 
     @Test
-    @Order(9)
+    @Order(2)
     void sort_users_by_login_desc() {
         prepareDataOnce();
         long startTime = System.currentTimeMillis();
@@ -246,12 +139,12 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_users_by_login_desc", avgTime);
     }
 
     @Test
-    @Order(10)
+    @Order(3)
     void sort_users_by_id_asc() {
         prepareDataOnce();
         long startTime = System.currentTimeMillis();
@@ -261,12 +154,12 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_users_by_id_asc", avgTime);
     }
 
     @Test
-    @Order(11)
+    @Order(4)
     void sort_functions_by_name_asc() {
         prepareDataOnce();
         long startTime = System.currentTimeMillis();
@@ -276,12 +169,12 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_functions_by_name_asc", avgTime);
     }
 
     @Test
-    @Order(12)
+    @Order(5)
     void sort_functions_by_user_id_asc() {
         prepareDataOnce();
         long startTime = System.currentTimeMillis();
@@ -291,12 +184,12 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_functions_by_user_id_asc", avgTime);
     }
 
     @Test
-    @Order(13)
+    @Order(6)
     void sort_points_by_x_asc() {
         prepareDataOnce();
         long startTime = System.currentTimeMillis();
@@ -306,12 +199,12 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_points_by_x_asc", avgTime);
     }
 
     @Test
-    @Order(14)
+    @Order(7)
     void sort_points_by_function_id_asc() {
         prepareDataOnce();
         long startTime = System.currentTimeMillis();
@@ -321,12 +214,12 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_points_by_function_id_asc", avgTime);
     }
 
     @Test
-    @Order(15)
+    @Order(8)
     void sort_points_by_function_x_asc() {
         prepareDataOnce();
         long startTime = System.currentTimeMillis();
@@ -336,12 +229,12 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_points_by_function_x_asc", avgTime);
     }
 
     @Test
-    @Order(16)
+    @Order(9)
     void sort_points_by_function_x_desc() {
         prepareDataOnce();
         long startTime = System.currentTimeMillis();
@@ -351,7 +244,7 @@ public class SearchSortPerformanceTest {
         }
 
         long totalTime = System.currentTimeMillis() - startTime;
-        double avgTime = (double) totalTime / ITERATIONS;
+        double avgTime = (double) totalTime;
         appendResult("sort_points_by_function_x_desc", avgTime);
     }
 }

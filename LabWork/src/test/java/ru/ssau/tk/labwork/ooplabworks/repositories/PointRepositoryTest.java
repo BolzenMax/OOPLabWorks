@@ -50,7 +50,7 @@ class PointRepositoryTest {
 
     @Test
     void testFindByFunctionId() {
-        User user = new User("testuser", "password");
+        User user = new User("testuser", "password", "civil", true);
         userRepository.save(user);
 
         Function function = new Function(user.getId(), "testFunc", "double f(double x)");
@@ -117,13 +117,13 @@ class PointRepositoryTest {
     }
 
     private Function createFunction(String name, String signature) {
-        User user = createUser("testuser", "password");
+        User user = createUser("testuser", "password", "civil", true);
         Function function = new Function(user.getId(), name, signature);
         return functionRepository.save(function);
     }
 
-    private User createUser(String login, String password) {
-        User user = new User(login, password);
+    private User createUser(String login, String password, String role, boolean enabled) {
+        User user = new User(login, password, role, enabled);
         return userRepository.save(user);
     }
 }
