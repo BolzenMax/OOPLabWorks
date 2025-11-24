@@ -25,7 +25,7 @@ public class Point {
         this.x = x;
         this.y = y;
     }
-
+//e
     public Long getId() {
         return id;
     }
