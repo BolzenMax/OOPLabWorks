@@ -1,0 +1,646 @@
+{
+  "info": {
+    "name": "LabWork Complete API Tests",
+    "description": "Complete API test suite for LabWork application - All endpoints covered",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "adminAuth",
+      "value": "Basic YWRtaW46YWRtaW4=",
+      "type": "string"
+    },
+    {
+      "key": "testUserAuth",
+      "value": "Basic dGVzdHVzZXI6dGVzdHBhc3M=",
+      "type": "string"
+    },
+    {
+      "key": "userId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "functionId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "pointId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "newUserId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "timestamp",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🔄 Setup - Generate Timestamp",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "const timestamp = new Date().getTime();",
+              "pm.collectionVariables.set('timestamp', timestamp);",
+              "console.log('Test run timestamp:', timestamp);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/"
+      }
+    },
+    {
+      "name": "1. 🔐 Authentication Tests",
+      "item": [
+        {
+          "name": "1.1 Auth - User Registration",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Registration handled correctly\", function () {",
+                  "    if (pm.response.code === 200) {",
+                  "        var jsonData = pm.response.json();",
+                  "        pm.expect(jsonData).to.have.property('id');",
+                  "        pm.expect(jsonData.login).to.equal('testuser_' + pm.collectionVariables.get('timestamp'));",
+                  "    } else if (pm.response.code === 400) {",
+                  "        var responseText = pm.response.text();",
+                  "        pm.expect(responseText).to.include('уже существует');",
+                  "    } else {",
+                  "        pm.expect.fail('Unexpected status code: ' + pm.response.code);",
+                  "    }",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login\": \"testuser_{{timestamp}}\",\n  \"password\": \"testpass\",\n  \"role\": \"CIVIL\",\n  \"enabled\": true\n}"
+            },
+            "url": "{{baseUrl}}/api/auth/register"
+          }
+        },
+        {
+          "name": "1.2 Auth - Admin Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Admin login successful\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.login).to.equal('admin');",
+                  "    pm.expect(jsonData.role).to.equal('ADMIN');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login\": \"admin\",\n  \"password\": \"admin\"\n}"
+            },
+            "url": "{{baseUrl}}/api/auth/login"
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. 👥 Users Management Tests",
+      "item": [
+        {
+          "name": "2.1 Users - Create New User (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"User created successfully\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('id');",
+                  "    pm.expect(jsonData.login).to.equal('newuser_' + pm.collectionVariables.get('timestamp'));",
+                  "    pm.expect(jsonData.role).to.equal('CIVIL');",
+                  "    pm.collectionVariables.set('newUserId', jsonData.id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login\": \"newuser_{{timestamp}}\",\n  \"password\": \"newpassword\",\n  \"role\": \"CIVIL\",\n  \"enabled\": true\n}"
+            },
+            "url": "{{baseUrl}}/api/users"
+          }
+        },
+        {
+          "name": "2.2 Users - Get User by ID (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"User data is correct\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    var expectedUserId = parseInt(pm.collectionVariables.get('newUserId'));",
+                  "    pm.expect(jsonData.id).to.equal(expectedUserId);",
+                  "    pm.expect(jsonData.login).to.equal('newuser_' + pm.collectionVariables.get('timestamp'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/users/{{newUserId}}"
+          }
+        },
+        {
+          "name": "2.3 Users - Update User (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"User updated successfully\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.login).to.equal('updateduser_' + pm.collectionVariables.get('timestamp'));",
+                  "    pm.expect(jsonData.role).to.equal('CIVIL');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login\": \"updateduser_{{timestamp}}\",\n  \"password\": \"newpassword123\",\n  \"role\": \"CIVIL\",\n  \"enabled\": true\n}"
+            },
+            "url": "{{baseUrl}}/api/users/{{newUserId}}"
+          }
+        },
+        {
+          "name": "2.4 Users - Get All Users (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Response is array\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.be.an('array');",
+                  "});",
+                  "pm.test(\"Contains users\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    var logins = jsonData.map(user => user.login);",
+                  "    pm.expect(logins).to.include('admin');",
+                  "    pm.expect(logins).to.include('testuser');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/users"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. 📊 Functions Management Tests",
+      "item": [
+        {
+          "name": "3.1 Functions - Create Function (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Function created successfully\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('id');",
+                  "    pm.expect(jsonData.name).to.equal('Test Function ' + pm.collectionVariables.get('timestamp'));",
+                  "    pm.collectionVariables.set('functionId', jsonData.id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": {{newUserId}},\n  \"name\": \"Test Function {{timestamp}}\",\n  \"signature\": \"double test(double x)\"\n}"
+            },
+            "url": "{{baseUrl}}/api/functions"
+          }
+        },
+        {
+          "name": "3.2 Functions - Update Function (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Function updated successfully\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.name).to.equal('Updated Function ' + pm.collectionVariables.get('timestamp'));",
+                  "    pm.expect(jsonData.signature).to.equal('double updated(double x)');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": {{newUserId}},\n  \"name\": \"Updated Function {{timestamp}}\",\n  \"signature\": \"double updated(double x)\"\n}"
+            },
+            "url": "{{baseUrl}}/api/functions/{{functionId}}"
+          }
+        },
+        {
+          "name": "3.3 Functions - Get All Functions (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Functions list returned\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.be.an('array');",
+                  "    pm.expect(jsonData.length).to.be.at.least(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/functions"
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. 📍 Points Management Tests",
+      "item": [
+        {
+          "name": "4.1 Points - Create Point (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Point created successfully\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('id');",
+                  "    var expectedFunctionId = parseInt(pm.collectionVariables.get('functionId'));",
+                  "    pm.expect(jsonData.functionId).to.equal(expectedFunctionId);",
+                  "    pm.expect(jsonData.x).to.equal(1.5);",
+                  "    pm.expect(jsonData.y).to.equal(2.25);",
+                  "    pm.collectionVariables.set('pointId', jsonData.id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionId\": {{functionId}},\n  \"x\": 1.5,\n  \"y\": 2.25\n}"
+            },
+            "url": "{{baseUrl}}/api/points"
+          }
+        },
+        {
+          "name": "4.2 Points - Update Point (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Point updated successfully\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.x).to.equal(10.0);",
+                  "    pm.expect(jsonData.y).to.equal(20.0);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionId\": {{functionId}},\n  \"x\": 10.0,\n  \"y\": 20.0\n}"
+            },
+            "url": "{{baseUrl}}/api/points/{{pointId}}"
+          }
+        },
+        {
+          "name": "4.3 Points - Create Multiple Points (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Points created successfully\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.be.an('array');",
+                  "    pm.expect(jsonData).to.have.lengthOf(3);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"functionId\": {{functionId}},\n    \"x\": 2.0,\n    \"y\": 4.0\n  },\n  {\n    \"functionId\": {{functionId}},\n    \"x\": 3.0,\n    \"y\": 9.0\n  },\n  {\n    \"functionId\": {{functionId}},\n    \"x\": 4.0,\n    \"y\": 16.0\n  }\n]"
+            },
+            "url": "{{baseUrl}}/api/points/batch"
+          }
+        },
+        {
+          "name": "4.4 Points - Get Points by Function ID (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Function points returned\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.be.an('array');",
+                  "    pm.expect(jsonData.length).to.be.at.least(4);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/points/function/{{functionId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. 🧹 Cleanup Tests",
+      "item": [
+        {
+          "name": "5.1 Points - Delete Point (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/points/{{pointId}}"
+          }
+        },
+        {
+          "name": "5.2 Functions - Delete Function (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/functions/{{functionId}}"
+          }
+        },
+        {
+          "name": "5.3 Users - Delete User (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{adminAuth}}"
+              }
+            ],
+            "url": "{{baseUrl}}/api/users/{{newUserId}}"
+          }
+        }
+      ]
+    }
+  ]
+}

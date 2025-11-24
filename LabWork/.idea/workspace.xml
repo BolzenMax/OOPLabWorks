@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="dto поделены на request и response">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="я схожу с умааааа">
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/controllers/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/controllers/FunctionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/controllers/PointController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,14 +225,6 @@
       <workItem from="1762749632658" duration="14319000" />
       <workItem from="1763366305072" duration="3595000" />
       <workItem from="1763395907263" duration="856000" />
-    </task>
-    <task id="LOCAL-00013" summary="Добавил ещё тесты для метода простых итераций. Потом надо будет залить ещё...">
-      <option name="closed" value="true" />
-      <created>1759136496477</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1759136496477</updated>
     </task>
     <task id="LOCAL-00014" summary="Добавил защищённое поле count и метод getCount. Нужно для реализации LinkedListTabulatedFunction">
       <option name="closed" value="true" />
@@ -623,7 +610,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763963417844</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="я схожу с умааааа">
+      <option name="closed" value="true" />
+      <created>1763964028182</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1763964028182</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,7 +648,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Реализовал нужным образом iterator в LinkedListTabulatedFunction и тесты через while и for-each" />
     <MESSAGE value="Реализовал TabulatedDifferentialOperator и покрыл его тестами. Тест для него в пакете operations" />
     <MESSAGE value="Предварительная реализация методов умножения и деления функций в TabulatedFunctionOperationService. Для их работы жду реализации прошлых заданий напарника" />
     <MESSAGE value="Реализовал toString в AbstractTabulatedFunction. Но как его покрыть тестами..." />
@@ -678,7 +672,8 @@
     <MESSAGE value="Final" />
     <MESSAGE value="чуть-чуть подкорректировал сервисы" />
     <MESSAGE value="dto поделены на request и response" />
-    <option name="LAST_COMMIT_MESSAGE" value="dto поделены на request и response" />
+    <MESSAGE value="я схожу с умааааа" />
+    <option name="LAST_COMMIT_MESSAGE" value="я схожу с умааааа" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
