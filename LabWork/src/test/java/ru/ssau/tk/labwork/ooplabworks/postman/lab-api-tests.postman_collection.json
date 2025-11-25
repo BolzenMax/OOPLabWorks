@@ -1,0 +1,799 @@
+{
+  "info": {
+    "name": "Lab API Tests — Users & Functions",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Setup & Configuration",
+      "item": [
+        {
+          "name": "Set Base URL",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.variables.set('base_url', 'http://localhost:8080/LabWork');"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/users"
+          }
+        }
+      ]
+    },
+    {
+      "name": "User API Tests",
+      "item": [
+        {
+          "name": "POST /api/users — Create User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is JSON\", function () {",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "const json = pm.response.json();",
+                  "",
+                  "pm.test(\"Contains required fields\", function () {",
+                  "    pm.expect(json).to.have.property('id');",
+                  "    pm.expect(json).to.have.property('login');",
+                  "    pm.expect(json).to.have.property('role');",
+                  "    pm.expect(json).to.have.property('enabled');",
+                                    "});",
+                  "",
+                  "pm.test(\"Field types are correct\", function () {",
+                  "    pm.expect(json.id).to.be.a('number');",
+                  "    pm.expect(json.login).to.be.a('string');",
+                  "    pm.expect(json.role).to.be.a('string');",
+                  "    pm.expect(json.enabled).to.be.a('boolean');",
+                  "});",
+                  "",
+                  "pm.test(\"Values match input\", function () {",
+                  "    pm.expect(json.login).to.eql('testuser');",
+                  "    pm.expect(json.role).to.eql('CIVIL');",
+                  "    pm.expect(json.enabled).to.be.true;",
+                  "});",
+                  "",
+                  "pm.environment.set('createdUserId', json.id);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login\": \"testuser\",\n  \"role\": \"CIVIL\",\n  \"password\": \"123456\",\n  \"enabled\": true\n}"
+            },
+            "url": "{{base_url}}/api/users"
+          }
+        },
+        {
+          "name": "POST /api/users — Duplicate Login → 400",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"Error response contains message\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json.error).to.be.a('string');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login\": \"testuser\",\n  \"role\": \"CIVIL\",\n  \"password\": \"123\",\n  \"enabled\": true\n}"
+            },
+            "url": "{{base_url}}/api/users"
+          }
+        },
+        {
+          "name": "POST /api/users — Missing Login → 400",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"CIVIL\",\n  \"password\": \"123\",\n  \"enabled\": true\n}"
+            },
+            "url": "{{base_url}}/api/users"
+          }
+        },
+        {
+          "name": "GET /api/users — List All Users",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is JSON array\", function () {",
+                  "    pm.response.to.be.json;",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.be.an('array');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/users"
+          }
+        },
+        {
+          "name": "GET /api/users?login=testuser",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const user = pm.response.json();",
+                  "",
+                  "pm.test(\"User fields match\", function () {",
+                  "    pm.expect(user.login).to.eql('testuser');",
+                  "    pm.expect(user.role).to.eql('CIVIL');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/users?login=testuser"
+          }
+        },
+        {
+          "name": "GET /api/users?login=nonexistent",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Error message present\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('error');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/users?login=nonexistent"
+          }
+        },
+        {
+          "name": "GET /api/users/{{createdUserId}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const user = pm.response.json();",
+                  "",
+                  "pm.test(\"User ID matches\", function () {",
+                  "    pm.expect(user.id).to.eql(pm.environment.get('createdUserId'));",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/users/{{createdUserId}}"
+          }
+        },
+        {
+          "name": "PUT /api/users/{{createdUserId}} — Update Role and Enabled",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const user = pm.response.json();",
+                  "",
+                  "pm.test(\"Updated fields are correct\", function () {",
+                  "    pm.expect(user.role).to.eql('ADMIN');",
+                  "    pm.expect(user.enabled).to.be.false;",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"ADMIN\",\n  \"enabled\": false\n}"
+            },
+            "url": "{{base_url}}/api/users/{{createdUserId}}"
+          }
+        },
+        {
+          "name": "PUT /api/users/999999 — Nonexistent User → 404",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"ADMIN\"\n}"
+            },
+            "url": "{{base_url}}/api/users/999999"
+          }
+        },
+        {
+          "name": "DELETE /api/users/{{createdUserId}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});",
+                  "",
+                  "pm.environment.unset('createdUserId');"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/api/users/{{createdUserId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Function API Tests",
+      "item": [
+        {
+          "name": "POST /api/users — Create Owner for Functions",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "const user = pm.response.json();",
+                  "pm.environment.set('ownerUserId', user.id);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login\": \"func_owner\",\n  \"role\": \"CIVIL\",\n  \"password\": \"pass\",\n  \"enabled\": true\n}"
+            },
+            "url": "{{base_url}}/api/users"
+          }
+        },
+        {
+          "name": "POST /api/functions — Create Function",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is JSON\", function () {",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "const func = pm.response.json();",
+                  "",
+                  "pm.test(\"Required fields present\", function () {",
+                  "    pm.expect(func).to.have.property('id');",
+                  "    pm.expect(func).to.have.property('userId');",
+                  "    pm.expect(func).to.have.property('name');",
+                  "    pm.expect(func).to.have.property('signature');",
+                  "});",
+                  "",
+                  "pm.test(\"Values match input\", function () {",
+                  "    pm.expect(func.userId).to.eql(pm.environment.get('ownerUserId'));",
+                  "    pm.expect(func.name).to.eql('linear');",
+                  "    pm.expect(func.signature).to.eql('f(x) = ax + b');",
+                  "});",
+                  "",
+                  "pm.environment.set('createdFunctionId', func.id);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": {{ownerUserId}},\n  \"name\": \"linear\",\n  \"signature\": \"f(x) = ax + b\"\n}"
+            },
+            "url": "{{base_url}}/api/functions"
+          }
+        },
+        {
+          "name": "POST /api/functions — Missing userId → 400",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"test\",\n  \"signature\": \"...\"\n}"
+            },
+            "url": "{{base_url}}/api/functions"
+          }
+        },
+        {
+          "name": "GET /api/functions/{{createdFunctionId}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const func = pm.response.json();",
+                  "",
+                  "pm.test(\"Function ID and User ID match\", function () {",
+                  "    pm.expect(func.id).to.eql(pm.environment.get('createdFunctionId'));",
+                  "    pm.expect(func.userId).to.eql(pm.environment.get('ownerUserId'));",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/functions/{{createdFunctionId}}"
+          }
+        },
+        {
+          "name": "GET /api/functions?userId={{ownerUserId}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const list = pm.response.json();",
+                  "",
+                  "pm.test(\"Response is array with at least one item\", function () {",
+                  "    pm.expect(list).to.be.an('array');",
+                  "    pm.expect(list.length).to.be.gte(1);",
+                  "});",
+                  "",
+                  "pm.test(\"First item has correct name\", function () {",
+                  "    pm.expect(list[0].name).to.eql('linear');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/functions?userId={{ownerUserId}}"
+          }
+        },
+        {
+          "name": "GET /api/functions?userId=999999 — No Functions → Empty Array",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const list = pm.response.json();",
+                  "",
+                  "pm.test(\"Empty array returned\", function () {",
+                  "    pm.expect(list).to.be.an('array');",
+                  "    pm.expect(list).to.have.lengthOf(0);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/functions?userId=999999"
+          }
+        },
+        {
+          "name": "PUT /api/functions/{{createdFunctionId}} — Partial Update",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const func = pm.response.json();",
+                  "",
+                  "pm.test(\"Name updated, signature unchanged\", function () {",
+                  "    pm.expect(func.name).to.eql('updated_linear');",
+                  "    pm.expect(func.signature).to.eql('f(x) = ax + b');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"updated_linear\"\n}"
+            },
+            "url": "{{base_url}}/api/functions/{{createdFunctionId}}"
+          }
+        },
+        {
+          "name": "DELETE /api/functions/{{createdFunctionId}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});",
+                  "",
+                  "pm.environment.unset('createdFunctionId');"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/api/functions/{{createdFunctionId}}"
+          }
+        },
+        {
+          "name": "DELETE /api/users/{{ownerUserId}} — Cleanup Owner",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});",
+                  "",
+                  "pm.environment.unset('ownerUserId');"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/api/users/{{ownerUserId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Setup & Configuration",
+      "item": [
+        {
+          "name": "Set Base URL",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.variables.set('base_url', 'http://localhost:8080/LabWork');"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/points"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Point API Tests",
+      "item": [
+        {
+          "name": "🔧 Ensure Function Exists",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "const baseUrl = pm.variables.get('base_url');",
+                  "",
+                  "// 1. Create user",
+                  "pm.sendRequest({",
+                  "    url: baseUrl + '/api/users',",
+                  "    method: 'POST',",
+                  "    header: { 'Content-Type': 'application/json' },",
+                  "    body: {",
+                  "        mode: 'raw',",
+                  "        raw: JSON.stringify({",
+                  "            login: 'point_tester',",
+                  "            role: 'CIVIL',",
+                  "            password: '123',",
+                  "            enabled: true",
+                  "        })",
+                  "    }",
+                  "}, (err, res) => {",
+                  "    if (err || res.code !== 201) {",
+                  "        console.error('User creation failed:', res ? res.code : err);",
+                  "        return;",
+                  "    }",
+                  "    const userId = res.json().id;",
+                  "    pm.environment.set('point_test_userId', userId);",
+                  "",
+                  "    // 2. Create function",
+                  "    pm.sendRequest({",
+                  "        url: baseUrl + '/api/functions',",
+                  "        method: 'POST',",
+                  "        header: { 'Content-Type': 'application/json' },",
+                  "        body: {",
+                  "            mode: 'raw',",
+                  "            raw: JSON.stringify({",
+                  "                userId: userId,",
+                  "                name: 'test_func',",
+                  "                signature: 'f(x)='",
+                  "            })",
+                  "        }",
+                  "    }, (err2, res2) => {",
+                  "        if (err2 || res2.code !== 201) {",
+                  "            console.error('Function creation failed:', res2 ? res2.code : err2);",
+                  "            return;",
+                  "        }",
+                  "        const funcId = res2.json().id;",
+                  "        pm.environment.set('point_test_functionId', funcId);",
+                  "    });",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/points"
+          }
+        },
+        {
+          "name": "POST /api/points — Create Point",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Valid JSON\", () => pm.response.to.be.json);",
+                  "const p = pm.response.json();",
+                  "pm.expect(p.functionId).to.eql(pm.environment.get('point_test_functionId'));",
+                  "pm.environment.set('createdPointId', p.id);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"functionId\": {{point_test_functionId}},\n  \"x\": 1.0,\n  \"y\": 2.0\n}"
+            },
+            "url": "{{base_url}}/api/points"
+          }
+        },
+        {
+          "name": "GET /api/points/{{createdPointId}}",
+          "event": [{ "listen": "test", "script": { "exec": [ "pm.test(\"Status 200\", () => pm.response.to.have.status(200));" ], "type": "text/javascript" } }],
+          "request": { "method": "GET", "url": "{{base_url}}/api/points/{{createdPointId}}" }
+        },
+        {
+          "name": "Cleanup Point Test Data",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Delete point",
+                  "pm.sendRequest({",
+                  "    url: pm.variables.get('base_url') + '/api/points/' + pm.environment.get('createdPointId'),",
+                  "    method: 'DELETE'",
+                  "});",
+                  "",
+                  "// Delete function",
+                  "pm.sendRequest({",
+                  "    url: pm.variables.get('base_url') + '/api/functions/' + pm.environment.get('point_test_functionId'),",
+                  "    method: 'DELETE'",
+                  "});",
+                  "",
+                  "// Delete user",
+                  "pm.sendRequest({",
+                  "    url: pm.variables.get('base_url') + '/api/users/' + pm.environment.get('point_test_userId'),",
+                  "    method: 'DELETE'",
+                  "});",
+                  "",
+                  "pm.environment.unset('point_test_userId');",
+                  "pm.environment.unset('point_test_functionId');",
+                  "pm.environment.unset('createdPointId');"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/points"
+          }
+        }
+      ]
+    }
+  ]
+}
