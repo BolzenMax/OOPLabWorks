@@ -56,8 +56,4 @@ public class UserService {
     public boolean userExists(String login) {
         return userRepository.existsByLogin(login);
     }
-
-    public void createUsers(List<User> users) {
-        userRepository.saveAll(users);
-    }
 }

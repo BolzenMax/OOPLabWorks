@@ -47,7 +47,6 @@ public class FunctionService {
 
     public void deleteFunction(Long id) {
         log.info("Удаление функции с ID: {}", id);
-        //pointService.deletePointsByFunctionId(id);
         functionRepository.deleteById(id);
         log.info("Успешное удаление");
     }

@@ -1,8 +1,7 @@
 {
   "info": {
-    "name": "LabWork Complete API Tests",
-    "description": "Complete API test suite for LabWork application",
-    "version": "1.0.0"
+    "name": "LabWork API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
     {
@@ -48,7 +47,7 @@
   ],
   "item": [
     {
-      "name": "Setup - Generate Timestamp",
+      "name": "Setup - generate timestamp",
       "event": [
         {
           "listen": "prerequest",
@@ -68,10 +67,10 @@
       }
     },
     {
-      "name": "1. Authentication Tests",
+      "name": "1. Authentication tests",
       "item": [
         {
-          "name": "1.1 Auth - User Registration",
+          "name": "1.1. User registration",
           "event": [
             {
               "listen": "test",
@@ -109,7 +108,7 @@
           }
         },
         {
-          "name": "1.2 Auth - Admin Login",
+          "name": "1.2. Admin login",
           "event": [
             {
               "listen": "test",
@@ -149,10 +148,10 @@
       ]
     },
     {
-      "name": "2. Users Management Tests",
+      "name": "2. User tests",
       "item": [
         {
-          "name": "2.1 Users - Create New User (Admin)",
+          "name": "2.1. Create new user",
           "event": [
             {
               "listen": "test",
@@ -192,7 +191,7 @@
           }
         },
         {
-          "name": "2.2 Users - Get User by ID (Admin)",
+          "name": "2.2. Get user by ID",
           "event": [
             {
               "listen": "test",
@@ -223,7 +222,7 @@
           }
         },
         {
-          "name": "2.3 Users - Update User (Admin)",
+          "name": "2.3. Update user",
           "event": [
             {
               "listen": "test",
@@ -261,7 +260,7 @@
           }
         },
         {
-          "name": "2.4 Users - Get All Users (Admin)",
+          "name": "2.4. Get all users",
           "event": [
             {
               "listen": "test",
@@ -298,10 +297,10 @@
       ]
     },
     {
-      "name": "3. Functions Management Tests",
+      "name": "3. Function tests",
       "item": [
         {
-          "name": "3.1 Functions - Create Function (Admin)",
+          "name": "3.1. Create function",
           "event": [
             {
               "listen": "test",
@@ -340,7 +339,7 @@
           }
         },
         {
-          "name": "3.2 Functions - Update Function (Admin)",
+          "name": "3.2. Update function",
           "event": [
             {
               "listen": "test",
@@ -378,7 +377,7 @@
           }
         },
         {
-          "name": "3.3 Functions - Get All Functions (Admin)",
+          "name": "3.3. Get all functions",
           "event": [
             {
               "listen": "test",
@@ -410,10 +409,10 @@
       ]
     },
     {
-      "name": "4. Points Management Tests",
+      "name": "4. Point tests",
       "item": [
         {
-          "name": "4.1 Points - Create Point (Admin)",
+          "name": "4.1. Create point",
           "event": [
             {
               "listen": "test",
@@ -455,7 +454,7 @@
           }
         },
         {
-          "name": "4.2 Points - Update Point (Admin)",
+          "name": "4.2. Update point",
           "event": [
             {
               "listen": "test",
@@ -493,7 +492,7 @@
           }
         },
         {
-          "name": "4.3 Points - Create Multiple Points (Admin)",
+          "name": "4.3. Create multiple points",
           "event": [
             {
               "listen": "test",
@@ -531,7 +530,7 @@
           }
         },
         {
-          "name": "4.4 Points - Get Points by Function ID (Admin)",
+          "name": "4.4. Get points by function ID",
           "event": [
             {
               "listen": "test",
@@ -563,10 +562,10 @@
       ]
     },
     {
-      "name": "5. Cleanup Tests",
+      "name": "5. Cleanup tests",
       "item": [
         {
-          "name": "5.1 Points - Delete Point (Admin)",
+          "name": "5.1. Delete point",
           "event": [
             {
               "listen": "test",
@@ -591,7 +590,7 @@
           }
         },
         {
-          "name": "5.2 Functions - Delete Function (Admin)",
+          "name": "5.2. Delete function",
           "event": [
             {
               "listen": "test",
@@ -616,7 +615,7 @@
           }
         },
         {
-          "name": "5.3 Users - Delete User (Admin)",
+          "name": "5.3. Delete user",
           "event": [
             {
               "listen": "test",
