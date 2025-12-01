@@ -1,12 +1,12 @@
 package ru.ssau.tk.labwork.ooplabworks.dto;
 
-public class AuthRequest {
+public class AuthDTO {
     private String login;
     private String password;
 
-    public AuthRequest() {}
+    public AuthDTO() {}
 
-    public AuthRequest(String login, String password) {
+    public AuthDTO(String login, String password) {
         this.login = login;
         this.password = password;
     }

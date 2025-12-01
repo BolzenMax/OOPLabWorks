@@ -5,8 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.ssau.tk.labwork.ooplabworks.dto.FunctionRequest;
-import ru.ssau.tk.labwork.ooplabworks.dto.FunctionResponse;
+import ru.ssau.tk.labwork.ooplabworks.dto.FunctionDTO;
 import ru.ssau.tk.labwork.ooplabworks.entities.Function;
 import ru.ssau.tk.labwork.ooplabworks.services.FunctionService;
 
@@ -24,10 +23,10 @@ public class FunctionController {
     private FunctionService functionService;
 
     @GetMapping
-    public ResponseEntity<List<FunctionResponse>> getAllFunctions() {
+    public ResponseEntity<List<FunctionDTO>> getAllFunctions() {
         log.info("Получение всех функций");
-        List<FunctionResponse> functions = functionService.getAllFunctions().stream()
-                .map(func -> new FunctionResponse(
+        List<FunctionDTO> functions = functionService.getAllFunctions().stream()
+                .map(func -> new FunctionDTO(
                         func.getId(),
                         func.getUserId(),
                         func.getName(),
@@ -38,11 +37,11 @@ public class FunctionController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FunctionResponse> getFunctionById(@PathVariable Long id) {
+    public ResponseEntity<FunctionDTO> getFunctionById(@PathVariable Long id) {
         log.info("Получение функции с ID: {}", id);
         Optional<Function> function = functionService.getFunctionById(id);
         if (function.isPresent()) {
-            FunctionResponse response = new FunctionResponse(
+            FunctionDTO response = new FunctionDTO(
                     function.get().getId(),
                     function.get().getUserId(),
                     function.get().getName(),
@@ -54,14 +53,14 @@ public class FunctionController {
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<FunctionResponse>> getFunctionsByUserId(@PathVariable Long userId) {
+    public ResponseEntity<List<FunctionDTO>> getFunctionsByUserId(@PathVariable Long userId) {
         log.info("Получение функций пользователя с ID: {}", userId);
         List<Function> functions = functionService.getAllFunctions().stream()
                 .filter(func -> func.getUserId().equals(userId))
                 .collect(Collectors.toList());
 
-        List<FunctionResponse> responses = functions.stream()
-                .map(func -> new FunctionResponse(
+        List<FunctionDTO> responses = functions.stream()
+                .map(func -> new FunctionDTO(
                         func.getId(),
                         func.getUserId(),
                         func.getName(),
@@ -73,7 +72,7 @@ public class FunctionController {
     }
 
     @PostMapping
-    public ResponseEntity<FunctionResponse> createFunction(@RequestBody FunctionRequest functionRequest) {
+    public ResponseEntity<FunctionDTO> createFunction(@RequestBody FunctionDTO functionRequest) {
         log.info("Создание функции для пользователя с ID: {}", functionRequest.getUserId());
 
         Function function = new Function(
@@ -83,7 +82,7 @@ public class FunctionController {
         );
 
         Function savedFunction = functionService.createFunction(function);
-        FunctionResponse response = new FunctionResponse(
+        FunctionDTO response = new FunctionDTO(
                 savedFunction.getId(),
                 savedFunction.getUserId(),
                 savedFunction.getName(),
@@ -94,7 +93,7 @@ public class FunctionController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<FunctionResponse> updateFunction(@PathVariable Long id, @RequestBody FunctionRequest functionRequest) {
+    public ResponseEntity<FunctionDTO> updateFunction(@PathVariable Long id, @RequestBody FunctionDTO functionRequest) {
         log.info("Обновление функции с ID: {}", id);
 
         Optional<Function> existingFunction = functionService.getFunctionById(id);
@@ -108,7 +107,7 @@ public class FunctionController {
         function.setSignature(functionRequest.getSignature());
 
         Function updatedFunction = functionService.updateFunction(function);
-        FunctionResponse response = new FunctionResponse(
+        FunctionDTO response = new FunctionDTO(
                 updatedFunction.getId(),
                 updatedFunction.getUserId(),
                 updatedFunction.getName(),

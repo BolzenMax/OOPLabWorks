@@ -1,15 +1,21 @@
 package ru.ssau.tk.labwork.ooplabworks.dto;
 
-public class PointResponse {
+public class PointDTO {
     private Long id;
     private Long functionId;
     private Double x;
     private Double y;
 
-    public PointResponse() {}
+    public PointDTO() {}
 
-    public PointResponse(Long id, Long functionId, Double x, Double y) {
+    public PointDTO(Long id, Long functionId, Double x, Double y) {
         this.id = id;
+        this.functionId = functionId;
+        this.x = x;
+        this.y = y;
+    }
+
+    public PointDTO(Long functionId, Double x, Double y) {
         this.functionId = functionId;
         this.x = x;
         this.y = y;

@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import ru.ssau.tk.labwork.ooplabworks.dto.UserRequest;
-import ru.ssau.tk.labwork.ooplabworks.dto.UserResponse;
+import ru.ssau.tk.labwork.ooplabworks.dto.UserDTO;
 import ru.ssau.tk.labwork.ooplabworks.entities.User;
 import ru.ssau.tk.labwork.ooplabworks.services.UserService;
 
@@ -28,10 +27,10 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
     @GetMapping
-    public ResponseEntity<List<UserResponse>> getAllUsers() {
+    public ResponseEntity<List<UserDTO>> getAllUsers() {
         log.info("Получение всех пользователей");
-        List<UserResponse> users = userService.getAllUsers().stream()
-                .map(user -> new UserResponse(
+        List<UserDTO> users = userService.getAllUsers().stream()
+                .map(user -> new UserDTO(
                         user.getId(),
                         user.getLogin(),
                         user.getRole(),
@@ -42,11 +41,11 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getUserById(@PathVariable Long id) {
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
         log.info("Получение пользователя с ID: {}", id);
         Optional<User> user = userService.getUserById(id);
         if (user.isPresent()) {
-            UserResponse response = new UserResponse(
+            UserDTO response = new UserDTO(
                     user.get().getId(),
                     user.get().getLogin(),
                     user.get().getRole(),
@@ -58,7 +57,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userRequest) {
         log.info("Создание пользователя: {}", userRequest.getLogin());
 
         User user = new User();
@@ -68,7 +67,7 @@ public class UserController {
         user.setEnabled(userRequest.isEnabled());
 
         User savedUser = userService.createUser(user);
-        UserResponse response = new UserResponse(
+        UserDTO response = new UserDTO(
                 savedUser.getId(),
                 savedUser.getLogin(),
                 savedUser.getRole(),
@@ -79,7 +78,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @RequestBody UserRequest userRequest) {
+    public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @RequestBody UserDTO userRequest) {
         log.info("Обновление пользователя с ID: {}", id);
 
         Optional<User> existingUser = userService.getUserById(id);
@@ -96,7 +95,7 @@ public class UserController {
         user.setEnabled(userRequest.isEnabled());
 
         User updatedUser = userService.updateUser(user);
-        UserResponse response = new UserResponse(
+        UserDTO response = new UserDTO(
                 updatedUser.getId(),
                 updatedUser.getLogin(),
                 updatedUser.getRole(),

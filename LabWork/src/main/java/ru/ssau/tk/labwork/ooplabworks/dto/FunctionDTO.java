@@ -1,15 +1,21 @@
 package ru.ssau.tk.labwork.ooplabworks.dto;
 
-public class FunctionResponse {
+public class FunctionDTO {
     private Long id;
     private Long userId;
     private String name;
     private String signature;
 
-    public FunctionResponse() {}
+    public FunctionDTO() {}
 
-    public FunctionResponse(Long id, Long userId, String name, String signature) {
+    public FunctionDTO(Long id, Long userId, String name, String signature) {
         this.id = id;
+        this.userId = userId;
+        this.name = name;
+        this.signature = signature;
+    }
+
+    public FunctionDTO(Long userId, String name, String signature) {
         this.userId = userId;
         this.name = name;
         this.signature = signature;

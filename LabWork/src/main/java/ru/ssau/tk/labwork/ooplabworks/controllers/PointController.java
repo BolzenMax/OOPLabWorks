@@ -5,8 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.ssau.tk.labwork.ooplabworks.dto.PointRequest;
-import ru.ssau.tk.labwork.ooplabworks.dto.PointResponse;
+import ru.ssau.tk.labwork.ooplabworks.dto.PointDTO;
 import ru.ssau.tk.labwork.ooplabworks.entities.Point;
 import ru.ssau.tk.labwork.ooplabworks.services.PointService;
 
@@ -24,10 +23,10 @@ public class PointController {
     private PointService pointService;
 
     @GetMapping
-    public ResponseEntity<List<PointResponse>> getAllPoints() {
+    public ResponseEntity<List<PointDTO>> getAllPoints() {
         log.info("Получение всех точек");
-        List<PointResponse> points = pointService.getAllPoints().stream()
-                .map(point -> new PointResponse(
+        List<PointDTO> points = pointService.getAllPoints().stream()
+                .map(point -> new PointDTO(
                         point.getId(),
                         point.getFunctionId(),
                         point.getX(),
@@ -38,11 +37,11 @@ public class PointController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PointResponse> getPointById(@PathVariable Long id) {
+    public ResponseEntity<PointDTO> getPointById(@PathVariable Long id) {
         log.info("Получение точки с ID: {}", id);
         Optional<Point> point = pointService.getPointById(id);
         if (point.isPresent()) {
-            PointResponse response = new PointResponse(
+            PointDTO response = new PointDTO(
                     point.get().getId(),
                     point.get().getFunctionId(),
                     point.get().getX(),
@@ -54,14 +53,14 @@ public class PointController {
     }
 
     @GetMapping("/function/{functionId}")
-    public ResponseEntity<List<PointResponse>> getPointsByFunctionId(@PathVariable Long functionId) {
+    public ResponseEntity<List<PointDTO>> getPointsByFunctionId(@PathVariable Long functionId) {
         log.info("Получение точек функции с ID: {}", functionId);
         List<Point> points = pointService.getAllPoints().stream()
                 .filter(point -> point.getFunctionId().equals(functionId))
                 .collect(Collectors.toList());
 
-        List<PointResponse> responses = points.stream()
-                .map(point -> new PointResponse(
+        List<PointDTO> responses = points.stream()
+                .map(point -> new PointDTO(
                         point.getId(),
                         point.getFunctionId(),
                         point.getX(),
@@ -73,7 +72,7 @@ public class PointController {
     }
 
     @PostMapping
-    public ResponseEntity<PointResponse> createPoint(@RequestBody PointRequest pointRequest) {
+    public ResponseEntity<PointDTO> createPoint(@RequestBody PointDTO pointRequest) {
         log.info("Создание точки для функции с ID: {}", pointRequest.getFunctionId());
 
         Point point = new Point(
@@ -83,7 +82,7 @@ public class PointController {
         );
 
         Point savedPoint = pointService.createPoint(point);
-        PointResponse response = new PointResponse(
+        PointDTO response = new PointDTO(
                 savedPoint.getId(),
                 savedPoint.getFunctionId(),
                 savedPoint.getX(),
@@ -94,7 +93,7 @@ public class PointController {
     }
 
     @PostMapping("/batch")
-    public ResponseEntity<List<PointResponse>> createPoints(@RequestBody List<PointRequest> pointRequests) {
+    public ResponseEntity<List<PointDTO>> createPoints(@RequestBody List<PointDTO> pointRequests) {
         log.info("Создание {} точек", pointRequests.size());
 
         List<Point> points = pointRequests.stream()
@@ -102,8 +101,8 @@ public class PointController {
                 .collect(Collectors.toList());
 
         List<Point> savedPoints = pointService.createPoints(points);
-        List<PointResponse> responses = savedPoints.stream()
-                .map(point -> new PointResponse(
+        List<PointDTO> responses = savedPoints.stream()
+                .map(point -> new PointDTO(
                         point.getId(),
                         point.getFunctionId(),
                         point.getX(),
@@ -115,7 +114,7 @@ public class PointController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PointResponse> updatePoint(@PathVariable Long id, @RequestBody PointRequest pointRequest) {
+    public ResponseEntity<PointDTO> updatePoint(@PathVariable Long id, @RequestBody PointDTO pointRequest) {
         log.info("Обновление точки с ID: {}", id);
 
         Optional<Point> existingPoint = pointService.getPointById(id);
@@ -129,7 +128,7 @@ public class PointController {
         point.setY(pointRequest.getY());
 
         Point updatedPoint = pointService.updatePoint(point);
-        PointResponse response = new PointResponse(
+        PointDTO response = new PointDTO(
                 updatedPoint.getId(),
                 updatedPoint.getFunctionId(),
                 updatedPoint.getX(),

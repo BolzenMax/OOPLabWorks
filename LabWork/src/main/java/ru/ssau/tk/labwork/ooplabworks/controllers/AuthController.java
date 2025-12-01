@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import ru.ssau.tk.labwork.ooplabworks.config.CustomUserDetailsService;
-import ru.ssau.tk.labwork.ooplabworks.dto.AuthRequest;
-import ru.ssau.tk.labwork.ooplabworks.dto.UserRequest;
-import ru.ssau.tk.labwork.ooplabworks.dto.UserResponse;
+import ru.ssau.tk.labwork.ooplabworks.config.CustomUserDetails;
+import ru.ssau.tk.labwork.ooplabworks.dto.AuthDTO;
+import ru.ssau.tk.labwork.ooplabworks.dto.UserDTO;
 import ru.ssau.tk.labwork.ooplabworks.entities.User;
 import ru.ssau.tk.labwork.ooplabworks.services.UserService;
 
@@ -25,13 +24,13 @@ public class AuthController {
     private UserService userService;
 
     @Autowired
-    private CustomUserDetailsService userDetailsService;
+    private CustomUserDetails userDetails;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<?> register(@RequestBody UserDTO userRequest) {
         log.info("Регистрация нового пользователя: {}", userRequest.getLogin());
 
         if (userService.userExists(userRequest.getLogin())) {
@@ -46,7 +45,7 @@ public class AuthController {
         user.setEnabled(userRequest.isEnabled());
 
         User savedUser = userService.createUser(user);
-        UserResponse response = new UserResponse(
+        UserDTO response = new UserDTO(
                 savedUser.getId(),
                 savedUser.getLogin(),
                 savedUser.getRole(),
@@ -58,15 +57,15 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
+    public ResponseEntity<?> login(@RequestBody AuthDTO authRequest) {
         log.info("Попытка входа пользователя: {}", authRequest.getLogin());
 
         try {
-            userDetailsService.loadUserByUsername(authRequest.getLogin());
+            userDetails.loadUserByUsername(authRequest.getLogin());
             Optional<User> user = userService.getUserByLogin(authRequest.getLogin());
 
             if (user.isPresent()) {
-                UserResponse response = new UserResponse(
+                UserDTO response = new UserDTO(
                         user.get().getId(),
                         user.get().getLogin(),
                         user.get().getRole(),
