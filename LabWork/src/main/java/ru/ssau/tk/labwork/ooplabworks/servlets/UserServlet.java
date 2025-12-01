@@ -2,6 +2,8 @@ package ru.ssau.tk.labwork.ooplabworks.servlets;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,20 +30,32 @@ public class UserServlet extends HttpServlet {
     private DataSource ds;
     private UserService userService;
     private final Gson gson = new Gson();
-
     @Override
-    public void init() {
+    public void init() throws ServletException {
         log.info("Initializing UserServlet…");
 
-        ds = DataSourceConfig.create(
-                "jdbc:postgresql://localhost:5432/lab",
-                "postgres",
-                "123"
-        );
+        ServletContext context = getServletContext();
 
-        userService = new UserService(ds);
+        DataSource ds = (DataSource) context.getAttribute("dataSource");
 
-        log.info("UserServlet initialized successfully");
+        if (ds == null) {
+            log.error("dataSource not found in ServletContext! Falling back to env vars.");
+            String url = System.getenv("DB_URL");
+            String user = System.getenv("DB_USER");
+            String pass = System.getenv("DB_PASS");
+
+            if (url == null) {
+                url = "jdbc:postgresql://localhost:5432/lab";
+                user = "postgres";
+                pass = "postgres";
+            }
+
+            ds = DataSourceConfig.create(url, user, pass);
+
+        }
+
+        this.userService = new UserService(ds);
+        log.info("UserServlet initialized with DB: {}", ds);
     }
 
     // ------------------------ GET ------------------------

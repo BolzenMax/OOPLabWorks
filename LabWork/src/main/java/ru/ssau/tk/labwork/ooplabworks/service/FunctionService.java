@@ -20,6 +20,7 @@ public class FunctionService {
         return f;
     }
 
+
     public FunctionDTO getById(int id) {
         return dao.findById(id).orElse(null);
     }
@@ -45,4 +46,5 @@ public class FunctionService {
 
         return dao.findById(id).orElse(null);
     }
+
 }

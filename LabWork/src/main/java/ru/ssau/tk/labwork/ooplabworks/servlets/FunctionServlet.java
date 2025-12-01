@@ -2,6 +2,8 @@ package ru.ssau.tk.labwork.ooplabworks.servlets;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import ru.ssau.tk.labwork.ooplabworks.config.DataSourceConfig;
 import ru.ssau.tk.labwork.ooplabworks.service.FunctionService;
 import ru.ssau.tk.labwork.ooplabworks.dto.FunctionDTO;
+import ru.ssau.tk.labwork.ooplabworks.service.UserService;
 
 import javax.sql.DataSource;
 import java.io.BufferedReader;
@@ -29,19 +32,33 @@ public class FunctionServlet extends HttpServlet {
     private FunctionService functionService;
     private final Gson gson = new Gson();
 
+
     @Override
-    public void init() {
-        log.info("Initializing FunctionServlet…");
+    public void init() throws ServletException {
+        log.info("Initializing UserServlet…");
 
-        ds = DataSourceConfig.create(
-                "jdbc:postgresql://localhost:5432/lab",
-                "postgres",
-                "123"
-        );
+        ServletContext context = getServletContext();
 
-        functionService = new FunctionService(ds);
+        DataSource ds = (DataSource) context.getAttribute("dataSource");
 
-        log.info("FunctionServlet initialized successfully");
+        if (ds == null) {
+            log.error("dataSource not found in ServletContext! Falling back to env vars.");
+            String url = System.getenv("DB_URL");
+            String user = System.getenv("DB_USER");
+            String pass = System.getenv("DB_PASS");
+
+            if (url == null) {
+                url = "jdbc:postgresql://localhost:5432/lab";
+                user = "postgres";
+                pass = "postgres";
+            }
+
+            ds = DataSourceConfig.create(url, user, pass);
+
+        }
+
+        this.functionService = new FunctionService(ds);
+        log.info("UserServlet initialized with DB: {}", ds);
     }
 
     // ------------------------ GET ------------------------

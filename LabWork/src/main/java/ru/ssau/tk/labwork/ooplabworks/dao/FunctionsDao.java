@@ -24,4 +24,5 @@ public interface FunctionsDao {
     List<FunctionDTO> findByName(String name);
 
     List<FunctionDTO> findByNames(Collection<String> names);
+
 }

@@ -1,7 +1,10 @@
 {
   "info": {
+    "_postman_id": "58f82ac8-62d2-4f2b-b98f-f8dde7f26cb1",
     "name": "Lab API Tests — Users & Functions",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50334309",
+    "_collection_link": "https://someshkin2103-4087400.postman.co/workspace/ce0ae823-8b7b-43b7-8521-1a8b4073d41b/collection/50334309-58f82ac8-62d2-4f2b-b98f-f8dde7f26cb1?action=share&source=collection_link&creator=50334309"
   },
   "item": [
     {
@@ -22,7 +25,57 @@
           ],
           "request": {
             "method": "GET",
-            "url": "{{base_url}}/api/users"
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "basic",
+        "basic": [
+          {
+            "key": "password",
+            "value": "admin123",
+            "type": "string"
+          },
+          {
+            "key": "username",
+            "value": "admin",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
           }
         }
       ]
@@ -52,7 +105,7 @@
                   "    pm.expect(json).to.have.property('login');",
                   "    pm.expect(json).to.have.property('role');",
                   "    pm.expect(json).to.have.property('enabled');",
-                                    "});",
+                  "});",
                   "",
                   "pm.test(\"Field types are correct\", function () {",
                   "    pm.expect(json.id).to.be.a('number');",
@@ -85,8 +138,18 @@
               "mode": "raw",
               "raw": "{\n  \"login\": \"testuser\",\n  \"role\": \"CIVIL\",\n  \"password\": \"123456\",\n  \"enabled\": true\n}"
             },
-            "url": "{{base_url}}/api/users"
-          }
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "POST /api/users — Duplicate Login → 400",
@@ -121,8 +184,18 @@
               "mode": "raw",
               "raw": "{\n  \"login\": \"testuser\",\n  \"role\": \"CIVIL\",\n  \"password\": \"123\",\n  \"enabled\": true\n}"
             },
-            "url": "{{base_url}}/api/users"
-          }
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "POST /api/users — Missing Login → 400",
@@ -151,8 +224,18 @@
               "mode": "raw",
               "raw": "{\n  \"role\": \"CIVIL\",\n  \"password\": \"123\",\n  \"enabled\": true\n}"
             },
-            "url": "{{base_url}}/api/users"
-          }
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "GET /api/users — List All Users",
@@ -177,8 +260,19 @@
           ],
           "request": {
             "method": "GET",
-            "url": "{{base_url}}/api/users"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "GET /api/users?login=testuser",
@@ -204,8 +298,25 @@
           ],
           "request": {
             "method": "GET",
-            "url": "{{base_url}}/api/users?login=testuser"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users?login=testuser",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "login",
+                  "value": "testuser"
+                }
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "GET /api/users?login=nonexistent",
@@ -229,8 +340,25 @@
           ],
           "request": {
             "method": "GET",
-            "url": "{{base_url}}/api/users?login=nonexistent"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users?login=nonexistent",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "login",
+                  "value": "nonexistent"
+                }
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "GET /api/users/{{createdUserId}}",
@@ -255,8 +383,20 @@
           ],
           "request": {
             "method": "GET",
-            "url": "{{base_url}}/api/users/{{createdUserId}}"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users/{{createdUserId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{createdUserId}}"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "PUT /api/users/{{createdUserId}} — Update Role and Enabled",
@@ -292,8 +432,19 @@
               "mode": "raw",
               "raw": "{\n  \"role\": \"ADMIN\",\n  \"enabled\": false\n}"
             },
-            "url": "{{base_url}}/api/users/{{createdUserId}}"
-          }
+            "url": {
+              "raw": "{{base_url}}/api/users/{{createdUserId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{createdUserId}}"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "PUT /api/users/999999 — Nonexistent User → 404",
@@ -322,8 +473,19 @@
               "mode": "raw",
               "raw": "{\n  \"role\": \"ADMIN\"\n}"
             },
-            "url": "{{base_url}}/api/users/999999"
-          }
+            "url": {
+              "raw": "{{base_url}}/api/users/999999",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "999999"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "DELETE /api/users/{{createdUserId}}",
@@ -344,8 +506,20 @@
           ],
           "request": {
             "method": "DELETE",
-            "url": "{{base_url}}/api/users/{{createdUserId}}"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users/{{createdUserId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{createdUserId}}"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -382,8 +556,18 @@
               "mode": "raw",
               "raw": "{\n  \"login\": \"func_owner\",\n  \"role\": \"CIVIL\",\n  \"password\": \"pass\",\n  \"enabled\": true\n}"
             },
-            "url": "{{base_url}}/api/users"
-          }
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "POST /api/functions — Create Function",
@@ -433,8 +617,18 @@
               "mode": "raw",
               "raw": "{\n  \"userId\": {{ownerUserId}},\n  \"name\": \"linear\",\n  \"signature\": \"f(x) = ax + b\"\n}"
             },
-            "url": "{{base_url}}/api/functions"
-          }
+            "url": {
+              "raw": "{{base_url}}/api/functions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "functions"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "POST /api/functions — Missing userId → 400",
@@ -463,8 +657,18 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"test\",\n  \"signature\": \"...\"\n}"
             },
-            "url": "{{base_url}}/api/functions"
-          }
+            "url": {
+              "raw": "{{base_url}}/api/functions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "functions"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "GET /api/functions/{{createdFunctionId}}",
@@ -490,8 +694,20 @@
           ],
           "request": {
             "method": "GET",
-            "url": "{{base_url}}/api/functions/{{createdFunctionId}}"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/functions/{{createdFunctionId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "functions",
+                "{{createdFunctionId}}"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "GET /api/functions?userId={{ownerUserId}}",
@@ -521,8 +737,25 @@
           ],
           "request": {
             "method": "GET",
-            "url": "{{base_url}}/api/functions?userId={{ownerUserId}}"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/functions?userId={{ownerUserId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "functions"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "{{ownerUserId}}"
+                }
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "GET /api/functions?userId=999999 — No Functions → Empty Array",
@@ -548,8 +781,25 @@
           ],
           "request": {
             "method": "GET",
-            "url": "{{base_url}}/api/functions?userId=999999"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/functions?userId=999999",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "functions"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "999999"
+                }
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "PUT /api/functions/{{createdFunctionId}} — Partial Update",
@@ -585,8 +835,19 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"updated_linear\"\n}"
             },
-            "url": "{{base_url}}/api/functions/{{createdFunctionId}}"
-          }
+            "url": {
+              "raw": "{{base_url}}/api/functions/{{createdFunctionId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "functions",
+                "{{createdFunctionId}}"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "DELETE /api/functions/{{createdFunctionId}}",
@@ -607,8 +868,20 @@
           ],
           "request": {
             "method": "DELETE",
-            "url": "{{base_url}}/api/functions/{{createdFunctionId}}"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/functions/{{createdFunctionId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "functions",
+                "{{createdFunctionId}}"
+              ]
+            }
+          },
+          "response": []
         },
         {
           "name": "DELETE /api/users/{{ownerUserId}} — Cleanup Owner",
@@ -629,8 +902,20 @@
           ],
           "request": {
             "method": "DELETE",
-            "url": "{{base_url}}/api/users/{{ownerUserId}}"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users/{{ownerUserId}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "{{ownerUserId}}"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -652,148 +937,60 @@
           ],
           "request": {
             "method": "GET",
-            "url": "{{base_url}}/api/points"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/points",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "points"
+              ]
+            }
+          },
+          "response": []
         }
       ]
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "password",
+        "value": "admin123",
+        "type": "string"
+      },
+      {
+        "key": "username",
+        "value": "admin",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
     },
     {
-      "name": "Point API Tests",
-      "item": [
-        {
-          "name": "🔧 Ensure Function Exists",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "exec": [
-                  "const baseUrl = pm.variables.get('base_url');",
-                  "",
-                  "// 1. Create user",
-                  "pm.sendRequest({",
-                  "    url: baseUrl + '/api/users',",
-                  "    method: 'POST',",
-                  "    header: { 'Content-Type': 'application/json' },",
-                  "    body: {",
-                  "        mode: 'raw',",
-                  "        raw: JSON.stringify({",
-                  "            login: 'point_tester',",
-                  "            role: 'CIVIL',",
-                  "            password: '123',",
-                  "            enabled: true",
-                  "        })",
-                  "    }",
-                  "}, (err, res) => {",
-                  "    if (err || res.code !== 201) {",
-                  "        console.error('User creation failed:', res ? res.code : err);",
-                  "        return;",
-                  "    }",
-                  "    const userId = res.json().id;",
-                  "    pm.environment.set('point_test_userId', userId);",
-                  "",
-                  "    // 2. Create function",
-                  "    pm.sendRequest({",
-                  "        url: baseUrl + '/api/functions',",
-                  "        method: 'POST',",
-                  "        header: { 'Content-Type': 'application/json' },",
-                  "        body: {",
-                  "            mode: 'raw',",
-                  "            raw: JSON.stringify({",
-                  "                userId: userId,",
-                  "                name: 'test_func',",
-                  "                signature: 'f(x)='",
-                  "            })",
-                  "        }",
-                  "    }, (err2, res2) => {",
-                  "        if (err2 || res2.code !== 201) {",
-                  "            console.error('Function creation failed:', res2 ? res2.code : err2);",
-                  "            return;",
-                  "        }",
-                  "        const funcId = res2.json().id;",
-                  "        pm.environment.set('point_test_functionId', funcId);",
-                  "    });",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "url": "{{base_url}}/api/points"
-          }
-        },
-        {
-          "name": "POST /api/points — Create Point",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status 201\", () => pm.response.to.have.status(201));",
-                  "pm.test(\"Valid JSON\", () => pm.response.to.be.json);",
-                  "const p = pm.response.json();",
-                  "pm.expect(p.functionId).to.eql(pm.environment.get('point_test_functionId'));",
-                  "pm.environment.set('createdPointId', p.id);"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"functionId\": {{point_test_functionId}},\n  \"x\": 1.0,\n  \"y\": 2.0\n}"
-            },
-            "url": "{{base_url}}/api/points"
-          }
-        },
-        {
-          "name": "GET /api/points/{{createdPointId}}",
-          "event": [{ "listen": "test", "script": { "exec": [ "pm.test(\"Status 200\", () => pm.response.to.have.status(200));" ], "type": "text/javascript" } }],
-          "request": { "method": "GET", "url": "{{base_url}}/api/points/{{createdPointId}}" }
-        },
-        {
-          "name": "Cleanup Point Test Data",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "// Delete point",
-                  "pm.sendRequest({",
-                  "    url: pm.variables.get('base_url') + '/api/points/' + pm.environment.get('createdPointId'),",
-                  "    method: 'DELETE'",
-                  "});",
-                  "",
-                  "// Delete function",
-                  "pm.sendRequest({",
-                  "    url: pm.variables.get('base_url') + '/api/functions/' + pm.environment.get('point_test_functionId'),",
-                  "    method: 'DELETE'",
-                  "});",
-                  "",
-                  "// Delete user",
-                  "pm.sendRequest({",
-                  "    url: pm.variables.get('base_url') + '/api/users/' + pm.environment.get('point_test_userId'),",
-                  "    method: 'DELETE'",
-                  "});",
-                  "",
-                  "pm.environment.unset('point_test_userId');",
-                  "pm.environment.unset('point_test_functionId');",
-                  "pm.environment.unset('createdPointId');"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "url": "{{base_url}}/api/points"
-          }
-        }
-      ]
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
     }
   ]
 }

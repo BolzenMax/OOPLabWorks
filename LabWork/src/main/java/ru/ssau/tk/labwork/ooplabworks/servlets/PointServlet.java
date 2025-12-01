@@ -2,6 +2,8 @@ package ru.ssau.tk.labwork.ooplabworks.servlets;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,7 +14,9 @@ import org.slf4j.LoggerFactory;
 
 import ru.ssau.tk.labwork.ooplabworks.config.DataSourceConfig;
 import ru.ssau.tk.labwork.ooplabworks.dto.PointDTO;
+import ru.ssau.tk.labwork.ooplabworks.service.FunctionService;
 import ru.ssau.tk.labwork.ooplabworks.service.PointService;
+import ru.ssau.tk.labwork.ooplabworks.service.UserService;
 
 import javax.sql.DataSource;
 import java.io.BufferedReader;
@@ -30,18 +34,31 @@ public class PointServlet extends HttpServlet {
     private final Gson gson = new Gson();
 
     @Override
-    public void init() {
-        log.info("Initializing PointServlet…");
+    public void init() throws ServletException {
+        log.info("Initializing UserServlet…");
 
-        ds = DataSourceConfig.create(
-                "jdbc:postgresql://localhost:5432/lab",
-                "postgres",
-                "123"
-        );
+        ServletContext context = getServletContext();
 
-        pointService = new PointService(ds);
+        DataSource ds = (DataSource) context.getAttribute("dataSource");
 
-        log.info("PointServlet initialized");
+        if (ds == null) {
+            log.error("dataSource not found in ServletContext! Falling back to env vars.");
+            String url = System.getenv("DB_URL");
+            String user = System.getenv("DB_USER");
+            String pass = System.getenv("DB_PASS");
+
+            if (url == null) {
+                url = "jdbc:postgresql://localhost:5432/lab";
+                user = "postgres";
+                pass = "postgres";
+            }
+
+            ds = DataSourceConfig.create(url, user, pass);
+
+        }
+
+        this.pointService = new PointService(ds);
+        log.info("UserServlet initialized with DB: {}", ds);
     }
 
     // ------------------------ GET ------------------------
@@ -52,7 +69,6 @@ public class PointServlet extends HttpServlet {
         PrintWriter writer = resp.getWriter();
 
         try {
-            // GET /api/points?functionId=3
             String fIdParam = req.getParameter("functionId");
             if (fIdParam != null) {
                 int functionId = Integer.parseInt(fIdParam);
@@ -201,7 +217,6 @@ public class PointServlet extends HttpServlet {
         }
     }
 
-    // ------------------------ Utility ------------------------
     private JsonObject read(HttpServletRequest req) throws IOException {
         BufferedReader r = req.getReader();
         StringBuilder sb = new StringBuilder();
