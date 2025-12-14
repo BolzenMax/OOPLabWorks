@@ -25,11 +25,13 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/", "/login.html", "/register.html", "/app.html").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/static/**").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/users/**").hasAnyRole("ADMIN", "CIVIL")
                         .requestMatchers("/api/functions/**").hasAnyRole("ADMIN", "CIVIL")
                         .requestMatchers("/api/points/**").hasAnyRole("ADMIN", "CIVIL")
+                        .requestMatchers("/ui/**").hasAnyRole("ADMIN", "CIVIL")
                         .anyRequest().authenticated()
                 )
                 .httpBasic(httpBasic -> {});

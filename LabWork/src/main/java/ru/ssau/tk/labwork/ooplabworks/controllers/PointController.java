@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import ru.ssau.tk.labwork.ooplabworks.dto.PointDTO;
 import ru.ssau.tk.labwork.ooplabworks.entities.Point;
 import ru.ssau.tk.labwork.ooplabworks.services.PointService;
+import ru.ssau.tk.labwork.ooplabworks.entities.Function;
+import ru.ssau.tk.labwork.ooplabworks.services.FunctionService;
+import ru.ssau.tk.labwork.ooplabworks.services.UserService;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/api/points")
@@ -22,10 +26,21 @@ public class PointController {
     @Autowired
     private PointService pointService;
 
-    @GetMapping
-    public ResponseEntity<List<PointDTO>> getAllPoints() {
-        log.info("Получение всех точек");
+    @Autowired
+    private FunctionService functionService;
+
+    @Autowired
+    private UserService userService;
+
+    public ResponseEntity<List<PointDTO>> getAllPoints(Principal principal) {
+        log.info("Получение всех точек пользователя {}", principal.getName());
+        Long userId = userService.getUserByLogin(principal.getName()).map(u -> u.getId()).orElse(null);
+        if (userId == null) {
+            return ResponseEntity.status(401).build();
+        }
+
         List<PointDTO> points = pointService.getAllPoints().stream()
+                .filter(point -> belongsToUser(point, userId))
                 .map(point -> new PointDTO(
                         point.getId(),
                         point.getFunctionId(),
@@ -37,10 +52,10 @@ public class PointController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PointDTO> getPointById(@PathVariable Long id) {
+    public ResponseEntity<PointDTO> getPointById(@PathVariable Long id, Principal principal) {
         log.info("Получение точки с ID: {}", id);
         Optional<Point> point = pointService.getPointById(id);
-        if (point.isPresent()) {
+        if (point.isPresent() && isOwner(principal, point.get())) {
             PointDTO response = new PointDTO(
                     point.get().getId(),
                     point.get().getFunctionId(),
@@ -53,8 +68,12 @@ public class PointController {
     }
 
     @GetMapping("/function/{functionId}")
-    public ResponseEntity<List<PointDTO>> getPointsByFunctionId(@PathVariable Long functionId) {
+    public ResponseEntity<List<PointDTO>> getPointsByFunctionId(@PathVariable Long functionId, Principal principal) {
         log.info("Получение точек функции с ID: {}", functionId);
+        if (!ownsFunction(principal, functionId)) {
+            return ResponseEntity.status(403).build();
+        }
+
         List<Point> points = pointService.getAllPoints().stream()
                 .filter(point -> point.getFunctionId().equals(functionId))
                 .collect(Collectors.toList());
@@ -72,8 +91,11 @@ public class PointController {
     }
 
     @PostMapping
-    public ResponseEntity<PointDTO> createPoint(@RequestBody PointDTO pointRequest) {
+    public ResponseEntity<PointDTO> createPoint(@RequestBody PointDTO pointRequest, Principal principal) {
         log.info("Создание точки для функции с ID: {}", pointRequest.getFunctionId());
+        if (!ownsFunction(principal, pointRequest.getFunctionId())) {
+            return ResponseEntity.status(403).build();
+        }
 
         Point point = new Point(
                 pointRequest.getFunctionId(),
@@ -93,8 +115,12 @@ public class PointController {
     }
 
     @PostMapping("/batch")
-    public ResponseEntity<List<PointDTO>> createPoints(@RequestBody List<PointDTO> pointRequests) {
+    public ResponseEntity<List<PointDTO>> createPoints(@RequestBody List<PointDTO> pointRequests, Principal principal) {
         log.info("Создание {} точек", pointRequests.size());
+
+        if (pointRequests.stream().anyMatch(req -> !ownsFunction(principal, req.getFunctionId()))) {
+            return ResponseEntity.status(403).build();
+        }
 
         List<Point> points = pointRequests.stream()
                 .map(req -> new Point(req.getFunctionId(), req.getX(), req.getY()))
@@ -114,11 +140,11 @@ public class PointController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PointDTO> updatePoint(@PathVariable Long id, @RequestBody PointDTO pointRequest) {
+    public ResponseEntity<PointDTO> updatePoint(@PathVariable Long id, @RequestBody PointDTO pointRequest, Principal principal) {
         log.info("Обновление точки с ID: {}", id);
 
         Optional<Point> existingPoint = pointService.getPointById(id);
-        if (existingPoint.isEmpty()) {
+        if (existingPoint.isEmpty() || !isOwner(principal, existingPoint.get())) {
             return ResponseEntity.notFound().build();
         }
 
@@ -139,15 +165,39 @@ public class PointController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePoint(@PathVariable Long id) {
+    public ResponseEntity<Void> deletePoint(@PathVariable Long id, Principal principal) {
         log.info("Удаление точки с ID: {}", id);
 
         Optional<Point> point = pointService.getPointById(id);
-        if (point.isEmpty()) {
+        if (point.isEmpty() || !isOwner(principal, point.get())) {
             return ResponseEntity.notFound().build();
         }
 
         pointService.deletePoint(id);
         return ResponseEntity.noContent().build();
+    }
+
+    private boolean ownsFunction(Principal principal, Long functionId) {
+        if (principal == null) {
+            return false;
+        }
+        Optional<Function> function = functionService.getFunctionById(functionId);
+        return function.filter(f -> isOwner(principal, f)).isPresent();
+    }
+
+    private boolean isOwner(Principal principal, Function function) {
+        return userService.getUserByLogin(principal.getName())
+                .map(user -> user.getId().equals(function.getUserId()))
+                .orElse(false);
+    }
+
+    private boolean isOwner(Principal principal, Point point) {
+        return ownsFunction(principal, point.getFunctionId());
+    }
+
+    private boolean belongsToUser(Point point, Long userId) {
+        return functionService.getFunctionById(point.getFunctionId())
+                .map(f -> f.getUserId().equals(userId))
+                .orElse(false);
     }
 }

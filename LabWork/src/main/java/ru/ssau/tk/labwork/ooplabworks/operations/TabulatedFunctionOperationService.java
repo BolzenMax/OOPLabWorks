@@ -32,11 +32,10 @@ public class TabulatedFunctionOperationService {
             return new Point[0];
         }
 
-        Point[] points = new Point[tabulatedFunction.getCount()];
-        int i = 0;
-        for (Point point : tabulatedFunction) {
-            points[i] = point;
-            i++;
+        int count = tabulatedFunction.getCount();
+        Point[] points = new Point[count];
+        for (int i = 0; i < count; i++) {
+            points[i] = new Point(tabulatedFunction.getX(i), tabulatedFunction.getY(i));
         }
         return points;
     }

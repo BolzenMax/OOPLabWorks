@@ -38,11 +38,16 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Пользователь с таким логином уже существует");
         }
 
+        if (userRequest.getPassword() == null || userRequest.getConfirmPassword() == null ||
+                !userRequest.getPassword().equals(userRequest.getConfirmPassword())) {
+            return ResponseEntity.badRequest().body("Пароли не совпадают");
+        }
+
         User user = new User();
         user.setLogin(userRequest.getLogin());
         user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
-        user.setRole(userRequest.getRole() != null ? userRequest.getRole() : "civil");
-        user.setEnabled(userRequest.isEnabled());
+        user.setRole("CIVIL");
+        user.setEnabled(true);
 
         User savedUser = userService.createUser(user);
         UserDTO response = new UserDTO(
@@ -61,23 +66,29 @@ public class AuthController {
         log.info("Попытка входа пользователя: {}", authRequest.getLogin());
 
         try {
-            userDetails.loadUserByUsername(authRequest.getLogin());
             Optional<User> user = userService.getUserByLogin(authRequest.getLogin());
-
-            if (user.isPresent()) {
-                UserDTO response = new UserDTO(
-                        user.get().getId(),
-                        user.get().getLogin(),
-                        user.get().getRole(),
-                        user.get().isEnabled()
-                );
-                log.info("Успешный вход пользователя: {}", authRequest.getLogin());
-                return ResponseEntity.ok(response);
+            if (user.isEmpty()) {
+                return ResponseEntity.status(401).body("Неверные учетные данные");
             }
+
+            if (!user.get().isEnabled() || !passwordEncoder.matches(authRequest.getPassword(), user.get().getPassword())) {
+                log.warn("Ошибка входа для пользователя: {}", authRequest.getLogin());
+                return ResponseEntity.status(401).body("Неверные учетные данные");
+            }
+
+            userDetails.loadUserByUsername(authRequest.getLogin());
+
+            UserDTO response = new UserDTO(
+                    user.get().getId(),
+                    user.get().getLogin(),
+                    user.get().getRole(),
+                    user.get().isEnabled()
+            );
+            log.info("Успешный вход пользователя: {}", authRequest.getLogin());
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             log.warn("Ошибка входа для пользователя: {}", authRequest.getLogin());
+            return ResponseEntity.status(401).body("Неверные учетные данные");
         }
-
-        return ResponseEntity.status(401).body("Неверные учетные данные");
     }
 }

@@ -38,6 +38,11 @@ public class FunctionService {
         return functionRepository.findAll();
     }
 
+    public List<Function> getFunctionsByUserId(Long userId) {
+        log.debug("Получение функций пользователя с ID: {}", userId);
+        return functionRepository.findByUserId(userId);
+    }
+
     public Function updateFunction(Function function) {
         log.info("Актуализация функции с ID: {}", function.getId());
         Function updatedFunction = functionRepository.save(function);

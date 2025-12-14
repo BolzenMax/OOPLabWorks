@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import ru.ssau.tk.labwork.ooplabworks.dto.FunctionDTO;
 import ru.ssau.tk.labwork.ooplabworks.entities.Function;
 import ru.ssau.tk.labwork.ooplabworks.services.FunctionService;
+import org.springframework.http.HttpStatus;
+import ru.ssau.tk.labwork.ooplabworks.entities.User;
+import ru.ssau.tk.labwork.ooplabworks.services.UserService;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/api/functions")
@@ -22,10 +26,21 @@ public class FunctionController {
     @Autowired
     private FunctionService functionService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping
-    public ResponseEntity<List<FunctionDTO>> getAllFunctions() {
-        log.info("Получение всех функций");
-        List<FunctionDTO> functions = functionService.getAllFunctions().stream()
+    public ResponseEntity<List<FunctionDTO>> getAllFunctions(Principal principal) {
+        log.info("Получение всех функций пользователя {}", principal.getName());
+        Long userId = userService.getUserByLogin(principal.getName())
+                .map(User::getId)
+                .orElse(null);
+
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        List<FunctionDTO> functions = functionService.getFunctionsByUserId(userId).stream()
                 .map(func -> new FunctionDTO(
                         func.getId(),
                         func.getUserId(),
@@ -37,10 +52,10 @@ public class FunctionController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FunctionDTO> getFunctionById(@PathVariable Long id) {
+    public ResponseEntity<FunctionDTO> getFunctionById(@PathVariable Long id, Principal principal) {
         log.info("Получение функции с ID: {}", id);
         Optional<Function> function = functionService.getFunctionById(id);
-        if (function.isPresent()) {
+        if (function.isPresent() && isOwner(principal, function.get())) {
             FunctionDTO response = new FunctionDTO(
                     function.get().getId(),
                     function.get().getUserId(),
@@ -53,13 +68,13 @@ public class FunctionController {
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<FunctionDTO>> getFunctionsByUserId(@PathVariable Long userId) {
+    public ResponseEntity<List<FunctionDTO>> getFunctionsByUserId(@PathVariable Long userId, Principal principal) {
         log.info("Получение функций пользователя с ID: {}", userId);
-        List<Function> functions = functionService.getAllFunctions().stream()
-                .filter(func -> func.getUserId().equals(userId))
-                .collect(Collectors.toList());
-
-        List<FunctionDTO> responses = functions.stream()
+        Long requesterId = userService.getUserByLogin(principal.getName()).map(User::getId).orElse(null);
+        if (requesterId == null || !requesterId.equals(userId)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+        List<FunctionDTO> responses = functionService.getFunctionsByUserId(userId).stream()
                 .map(func -> new FunctionDTO(
                         func.getId(),
                         func.getUserId(),
@@ -72,11 +87,15 @@ public class FunctionController {
     }
 
     @PostMapping
-    public ResponseEntity<FunctionDTO> createFunction(@RequestBody FunctionDTO functionRequest) {
-        log.info("Создание функции для пользователя с ID: {}", functionRequest.getUserId());
+    public ResponseEntity<FunctionDTO> createFunction(@RequestBody FunctionDTO functionRequest, Principal principal) {
+        Long userId = userService.getUserByLogin(principal.getName()).map(User::getId).orElse(null);
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
 
+        log.info("Создание функции для пользователя с ID: {}", userId);
         Function function = new Function(
-                functionRequest.getUserId(),
+                userId,
                 functionRequest.getName(),
                 functionRequest.getSignature()
         );
@@ -93,16 +112,15 @@ public class FunctionController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<FunctionDTO> updateFunction(@PathVariable Long id, @RequestBody FunctionDTO functionRequest) {
+    public ResponseEntity<FunctionDTO> updateFunction(@PathVariable Long id, @RequestBody FunctionDTO functionRequest, Principal principal) {
         log.info("Обновление функции с ID: {}", id);
 
         Optional<Function> existingFunction = functionService.getFunctionById(id);
-        if (existingFunction.isEmpty()) {
+        if (existingFunction.isEmpty() || !isOwner(principal, existingFunction.get())) {
             return ResponseEntity.notFound().build();
         }
 
         Function function = existingFunction.get();
-        function.setUserId(functionRequest.getUserId());
         function.setName(functionRequest.getName());
         function.setSignature(functionRequest.getSignature());
 
@@ -118,15 +136,25 @@ public class FunctionController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteFunction(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteFunction(@PathVariable Long id, Principal principal) {
         log.info("Удаление функции с ID: {}", id);
 
         Optional<Function> function = functionService.getFunctionById(id);
-        if (function.isEmpty()) {
+        if (function.isEmpty() || !isOwner(principal, function.get())) {
             return ResponseEntity.notFound().build();
         }
 
         functionService.deleteFunction(id);
         return ResponseEntity.noContent().build();
+    }
+
+    private boolean isOwner(Principal principal, Function function) {
+        if (principal == null) {
+            return false;
+        }
+        return userService.getUserByLogin(principal.getName())
+                .map(User::getId)
+                .filter(id -> id.equals(function.getUserId()))
+                .isPresent();
     }
 }

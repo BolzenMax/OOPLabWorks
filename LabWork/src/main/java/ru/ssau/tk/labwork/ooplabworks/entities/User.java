@@ -13,7 +13,7 @@ public class User {
     private String login;
 
     @Column(nullable = false)
-    private String role = "civil";
+    private String role = "CIVIL";
 
     @Column(nullable = false)
     private String password;
