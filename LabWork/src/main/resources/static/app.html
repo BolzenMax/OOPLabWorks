@@ -10,7 +10,7 @@
 <div class="page">
     <header class="hero">
         <div>
-            <p class="eyebrow">лабораторные вычисления</p>
+            <p class="eyebrow">специальная вычислительная операция</p>
             <h1>Удобное табулирование функций</h1>
             <p class="subtitle">Создавайте и комбинируйте табулированные функции, меняйте фабрику хранения, выполняйте
                 операции и дифференцирование без лишних действий.</p>
@@ -76,6 +76,16 @@
                     <button id="openDerivativeSecondary" class="btn secondary">Открыть окно</button>
                 </div>
             </article>
+            <article class="card">
+                <div class="card-header">
+                    <h2>Загрузка из файла</h2>
+                    <p>Импортируйте табулированную функцию из JSON или XML и сразу добавьте её в список результатов.</p>
+                </div>
+                <div class="card-actions">
+                    <button id="importFromFile" class="btn secondary">Загрузить</button>
+                </div>
+                <div class="status" id="importStatus"></div>
+            </article>
         </section>
 
         <section class="card" id="resultsCard">
@@ -117,7 +127,6 @@
             </div>
             <div class="footer-actions">
                 <button class="btn ghost" data-close="arraysModal">Отмена</button>
-                <button class="btn" id="loadArrayFromFile">Загрузить</button>
                 <button class="btn primary" id="createFromArrays">Создать</button>
             </div>
             <div class="status" id="arraysStatus"></div>
@@ -156,7 +165,6 @@
             </div>
             <div class="footer-actions">
                 <button class="btn ghost" data-close="functionModal">Отмена</button>
-                <button class="btn" id="loadFunctionFromFile">Загрузить</button>
                 <button class="btn primary" id="createFromFunction">Создать</button>
             </div>
             <div class="status" id="functionStatus"></div>
@@ -205,11 +213,8 @@
                     <div class="pane-actions">
                         <button class="btn secondary" id="createAFromArrays">Таблица</button>
                         <button class="btn secondary" id="createAFromFunction">Функция</button>
+                        <button class="btn ghost" id="loadA">Загрузить</button>
                     </div>
-                </div>
-                <div class="field">
-                    <label for="operandAName">Имя функции</label>
-                    <input type="text" id="operandAName" placeholder="Функция A">
                 </div>
                 <div class="field inline-field">
                     <label for="recentASelect">Последние функции</label>
@@ -221,9 +226,6 @@
                         <thead><tr><th>x</th><th>y</th></tr></thead>
                         <tbody></tbody>
                     </table>
-                </div>
-                <div class="pane-actions">
-                    <button class="btn ghost" id="loadA">Загрузить</button>
                 </div>
             </div>
 
@@ -237,11 +239,8 @@
                     <div class="pane-actions">
                         <button class="btn secondary" id="createBFromArrays">Таблица</button>
                         <button class="btn secondary" id="createBFromFunction">Функция</button>
+                        <button class="btn ghost" id="loadB">Загрузить</button>
                     </div>
-                </div>
-                <div class="field">
-                    <label for="operandBName">Имя функции</label>
-                    <input type="text" id="operandBName" placeholder="Функция B">
                 </div>
                 <div class="field inline-field">
                     <label for="recentBSelect">Последние функции</label>
@@ -254,9 +253,6 @@
                         <tbody></tbody>
                     </table>
                 </div>
-                <div class="pane-actions">
-                    <button class="btn ghost" id="loadB">Загрузить</button>
-                </div>
             </div>
 
             <div class="operation-pane result-pane">
@@ -264,7 +260,6 @@
                     <div>
                         <h4>Результат</h4>
                         <p class="muted">Недоступен для редактирования.</p>
-                        <p class="name-label">Название: <span id="resultNameDisplay">не задано</span></p>
                     </div>
                     <div class="pane-actions">
                         <button class="btn ghost" id="saveResultJson">JSON</button>
@@ -311,11 +306,8 @@
                     <div class="pane-actions">
                         <button class="btn secondary" id="createSourceFromArrays">Таблица</button>
                         <button class="btn secondary" id="createSourceFromFunction">Функция</button>
+                        <button class="btn ghost" id="loadSource">Загрузить</button>
                     </div>
-                </div>
-                <div class="field">
-                    <label for="derivativeSourceName">Имя исходной функции</label>
-                    <input type="text" id="derivativeSourceName" placeholder="Исходная функция">
                 </div>
                 <div class="field inline-field">
                     <label for="recentDerivativeSelect">Последние функции</label>
@@ -328,16 +320,12 @@
                         <tbody></tbody>
                     </table>
                 </div>
-                <div class="pane-actions">
-                    <button class="btn ghost" id="loadSource">Загрузить</button>
-                </div>
             </div>
             <div class="operation-pane result-pane">
                 <div class="pane-header">
                     <div>
                         <h4>Производная</h4>
                         <p class="muted">Результат недоступен для редактирования.</p>
-                        <p class="name-label">Название: <span id="derivativeResultNameDisplay">не задано</span></p>
                     </div>
                     <div class="pane-actions">
                         <button class="btn ghost" id="saveDerivativeJson">JSON</button>
@@ -365,8 +353,7 @@
 <input type="file" id="hiddenFileA" accept=".json,.xml,application/json,application/xml" class="hidden-input">
 <input type="file" id="hiddenFileB" accept=".json,.xml,application/json,application/xml" class="hidden-input">
 <input type="file" id="hiddenFileSource" accept=".json,.xml,application/json,application/xml" class="hidden-input">
-<input type="file" id="hiddenFileArrays" accept=".json,.xml,application/json,application/xml" class="hidden-input">
-<input type="file" id="hiddenFileFunction" accept=".json,.xml,application/json,application/xml" class="hidden-input">
+<input type="file" id="hiddenFileImport" accept=".json,.xml,application/json,application/xml" class="hidden-input">
 
 
 

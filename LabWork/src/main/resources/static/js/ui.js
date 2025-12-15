@@ -35,6 +35,7 @@ const valuesTableBody = document.querySelector('#valuesTable tbody');
 const resultsContainer = document.getElementById('results');
 const arraysStatus = document.getElementById('arraysStatus');
 const functionStatus = document.getElementById('functionStatus');
+const importStatus = document.getElementById('importStatus');
 const settingsStatus = document.getElementById('settingsStatus');
 const operationsStatus = document.getElementById('operationsStatus');
 const derivativeStatus = document.getElementById('derivativeStatus');
@@ -59,8 +60,8 @@ const compositeInner = document.getElementById('compositeInner');
 const recentASelect = document.getElementById('recentASelect');
 const recentBSelect = document.getElementById('recentBSelect');
 const recentDerivativeSelect = document.getElementById('recentDerivativeSelect');
-const hiddenFileArrays = document.getElementById('hiddenFileArrays');
-const hiddenFileFunction = document.getElementById('hiddenFileFunction');
+const hiddenFileImport = document.getElementById('hiddenFileImport');
+const importButton = document.getElementById('importFromFile');
 const arrayNameInput = document.getElementById('arrayName');
 const functionDisplayNameInput = document.getElementById('functionDisplayName');
 const operandANameInput = document.getElementById('operandAName');
@@ -129,6 +130,9 @@ function prepareModal(modal) {
         showStatus(arraysStatus, '', false);
     } else if (modal === functionModal) {
         showStatus(functionStatus, '', false);
+    } else if (modal === settingsModal) {
+            showStatus(settingsStatus, '', false);
+            loadFactoryState();
     }
 }
 
@@ -145,6 +149,8 @@ function resetModalState(modal) {
         resetFunctionModal();
     } else if (modal === compositeModal) {
         resetCompositeModal();
+    } else if (modal === settingsModal) {
+         resetSettingsModal();
     }
 }
 
@@ -303,13 +309,6 @@ createFromArraysBtn.addEventListener('click', async () => {
     }
 });
 
-document.getElementById('loadArrayFromFile').addEventListener('click', () => {
-    loadFunction(hiddenFileArrays, (data) => {
-        handleSuccess(data, 'Функция загружена');
-        toggleModal(arraysModal, false);
-    }, arraysStatus);
-});
-
 createFromFunctionBtn.addEventListener('click', async () => {
     try {
         const functionName = functionSelect.value;
@@ -331,13 +330,6 @@ createFromFunctionBtn.addEventListener('click', async () => {
     } catch (err) {
         showStatus(functionStatus, err.message, true);
     }
-});
-
-document.getElementById('loadFunctionFromFile').addEventListener('click', () => {
-    loadFunction(hiddenFileFunction, (data) => {
-        handleSuccess(data, 'Функция загружена');
-        toggleModal(functionModal, false);
-    }, functionStatus);
 });
 
 function normalizeFunctionData(data) {
@@ -442,7 +434,7 @@ function useRecentSelection(select, setter, statusEl) {
         }
         const clone = JSON.parse(JSON.stringify(entry.data));
         setter(clone);
-        showStatus(statusEl, 'Функция загружена', false);
+        showStatus(statusEl, '', false);
     } catch (err) {
         showStatus(statusEl, err.message, true);
     }
@@ -675,6 +667,10 @@ function redrawDerivativeChart() {
     });
 }
 
+function resetSettingsModal() {
+    showStatus(settingsStatus, '', false);
+}
+
 function resetArraysModal() {
     const pointsCountInput = document.getElementById('pointsCount');
     if (pointsCountInput) pointsCountInput.value = '';
@@ -812,12 +808,18 @@ async function loadFunction(fileInput, setter, statusEl) {
             }
             const data = await response.json();
             setter(data);
-            showStatus(statusEl, 'Функция загружена', false);
+            showStatus(statusEl, '', false);
         } catch (err) {
             showStatus(statusEl, err.message, true);
         }
     };
     fileInput.click();
+}
+
+if (importButton) {
+    importButton.addEventListener('click', () => loadFunction(hiddenFileImport, (data) => {
+        handleSuccess(data, 'Функция загружена из файла');
+    }, importStatus));
 }
 
 function setupOperandButtons() {

@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Ещё немного, ещё чуть-чуть... последний бой - он трудный самый...">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Малюсенькая доработочка">
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/ui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/ui.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,14 +247,6 @@
       <workItem from="1764667547137" duration="5901000" />
       <workItem from="1764999315134" duration="1000" />
       <workItem from="1765696051510" duration="7000" />
-    </task>
-    <task id="LOCAL-00018" summary="Добавил в ArrayTabulatedFunction метод insert, при этом сделав xValues, yValues, count не final для работоспособности, но надо ещё тестами новый метод покрыть...">
-      <option name="closed" value="true" />
-      <created>1759159907864</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1759159907864</updated>
     </task>
     <task id="LOCAL-00019" summary="Доработал в ArrayTabulatedFunction метод insert, сделал тесты для insert в методе ArrayTabulatedFunctionTest">
       <option name="closed" value="true" />
@@ -640,7 +632,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765731317304</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Малюсенькая доработочка">
+      <option name="closed" value="true" />
+      <created>1765781712384</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1765781712384</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,7 +670,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Реализовал в FunctionsIO readTabulatedFunction для inputStream, класс TabulatedFunctionFileInputStream и внёс небольшие корректировки в TabulatedFunctionFileOutputStream" />
     <MESSAGE value="Частично подготовил LinkedListTabulatedFunction к сериализации. После написания оставшихся методов мной и товарищем должно работать нормально" />
     <MESSAGE value="Реализация deserialize в FunctionsIO" />
     <MESSAGE value="Реализовал сериализацию в LinkedListTabulatedFunction, добавил serializable в FunctionsIO" />
@@ -695,7 +694,8 @@
     <MESSAGE value="типа..." />
     <MESSAGE value="что-то обрезал, что-то нарастил - и получилось то что получилось" />
     <MESSAGE value="Ещё немного, ещё чуть-чуть... последний бой - он трудный самый..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ещё немного, ещё чуть-чуть... последний бой - он трудный самый..." />
+    <MESSAGE value="Малюсенькая доработочка" />
+    <option name="LAST_COMMIT_MESSAGE" value="Малюсенькая доработочка" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
