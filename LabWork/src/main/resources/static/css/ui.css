@@ -8,6 +8,26 @@
     --border: #334155;
     --danger: #f87171;
     --success: #34d399;
+    --secondary-bg: rgba(255,255,255,0.06);
+    --secondary-border: #475569;
+    --secondary-text: var(--text);
+    --secondary-shadow: 0 10px 24px rgba(0,0,0,0.2);
+}
+
+:root[data-theme="light"] {
+    --bg: #f8fafc;
+    --panel: #ffffff;
+    --accent: #7c3aed;
+    --accent-2: #14b8a6;
+    --text: #0f172a;
+    --muted: #475569;
+    --border: #e2e8f0;
+    --danger: #dc2626;
+    --success: #15803d;
+    --secondary-bg: #eef2ff;
+    --secondary-border: #cbd5e1;
+    --secondary-text: #0f172a;
+    --secondary-shadow: 0 12px 28px rgba(15,23,42,0.12);
 }
 
 * { box-sizing: border-box; }
@@ -91,7 +111,13 @@ body {
 .btn:hover { transform: translateY(-1px); }
 
 .btn.primary { background: linear-gradient(135deg, var(--accent), #9f67ff); box-shadow: 0 10px 30px rgba(124,58,237,0.35); }
-.btn.secondary { background: rgba(255,255,255,0.04); border-color: var(--border); }
+.btn.secondary {
+    background: var(--secondary-bg);
+    border-color: var(--secondary-border);
+    color: var(--secondary-text);
+    box-shadow: var(--secondary-shadow);
+}
+.btn.secondary:hover { border-color: var(--accent-2); box-shadow: 0 12px 30px rgba(34,211,238,0.18); }
 .btn.ghost { background: transparent; border-color: var(--border); color: var(--muted); }
 
 .icon-btn { background: none; border: 1px solid var(--border); border-radius: 8px; color: var(--muted); padding: 6px 10px; cursor: pointer; }

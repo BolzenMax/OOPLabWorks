@@ -1,5 +1,6 @@
 const AUTH_STORAGE_KEY = 'authHeader';
 const USER_STORAGE_KEY = 'currentUser';
+const THEME_STORAGE_KEY = 'uiTheme';
 
 function requireAuth() {
     const token = sessionStorage.getItem(AUTH_STORAGE_KEY);
@@ -44,6 +45,7 @@ const compositeStatus = document.getElementById('compositeStatus');
 const functionSelect = document.getElementById('functionSelect');
 const factorySelect = document.getElementById('factorySelect');
 const factoryState = document.getElementById('factoryState');
+const themeSelect = document.getElementById('themeSelect');
 const logoutButton = document.getElementById('logoutButton');
 const currentUserLabel = document.getElementById('currentUserLabel');
 
@@ -77,6 +79,36 @@ const derivativeResultNameDisplay = document.getElementById('derivativeResultNam
 const inspectTitle = document.getElementById('inspectTitle');
 
 const MAX_ABS_VALUE = 1e9;
+
+function getThemeStorageKey() {
+    try {
+        const rawUser = sessionStorage.getItem(USER_STORAGE_KEY);
+        if (rawUser) {
+            const parsed = JSON.parse(rawUser);
+            if (parsed?.login) {
+                return `${THEME_STORAGE_KEY}:${parsed.login}`;
+            }
+        }
+    } catch (_) {
+        // fallback to default key
+    }
+    return THEME_STORAGE_KEY;
+}
+
+function getSavedTheme() {
+    return localStorage.getItem(getThemeStorageKey()) === 'light' ? 'light' : 'dark';
+}
+
+function applyTheme(theme) {
+    const normalized = theme === 'light' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', normalized);
+    localStorage.setItem(getThemeStorageKey(), normalized);
+    if (themeSelect) {
+        themeSelect.value = normalized;
+    }
+}
+
+applyTheme(getSavedTheme());
 
 function getCurrentUser() {
     const raw = sessionStorage.getItem(USER_STORAGE_KEY);
@@ -133,6 +165,7 @@ function prepareModal(modal) {
     } else if (modal === settingsModal) {
             showStatus(settingsStatus, '', false);
             loadFactoryState();
+            syncThemeControl();
     }
 }
 
@@ -513,12 +546,20 @@ async function loadFactoryState() {
 async function saveFactoryState() {
     try {
         const type = factorySelect.value;
+        const selectedTheme = themeSelect ? themeSelect.value : getSavedTheme();
+        applyTheme(selectedTheme);
         const state = await sendJson('/ui/state/factory', { type });
         factoryState.textContent = state.displayName;
-        showStatus(settingsStatus, 'Фабрика обновлена', false);
+        showStatus(settingsStatus, 'Настройки сохранены', false);
         toggleModal(settingsModal, false);
     } catch (err) {
         showStatus(settingsStatus, err.message, true);
+    }
+}
+
+function syncThemeControl() {
+    if (themeSelect) {
+        themeSelect.value = getSavedTheme();
     }
 }
 
@@ -669,6 +710,7 @@ function redrawDerivativeChart() {
 
 function resetSettingsModal() {
     showStatus(settingsStatus, '', false);
+    syncThemeControl();
 }
 
 function resetArraysModal() {

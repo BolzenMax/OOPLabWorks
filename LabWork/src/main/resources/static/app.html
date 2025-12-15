@@ -16,11 +16,13 @@
                 операции и дифференцирование без лишних действий.</p>
         </div>
         <div class="hero-panel">
-            <p class="muted">Текущая фабрика</p>
-            <div class="factory-state" id="factoryState">—</div>
-            <button class="btn secondary" id="openSettings">Настроить</button>
-            <div class="user-bar">
-                <span id="currentUserLabel" class="muted"></span>
+            <p id="currentUserLabel" class="muted"></p>
+            <div>
+                <p class="muted">Текущая фабрика</p>
+                <div class="factory-state" id="factoryState">—</div>
+            </div>
+            <div class="hero-actions">
+                <button class="btn secondary" id="openSettings">Настройки</button>
                 <button class="btn ghost" id="logoutButton">Выйти</button>
             </div>
         </div>
@@ -175,7 +177,7 @@
 <div class="modal" id="settingsModal" aria-hidden="true">
     <div class="modal__dialog">
         <div class="modal__header">
-            <h3>Настройка фабрики</h3>
+            <h3>Настройки</h3>
             <button class="icon-btn" data-close="settingsModal">×</button>
         </div>
         <div class="modal__body">
@@ -186,9 +188,15 @@
                     <option value="LINKED_LIST">Связный список</option>
                 </select>
             </div>
-            <p class="hint">Выбранная фабрика будет использоваться во всех окнах и при всех операциях.</p>
+            <div class="field">
+                <label for="themeSelect">Тема интерфейса</label>
+                <select id="themeSelect">
+                    <option value="dark">Тёмная</option>
+                    <option value="light">Светлая</option>
+                </select>
+            </div>
+            <p class="hint">Выбранные параметры будут использоваться во всех окнах и при всех операциях.</p>
             <div class="footer-actions">
-                <button class="btn ghost" data-close="settingsModal">Закрыть</button>
                 <button class="btn primary" id="saveFactory">Сохранить</button>
             </div>
             <div class="status" id="settingsStatus"></div>
