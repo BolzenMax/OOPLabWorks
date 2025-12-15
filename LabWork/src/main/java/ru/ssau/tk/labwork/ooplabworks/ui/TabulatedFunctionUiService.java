@@ -22,7 +22,7 @@ import java.util.List;
 @Service
 public class TabulatedFunctionUiService {
     private static final int MIN_POINTS = 2;
-    private static final int MAX_POINTS = 300;
+    private static final int MAX_POINTS = 1000;
     private static final double MAX_ABSOLUTE_VALUE = 1e9;
 
     private final UiFactoryService factoryService;

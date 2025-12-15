@@ -28,6 +28,7 @@ const operationsModal = document.getElementById('operationsModal');
 const derivativeModal = document.getElementById('derivativeModal');
 const inspectorModal = document.getElementById('inspectorModal');
 const compositeModal = document.getElementById('compositeModal');
+const newYearModal = document.getElementById('newYearModal');
 
 const buildTableBtn = document.getElementById('buildTable');
 const createFromArraysBtn = document.getElementById('createFromArrays');
@@ -118,7 +119,7 @@ function getCurrentUser() {
 function bindUserBar() {
     const user = getCurrentUser();
     if (currentUserLabel && user) {
-        currentUserLabel.textContent = `Вы вошли как ${user.login} (роль: ${user.role})`;
+        currentUserLabel.textContent = `Вы вошли как ${user.login}`;
     }
 
     if (logoutButton) {
@@ -224,6 +225,7 @@ attachOpeners(['openOperations', 'openOperationsSecondary'], operationsModal);
 attachOpeners(['openDerivative', 'openDerivativeSecondary'], derivativeModal);
 attachOpeners(['openInspector', 'openInspectorSecondary'], inspectorModal);
 attachOpeners(['openComposite', 'openCompositeSecondary'], compositeModal);
+attachOpeners(['openNewYear'], newYearModal);
 
 document.querySelectorAll('[data-close]').forEach(btn => {
     const target = document.getElementById(btn.dataset.close);
@@ -262,8 +264,8 @@ buildTableBtn.addEventListener('click', () => {
         showStatus(arraysStatus, 'Введите количество точек', true);
         return;
     }
-    if (count < 2 || count > 300) {
-        showStatus(arraysStatus, 'Количество точек должно быть от 2 до 300', true);
+    if (count < 2 || count > 1000) {
+        showStatus(arraysStatus, 'Количество точек должно быть от 2 до 1000', true);
         return;
     }
     showStatus(arraysStatus, 'Таблица готова к заполнению', false);
@@ -335,7 +337,7 @@ createFromArraysBtn.addEventListener('click', async () => {
             points,
             name: normalizedName(arrayNameInput)
         });
-        handleSuccess(data, 'Табулированная функция создана через таблицу');
+        handleSuccess(data, 'Функция создана через таблицу');
         toggleModal(arraysModal, false);
     } catch (err) {
         showStatus(arraysStatus, err.message, true);
@@ -358,7 +360,7 @@ createFromFunctionBtn.addEventListener('click', async () => {
         parseNumber(to, 'Конец интервала');
 
         const data = await sendJson('/ui/tabulated/from-function', { functionName, from, to, pointsCount, name: normalizedName(functionDisplayNameInput) });
-        handleSuccess(data, 'Табулированная функция создана через формулу');
+        handleSuccess(data, 'Функция создана через формулу');
         toggleModal(functionModal, false);
     } catch (err) {
         showStatus(functionStatus, err.message, true);
@@ -632,11 +634,11 @@ function setOperand(key, data) {
     const normalized = normalizeFunctionData(data);
     if (key === 'a') {
         operands.a = normalized;
-        applyName(operands.a, operandANameInput, 'Функция A', operandANameDisplay);
+        applyName(operands.a, operandANameInput, 'Функция 1', operandANameDisplay);
         renderFunctionTable(operandATable, operands.a, true, redrawOperationsChart);
     } else {
         operands.b = normalized;
-        applyName(operands.b, operandBNameInput, 'Функция B', operandBNameDisplay);
+        applyName(operands.b, operandBNameInput, 'Функция 2', operandBNameDisplay);
         renderFunctionTable(operandBTable, operands.b, true, redrawOperationsChart);
     }
     redrawOperationsChart();
@@ -672,8 +674,8 @@ function redrawOperationsChart() {
     if (!ctx) return;
     if (operationsChart) operationsChart.destroy();
     const datasets = [];
-    if (operands.a?.points?.length) datasets.push(buildDataset('Функция A', '#2563eb', operands.a));
-    if (operands.b?.points?.length) datasets.push(buildDataset('Функция B', '#10b981', operands.b));
+    if (operands.a?.points?.length) datasets.push(buildDataset('Функция 1', '#2563eb', operands.a));
+    if (operands.b?.points?.length) datasets.push(buildDataset('Функция 2', '#10b981', operands.b));
     if (operationResult?.points?.length) datasets.push(buildDataset('Результат', '#f97316', operationResult));
     if (!datasets.length) return;
     operationsChart = new Chart(ctx, {
@@ -789,7 +791,7 @@ function resetInspectorModal() {
     }
     if (applyInput) applyInput.value = '';
     if (applyResult) applyResult.textContent = '';
-    if (inspectTitle) inspectTitle.textContent = 'График табулированной функции';
+    if (inspectTitle) inspectTitle.textContent = 'График функции';
     renderFunctionTable(inspectTable, inspectedFunction, true, () => {});
     showStatus(inspectStatus, '', false);
 }
@@ -911,10 +913,10 @@ function setupOperandButtons() {
 async function executeOperation(op) {
     try {
         if (!operands.a || !operands.b) {
-            throw new Error('Загрузите обе функции-операнды');
+            throw new Error('Загрузите обе функции');
         }
-        applyName(operands.a, operandANameInput, 'Функция A', operandANameDisplay);
-        applyName(operands.b, operandBNameInput, 'Функция B', operandBNameDisplay);
+        applyName(operands.a, operandANameInput, 'Функция 1', operandANameDisplay);
+        applyName(operands.b, operandBNameInput, 'Функция 2', operandBNameDisplay);
         const desiredName = normalizedName(resultNameInput, 'Результат операции');
         const payload = {
             operation: op,
@@ -996,15 +998,15 @@ function renderInspectTable() {
     renderFunctionTable(inspectTable, inspectedFunction, true, () => { drawInspectChart(); });
     drawInspectChart();
     if (inspectTitle) {
-        inspectTitle.textContent = inspectedFunction?.name ? `График: ${inspectedFunction.name}` : 'График табулированной функции';
+        inspectTitle.textContent = inspectedFunction?.name ? `График: ${inspectedFunction.name}` : 'График функции';
     }
 }
 
 document.getElementById('inspectSaveJson').addEventListener('click', () => saveStructured(inspectedFunction, '/ui/tabulated/serialize/json', 'inspected.json', inspectStatus));
 document.getElementById('inspectSaveXml').addEventListener('click', () => saveStructured(inspectedFunction, '/ui/tabulated/serialize/xml', 'inspected.xml', inspectStatus));
 
-operandANameInput?.addEventListener('input', () => applyName(operands.a, operandANameInput, 'Функция A', operandANameDisplay));
-operandBNameInput?.addEventListener('input', () => applyName(operands.b, operandBNameInput, 'Функция B', operandBNameDisplay));
+operandANameInput?.addEventListener('input', () => applyName(operands.a, operandANameInput, 'Функция 1', operandANameDisplay));
+operandBNameInput?.addEventListener('input', () => applyName(operands.b, operandBNameInput, 'Функция 2', operandBNameDisplay));
 resultNameInput?.addEventListener('input', () => applyName(operationResult, resultNameInput, 'Результат операции', resultNameDisplay));
 derivativeSourceNameInput?.addEventListener('input', () => applyName(derivativeSource, derivativeSourceNameInput, 'Исходная функция', derivativeSourceNameDisplay));
 derivativeResultNameInput?.addEventListener('input', () => applyName(derivativeResult, derivativeResultNameInput, 'Производная', derivativeResultNameDisplay));

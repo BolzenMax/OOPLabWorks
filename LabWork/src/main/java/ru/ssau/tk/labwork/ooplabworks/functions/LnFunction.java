@@ -1,6 +1,6 @@
 package ru.ssau.tk.labwork.ooplabworks.functions;
 
-@UiMathFunction(displayName = "Натуральный логарифм ln(x)", priority = 1)
+@UiMathFunction(displayName = "Натуральный логарифм", priority = 1)
 public class LnFunction implements MathFunction {
     @Override
     public double apply(double x) {

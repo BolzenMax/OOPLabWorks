@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Табулирование функций</title>
+    <title>Работа с математическими функциями</title>
     <link rel="stylesheet" href="/css/ui.css">
 </head>
 <body>
@@ -11,14 +11,13 @@
     <header class="hero">
         <div>
             <p class="eyebrow">специальная вычислительная операция</p>
-            <h1>Удобное табулирование функций</h1>
-            <p class="subtitle">Создавайте и комбинируйте табулированные функции, меняйте фабрику хранения, выполняйте
-                операции и дифференцирование без лишних действий.</p>
+            <h1>Работа с математическими функциями</h1>
+            <p class="subtitle">Здесь можно выполнять различные операции с математическими функциями, работающими на основе массива или связного списка</p>
         </div>
         <div class="hero-panel">
             <p id="currentUserLabel" class="muted"></p>
             <div>
-                <p class="muted">Текущая фабрика</p>
+                <p class="muted">Выбранная фабрика</p>
                 <div class="factory-state" id="factoryState">—</div>
             </div>
             <div class="hero-actions">
@@ -29,29 +28,39 @@
     </header>
 
     <main class="content">
+        <section class="card" id="newYearCard">
+            <div class="card-header">
+                <h2>С наступающим 2026 годом!</h2>
+                <p>Здесь можно увидеть что-то необычное 😉</p>
+            </div>
+            <div class="card-actions">
+                <button id="openNewYear" class="btn secondary">Открыть</button>
+            </div>
+        </section>
+
         <section class="card-grid">
             <article class="card">
                 <div class="card-header">
-                    <h2>Через массивы x и y</h2>
-                    <p>Задайте размер таблицы, заполните значения и получите результат с проверкой сортировки и размера.</p>
+                    <h2>Создать через таблицу значений</h2>
+                    <p>Здесь можно создать функцию на основе таблицы значений x и y заданного вами размера</p>
                 </div>
                 <div class="card-actions">
-                    <button id="openArraysSecondary" class="btn secondary">Открыть мастер</button>
+                    <button id="openArraysSecondary" class="btn secondary">Начать</button>
                 </div>
             </article>
             <article class="card">
                 <div class="card-header">
-                    <h2>Через математическую функцию</h2>
-                    <p>Выберите готовую функцию, интервал и количество точек — приложение само построит таблицу.</p>
+                    <h2>Создать через готовую формулу</h2>
+                    <p>Здесь можно задать формулу, интервал и количество точек - и будет создана функция</p>
                 </div>
                 <div class="card-actions">
-                    <button id="openFunctionSecondary" class="btn secondary">Открыть мастер</button>
+                    <button id="openFunctionSecondary" class="btn secondary">Начать</button>
                 </div>
             </article>
             <article class="card">
                 <div class="card-header">
                     <h2>Сложные функции</h2>
-                    <p>Собирайте композиции функций и используйте их для табулирования.</p>
+                    <p>Здесь можно создать сложную функцию для использования в других разделах</p>
                 </div>
                 <div class="card-actions">
                     <button id="openCompositeSecondary" class="btn secondary">Создать</button>
@@ -62,26 +71,26 @@
         <section class="card-grid">
             <article class="card">
                 <div class="card-header">
-                    <h2>Поэлементные операции</h2>
-                    <p>Складывайте, вычитайте, умножайте и делите две функции. Изменяйте значения Y прямо в таблице.</p>
+                    <h2>Операции с функциями</h2>
+                    <p>Здесь можно сложить, вычесть, умножить или разделиь две функции</p>
                 </div>
                 <div class="card-actions">
-                    <button id="openOperationsSecondary" class="btn secondary">Открыть окно</button>
+                    <button id="openOperationsSecondary" class="btn secondary">Начать</button>
                 </div>
             </article>
             <article class="card">
                 <div class="card-header">
                     <h2>Дифференцирование</h2>
-                    <p>Получайте производную табулированной функции и сразу сохраняйте результат.</p>
+                    <p>Здесь можно получить производную функции</p>
                 </div>
                 <div class="card-actions">
-                    <button id="openDerivativeSecondary" class="btn secondary">Открыть окно</button>
+                    <button id="openDerivativeSecondary" class="btn secondary">Начать</button>
                 </div>
             </article>
             <article class="card">
                 <div class="card-header">
                     <h2>Загрузка из файла</h2>
-                    <p>Импортируйте табулированную функцию из JSON или XML и сразу добавьте её в список результатов.</p>
+                    <p>Здесь можно загрузить функцию из JSON или XML файла, добавив её в список созданных функций</p>
                 </div>
                 <div class="card-actions">
                     <button id="importFromFile" class="btn secondary">Загрузить</button>
@@ -92,8 +101,8 @@
 
         <section class="card" id="resultsCard">
             <div class="card-header">
-                <h2>Последние созданные функции</h2>
-                <p class="muted">Результаты появятся здесь после успешного построения или выполнения операций.</p>
+                <h2>Созданные функции</h2>
+                <p class="muted">Здесь можно увидеть успешно созданные, загруженные функции или результаты операций</p>
             </div>
             <div id="results"></div>
         </section>
@@ -103,18 +112,18 @@
 <div class="modal" id="arraysModal" aria-hidden="true">
     <div class="modal__dialog">
         <div class="modal__header">
-            <h3>Создание через таблицу</h3>
+            <h3>Создание функции через таблицу значений</h3>
             <button class="icon-btn" data-close="arraysModal">×</button>
         </div>
         <div class="modal__body">
             <div class="field">
-                <label for="arrayName">Название функции (необязательно)</label>
-                <input type="text" id="arrayName" placeholder="Например, Моя функция 1">
+                <label for="arrayName">Название функции</label>
+                <input type="text" id="arrayName" placeholder="Например, tablefunc">
             </div>
             <div class="field-group">
                 <label for="pointsCount">Количество точек</label>
                 <div class="inline-field">
-                    <input type="number" id="pointsCount" min="2" max="300" placeholder="например, 5">
+                    <input type="number" id="pointsCount" min="2" max="1000" placeholder="например, 5">
                     <button class="btn secondary" id="buildTable">Сформировать таблицу</button>
                 </div>
                 <p class="hint">Нажатие по кнопке повторно очистит существующие значения и создаст новую таблицу.</p>
@@ -128,24 +137,38 @@
                 </table>
             </div>
             <div class="footer-actions">
-                <button class="btn ghost" data-close="arraysModal">Отмена</button>
                 <button class="btn primary" id="createFromArrays">Создать</button>
             </div>
             <div class="status" id="arraysStatus"></div>
         </div>
     </div>
 </div>
-
+<div class="modal" id="newYearModal" aria-hidden="true">
+    <div class="modal__dialog">
+        <div class="modal__header">
+            <h3>С наступающим 2026 годом!</h3>
+            <button class="icon-btn" data-close="newYearModal">×</button>
+        </div>
+        <div class="modal__body">
+            <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/__BxNlTATGY" title="Новогоднее видео" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="greeting-placeholder">
+                <p class="muted">Дорогие друзья! Идут последние недели 2025 года. Для каждого он вошёл в историю по-своему. Для кого-то это был год, когда удалось совершить огромный шаг вперёд в чём-то или в целом, для кого-то, увы, наоборот. В любом случае хочется пожелать, чтобы всё плохое осталось в уходящем году и более вас не тревожило, а всё хорошее пошло с вами дальше и помогало развиваться и идти только вперёд. Чтобы наступающий год был лучше предыдущего, чтобы мы все пережили его. С праздником вас, с наступающим 2026 годом!</p>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal" id="functionModal" aria-hidden="true">
     <div class="modal__dialog">
         <div class="modal__header">
-            <h3>Создание через формулу</h3>
+            <h3>Создание функции через готовую формулу</h3>
             <button class="icon-btn" data-close="functionModal">×</button>
         </div>
         <div class="modal__body">
             <div class="field">
-                <label for="functionDisplayName">Название функции (необязательно)</label>
-                <input type="text" id="functionDisplayName" placeholder="Например, Парабола">
+                <label for="functionDisplayName">Название функции</label>
+                <input type="text" id="functionDisplayName" placeholder="Например, square">
             </div>
             <div class="field">
                 <label for="functionSelect">Функция</label>
@@ -154,19 +177,18 @@
             <div class="field-group two-cols">
                 <div class="field">
                     <label for="intervalFrom">Начало интервала</label>
-                    <input type="text" id="intervalFrom" placeholder="например, -2">
+                    <input type="text" id="intervalFrom" placeholder="Например, -2">
                 </div>
                 <div class="field">
                     <label for="intervalTo">Конец интервала</label>
-                    <input type="text" id="intervalTo" placeholder="например, 3">
+                    <input type="text" id="intervalTo" placeholder="Например, 3">
                 </div>
             </div>
             <div class="field">
                 <label for="functionPoints">Количество точек</label>
-                <input type="number" id="functionPoints" min="2" max="300" placeholder="5">
+                <input type="number" id="functionPoints" min="2" max="1000" placeholder="5">
             </div>
             <div class="footer-actions">
-                <button class="btn ghost" data-close="functionModal">Отмена</button>
                 <button class="btn primary" id="createFromFunction">Создать</button>
             </div>
             <div class="status" id="functionStatus"></div>
@@ -182,7 +204,7 @@
         </div>
         <div class="modal__body">
             <div class="field">
-                <label for="factorySelect">Тип хранения</label>
+                <label for="factorySelect">Тип хранения функций</label>
                 <select id="factorySelect">
                     <option value="ARRAY">Массив</option>
                     <option value="LINKED_LIST">Связный список</option>
@@ -195,7 +217,7 @@
                     <option value="light">Светлая</option>
                 </select>
             </div>
-            <p class="hint">Выбранные параметры будут использоваться во всех окнах и при всех операциях.</p>
+            <p class="hint">Выбранные параметры будут использоваться во всех окнах и при всех операциях</p>
             <div class="footer-actions">
                 <button class="btn primary" id="saveFactory">Сохранить</button>
             </div>
@@ -207,16 +229,16 @@
 <div class="modal" id="operationsModal" aria-hidden="true">
     <div class="modal__dialog modal__dialog--wide">
         <div class="modal__header">
-            <h3>Поэлементные операции</h3>
+            <h3>Операции с функциями</h3>
             <button class="icon-btn" data-close="operationsModal">×</button>
         </div>
         <div class="modal__body operations-layout">
             <div class="operation-pane">
                 <div class="pane-header">
                     <div>
-                        <h4>Первый операнд</h4>
-                        <p class="muted">Создайте или загрузите функцию. Значения Y можно редактировать.</p>
-                        <p class="name-label">Название: <span id="operandANameDisplay">не задано</span></p>
+                        <h4>Первая функция</h4>
+                        <p class="muted">Создайте или загрузите функцию</p>
+                        <p class="name-label">Название: <span id="operandANameDisplay">-</span></p>
                     </div>
                     <div class="pane-actions">
                         <button class="btn secondary" id="createAFromArrays">Таблица</button>
@@ -225,7 +247,7 @@
                     </div>
                 </div>
                 <div class="field inline-field">
-                    <label for="recentASelect">Последние функции</label>
+                    <label for="recentASelect">Или выберите из уже созданных функций</label>
                     <select id="recentASelect"></select>
                     <button class="btn ghost" id="useRecentA">Выбрать</button>
                 </div>
@@ -240,9 +262,9 @@
             <div class="operation-pane">
                 <div class="pane-header">
                     <div>
-                        <h4>Второй операнд</h4>
-                        <p class="muted">Создайте или загрузите функцию. Значения Y можно редактировать.</p>
-                        <p class="name-label">Название: <span id="operandBNameDisplay">не задано</span></p>
+                        <h4>Вторая функция</h4>
+                        <p class="muted">Создайте или загрузите функцию</p>
+                        <p class="name-label">Название: <span id="operandBNameDisplay">-</span></p>
                     </div>
                     <div class="pane-actions">
                         <button class="btn secondary" id="createBFromArrays">Таблица</button>
@@ -251,7 +273,7 @@
                     </div>
                 </div>
                 <div class="field inline-field">
-                    <label for="recentBSelect">Последние функции</label>
+                    <label for="recentBSelect">Или выберите из уже созданных функций</label>
                     <select id="recentBSelect"></select>
                     <button class="btn ghost" id="useRecentB">Выбрать</button>
                 </div>
@@ -267,7 +289,6 @@
                 <div class="pane-header">
                     <div>
                         <h4>Результат</h4>
-                        <p class="muted">Недоступен для редактирования.</p>
                     </div>
                     <div class="pane-actions">
                         <button class="btn ghost" id="saveResultJson">JSON</button>
@@ -275,8 +296,8 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label for="resultName">Имя результата</label>
-                    <input type="text" id="resultName" placeholder="Результат операции">
+                    <label for="resultName">Название результата</label>
+                    <input type="text" id="resultName" placeholder="Например, plus">
                 </div>
                 <div class="table-wrapper">
                     <table class="result-table" id="resultTable">
@@ -308,8 +329,8 @@
                 <div class="pane-header">
                     <div>
                         <h4>Исходная функция</h4>
-                        <p class="muted">Создайте или загрузите функцию для дифференцирования.</p>
-                        <p class="name-label">Название: <span id="derivativeSourceNameDisplay">не задано</span></p>
+                        <p class="muted">Создайте или загрузите функцию</p>
+                        <p class="name-label">Название: <span id="derivativeSourceNameDisplay">-</span></p>
                     </div>
                     <div class="pane-actions">
                         <button class="btn secondary" id="createSourceFromArrays">Таблица</button>
@@ -318,7 +339,7 @@
                     </div>
                 </div>
                 <div class="field inline-field">
-                    <label for="recentDerivativeSelect">Последние функции</label>
+                    <label for="recentDerivativeSelect">Или выберите из уже созданных функций</label>
                     <select id="recentDerivativeSelect"></select>
                     <button class="btn ghost" id="useRecentSource">Выбрать</button>
                 </div>
@@ -333,7 +354,6 @@
                 <div class="pane-header">
                     <div>
                         <h4>Производная</h4>
-                        <p class="muted">Результат недоступен для редактирования.</p>
                     </div>
                     <div class="pane-actions">
                         <button class="btn ghost" id="saveDerivativeJson">JSON</button>
@@ -342,8 +362,8 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label for="derivativeResultName">Имя результата</label>
-                    <input type="text" id="derivativeResultName" placeholder="Производная">
+                    <label for="derivativeResultName">Название результата</label>
+                    <input type="text" id="derivativeResultName" placeholder="Например, def">
                 </div>
                 <div class="table-wrapper">
                     <table class="result-table" id="derivativeTable">
@@ -368,7 +388,7 @@
 <div class="modal" id="inspectorModal" aria-hidden="true">
     <div class="modal__dialog large">
         <div class="modal__header">
-            <h3 id="inspectTitle">График табулированной функции</h3>
+            <h3 id="inspectTitle">График функции</h3>
             <button class="icon-btn" data-close="inspectorModal">×</button>
         </div>
         <div class="modal__body">
@@ -383,7 +403,7 @@
                 </table>
             </div>
             <div class="toolbar">
-                <label>apply(x): <input type="text" id="applyX" size="8"></label>
+                <label>Значение х в точке: <input type="text" id="applyX" size="8"></label>
                 <button class="btn primary" id="applyBtn">Вычислить</button>
                 <span id="applyResult" class="muted"></span>
             </div>
@@ -396,13 +416,13 @@
 <div class="modal" id="compositeModal" aria-hidden="true">
     <div class="modal__dialog">
         <div class="modal__header">
-            <h3>Новая сложная функция</h3>
+            <h3>Создание сложной функции</h3>
             <button class="icon-btn" data-close="compositeModal">×</button>
         </div>
         <div class="modal__body">
             <div class="field">
-                <label for="compositeName">Название</label>
-                <input type="text" id="compositeName" placeholder="Например, f∘g">
+                <label for="compositeName">Название функции</label>
+                <input type="text" id="compositeName" placeholder="Например, sincos">
             </div>
             <div class="field">
                 <label for="compositeOuter">Внешняя функция</label>
@@ -413,7 +433,6 @@
                 <select id="compositeInner"></select>
             </div>
             <div class="footer-actions">
-                <button class="btn ghost" data-close="compositeModal">Отмена</button>
                 <button class="btn primary" id="createComposite">Создать</button>
             </div>
             <div class="status" id="compositeStatus"></div>

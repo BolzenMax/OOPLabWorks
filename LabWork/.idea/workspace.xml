@@ -4,12 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Ещё один фикс">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Да будет свет! (опционально)">
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/ExpFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/ExpFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LnFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LnFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/UnitFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/UnitFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/TabulatedFunctionUiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/TabulatedFunctionUiService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/app.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/ui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/ui.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,14 +256,6 @@
       <workItem from="1764667547137" duration="5901000" />
       <workItem from="1764999315134" duration="1000" />
       <workItem from="1765696051510" duration="7000" />
-    </task>
-    <task id="LOCAL-00020" summary="Добавил в ArrayTabulatedFunctionTest ещё один тест на вставку insert">
-      <option name="closed" value="true" />
-      <created>1759162367115</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1759162367115</updated>
     </task>
     <task id="LOCAL-00021" summary="Доработал метод простых итераций и добавил несколько тестов на него... надеюсь это то что нужно...">
       <option name="closed" value="true" />
@@ -641,7 +641,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765786505475</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Да будет свет! (опционально)">
+      <option name="closed" value="true" />
+      <created>1765790111445</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1765790111445</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,7 +679,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Реализация deserialize в FunctionsIO" />
     <MESSAGE value="Реализовал сериализацию в LinkedListTabulatedFunction, добавил serializable в FunctionsIO" />
     <MESSAGE value="Сериализация и в AbstractTabulatedFunction как фикс для нормального отображения количества элементов списка" />
     <MESSAGE value="Реализован класс ReadTask в пакете concurrent" />
@@ -696,7 +703,8 @@
     <MESSAGE value="Ещё немного, ещё чуть-чуть... последний бой - он трудный самый..." />
     <MESSAGE value="Малюсенькая доработочка" />
     <MESSAGE value="Ещё один фикс" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ещё один фикс" />
+    <MESSAGE value="Да будет свет! (опционально)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Да будет свет! (опционально)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -21,7 +21,7 @@ async function handleLogin(event) {
         });
 
         if (!response.ok) {
-            error.textContent = 'Неверные учетные данные';
+            error.textContent = 'Неверный логин или пароль';
             return;
         }
 
@@ -29,7 +29,7 @@ async function handleLogin(event) {
         storeAuth(login, password, user);
         window.location.href = '/app.html';
     } catch (e) {
-        error.textContent = 'Не удалось выполнить вход';
+        error.textContent = 'Не удалось выполнить вход в аккаунт';
     }
 }
 
@@ -55,13 +55,13 @@ async function handleRegister(event) {
 
         if (!response.ok) {
             const message = await response.text();
-            error.textContent = message || 'Не удалось зарегистрироваться';
+            error.textContent = message || 'Не удалось зарегистрировать аккаунт';
             return;
         }
 
         window.location.href = '/login.html';
     } catch (e) {
-        error.textContent = 'Не удалось зарегистрироваться';
+        error.textContent = 'Не удалось зарегистрировать аккаунт';
     }
 }
 
