@@ -71,7 +71,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         } else {
             addNode(xFrom, source.apply(xFrom));
             double step = (xTo - xFrom) / (count - 1);
-            double temp = step;
+            double temp = xFrom + step;
             for (int i = 1; i < count - 1; ++i) {
                 addNode(temp, source.apply(temp));
                 temp += step;

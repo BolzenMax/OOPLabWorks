@@ -121,11 +121,16 @@ body {
 .field, .field-group { display: flex; flex-direction: column; gap: 6px; }
 .field label { color: var(--muted); }
 .field input, .field select {
-    background: rgba(255,255,255,0.04);
+    background: var(--panel);
     border: 1px solid var(--border);
     color: var(--text);
     padding: 10px 12px;
     border-radius: 10px;
+}
+
+.field select option {
+    background: var(--panel);
+    color: var(--text);
 }
 
 .inline-field { display: flex; gap: 8px; align-items: center; }

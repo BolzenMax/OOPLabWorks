@@ -4,71 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="что-то обрезал, что-то нарастил - и получилось то что получилось">
+    <list default="true" id="9f7c5846-9432-460a-856c-125d88e33e92" name="Changes" comment="Ещё немного, ещё чуть-чуть... последний бой - он трудный самый...">
       <change afterPath="$PROJECT_DIR$/../.idea/OOPLabWorks.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/CosFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/ExpFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LnFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/SinFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/UiMathFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/TabulatedFactoryType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/TabulatedFileController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/TabulatedFunctionUiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/TabulatedFunctionUiMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/TabulatedFunctionUiService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/TabulatedOperationUiService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/TabulatedOperationsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/UiExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/UiFactoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/UiFunctionRegistry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/UiStateController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/dto/DerivativeRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/dto/ErrorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/dto/FactorySelectionRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/dto/FactoryStateResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/dto/MathFunctionOption.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/dto/NewCompositeFunctionRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/dto/TabulatedApplyRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/dto/TabulatedFromArrayRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/dto/TabulatedFromFunctionRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/dto/TabulatedFunctionPayload.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/dto/TabulatedFunctionResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/dto/TabulatedOperationRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/dto/UiPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/exceptions/FileProcessingException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/exceptions/InvalidFactorySelectionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/exceptions/InvalidPointCountException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/exceptions/NonNumericValueException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/exceptions/TableSizeMismatchException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/exceptions/UnknownFunctionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/exceptions/UnknownOperationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/ui/exceptions/ValueOutOfRangeException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/app.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/ui.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/ui.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerformanceFramework.csv" beforeDir="false" afterPath="$PROJECT_DIR$/PerformanceFramework.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SortPerformanceFramework.csv" beforeDir="false" afterPath="$PROJECT_DIR$/SortPerformanceFramework.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/config/CustomUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/config/CustomUserDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/controllers/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/controllers/FunctionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/controllers/FunctionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/controllers/PointController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/controllers/PointController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/IdentityFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/IdentityFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/SqrFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/SqrFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/UnitFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/UnitFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/ZeroFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/ZeroFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/factory/ArrayTabulatedFunctionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/factory/ArrayTabulatedFunctionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/factory/LinkedListTabulatedFunctionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/factory/LinkedListTabulatedFunctionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/factory/TabulatedFunctionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/factory/TabulatedFunctionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/operations/TabulatedFunctionOperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/operations/TabulatedFunctionOperationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/services/FunctionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/services/FunctionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ssau/tk/labwork/ooplabworks/functions/LinkedListTabulatedFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/ui.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,73 +57,73 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.LinkedListTabulatedFunctionSerialization.executor": "Run",
-    "Application.MultiplyingTaskExecutor.executor": "Run",
-    "Application.ReadWriteTaskExecutor.executor": "Run",
-    "Application.TabulatedFunctionFileInputStream.executor": "Run",
-    "Application.TabulatedFunctionFileOutputStream.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JUnit.AbstractTabulatedFunctionTest.executor": "Run",
-    "JUnit.ArrayTabulatedFunctionFactoryTest.executor": "Run",
-    "JUnit.CompositeFunctionTest.executor": "Coverage",
-    "JUnit.ConstantFunctionTest.executor": "Coverage",
-    "JUnit.FunctionRepositoryTest.executor": "Coverage",
-    "JUnit.FunctionServiceTest.executor": "Coverage",
-    "JUnit.FunctionServiceTest.testDeleteFunction.executor": "Debug",
-    "JUnit.IdentityFunctionTest.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.InterpolateExceptionTest.executor": "Coverage",
-    "JUnit.LinkedListTabulatedFunctionTest.executor": "Coverage",
-    "JUnit.PerformanceTest.delete_functions_operations.executor": "Coverage",
-    "JUnit.PerformanceTest.executor": "Coverage",
-    "JUnit.PointRepositoryTest.executor": "Coverage",
-    "JUnit.PointRepositoryTest.testFindByFunctionId.executor": "Debug",
-    "JUnit.SearchServiceTest.executor": "Coverage",
-    "JUnit.SearchSortPerformanceTest.executor": "Coverage",
-    "JUnit.SimpleIterationsMethodTest.executor": "Coverage",
-    "JUnit.UserControllerTest.executor": "Coverage",
-    "JUnit.UserRepositoryTest.executor": "Coverage",
-    "JUnit.UserServiceTest.executor": "Coverage",
-    "JUnit.java in LabWork.executor": "Coverage",
-    "JUnit.jpa in LabWork.executor": "Coverage",
-    "JUnit.ooplabworks in LabWork.executor": "Coverage",
-    "JUnit.performances in LabWork.executor": "Coverage",
-    "JUnit.repositories in LabWork.executor": "Coverage",
-    "JUnit.ru.ssau.tk.labwork.ooplabworks in LabWork.executor": "Coverage",
-    "JUnit.ru.ssau.tk.labwork.ooplabworks.functions in LabWork.executor": "Coverage",
-    "JUnit.ru.ssau.tk.labwork.ooplabworks.jpa.services in LabWork.executor": "Coverage",
-    "JUnit.services in LabWork.executor": "Coverage",
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.Application.executor": "Debug",
-    "git-widget-placeholder": "framework",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "SQL Dialects",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.LinkedListTabulatedFunctionSerialization.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MultiplyingTaskExecutor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ReadWriteTaskExecutor.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TabulatedFunctionFileInputStream.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TabulatedFunctionFileOutputStream.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JUnit.AbstractTabulatedFunctionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArrayTabulatedFunctionFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CompositeFunctionTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ConstantFunctionTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.FunctionRepositoryTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.FunctionServiceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.FunctionServiceTest.testDeleteFunction.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.IdentityFunctionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.InterpolateExceptionTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.PerformanceTest.delete_functions_operations.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.PerformanceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.PointRepositoryTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.PointRepositoryTest.testFindByFunctionId.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.SearchServiceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.SearchSortPerformanceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.SimpleIterationsMethodTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserControllerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserRepositoryTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.java in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.jpa in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ooplabworks in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.performances in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.repositories in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ru.ssau.tk.labwork.ooplabworks in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ru.ssau.tk.labwork.ooplabworks.functions in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ru.ssau.tk.labwork.ooplabworks.jpa.services in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.services in LabWork.executor&quot;: &quot;Coverage&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Application.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;framework&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SQL Dialects&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\voroz\IdeaProjects\OOPLabWorks\LabWork\input" />
@@ -307,14 +247,6 @@
       <workItem from="1764667547137" duration="5901000" />
       <workItem from="1764999315134" duration="1000" />
       <workItem from="1765696051510" duration="7000" />
-    </task>
-    <task id="LOCAL-00017" summary="Тесты вроде на текущую версию LinkedListTabulatedFunction заработали, но надо добить ещё несколько моментов...">
-      <option name="closed" value="true" />
-      <created>1759159285135</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1759159285135</updated>
     </task>
     <task id="LOCAL-00018" summary="Добавил в ArrayTabulatedFunction метод insert, при этом сделав xValues, yValues, count не final для работоспособности, но надо ещё тестами новый метод покрыть...">
       <option name="closed" value="true" />
@@ -700,7 +632,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764605436175</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Ещё немного, ещё чуть-чуть... последний бой - он трудный самый...">
+      <option name="closed" value="true" />
+      <created>1765731317304</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1765731317304</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -730,7 +670,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Корректировка реализации toString в AbstractTabulatedFunction" />
     <MESSAGE value="Реализовал в FunctionsIO readTabulatedFunction для inputStream, класс TabulatedFunctionFileInputStream и внёс небольшие корректировки в TabulatedFunctionFileOutputStream" />
     <MESSAGE value="Частично подготовил LinkedListTabulatedFunction к сериализации. После написания оставшихся методов мной и товарищем должно работать нормально" />
     <MESSAGE value="Реализация deserialize в FunctionsIO" />
@@ -755,7 +694,8 @@
     <MESSAGE value="Это же newman!!!" />
     <MESSAGE value="типа..." />
     <MESSAGE value="что-то обрезал, что-то нарастил - и получилось то что получилось" />
-    <option name="LAST_COMMIT_MESSAGE" value="что-то обрезал, что-то нарастил - и получилось то что получилось" />
+    <MESSAGE value="Ещё немного, ещё чуть-чуть... последний бой - он трудный самый..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ещё немного, ещё чуть-чуть... последний бой - он трудный самый..." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
